@@ -1,6 +1,8 @@
 # Git
 
-## 提交 commit
+> <https://learngitbranching.js.org/>
+
+## 提交 `commit`
 
 ### 提交规范
 
@@ -23,11 +25,77 @@
 
 > 提交前校验见 `项目管理`（待补充）
 
+## 分支
+
+::: code-tabs#常用命令
+@tab branch
+
+```bash
+git branch # 列出本地分支
+git branch branch-name  # 创建 branch-name 新分支
+git branch -d branch-name # 删除 branch-name 分支
+git branch -m old-branch-name new-branch-name # 重命名分支
+```
+
+@tab checkout
+
+```bash
+git checkout branch-name # 查看(切换到) branch-name 分支
+git checkout -b new-branch-name # 从当前分支创建并切换到新分支
+git checkout -b new-branch-name old-branch-name # 从模板分支创建并切换到新分支
+```
+
+@tab switch
+
+```bash
+git switch branch-name # 查看(切换到) branch-name 分支
+git switch -c new-branch-name # 从当前分支创建并切换到新分支
+```
+
+@tab merge
+
+```bash
+git merge branch-name # 将当前分支与 branch-name 分支合并
+```
+
+:::
+
+## 变基 `rebase`
+
+将一个分支的新提交复制到另一个分支的末端(最后)，用于创造更加清晰的线性提交记录。
+
+```bash
+# 将 hotfix 分支变基到 main 分支并更新 main
+hotfix > git rebase main
+hotfix > git switch main
+main > git rebase hotfix
+```
+
+## 基本概念
+
+### `HEAD`
+
+位于`.git/HEAD`
+存储了当前分支中的某一个提交记录的引用
+
+- 默认指向当前分支上最近一次提交记录。
+- 随着提交向前移动。
+- HEAD 通常情况下是指向分支名，再指向最近一次提交记录
+- 通常可以把 HEAD 看做你的上一次提交的快照。
+
+当 `git checkout commit1`，此时 HEAD 直接指向 commit1，称为分离的 HEAD (_Detached Head_)。
+
+```bash
+git show HEAD # 检查 Head 的状态
+```
+
+> 大多数修改提交树的 Git 命令都是从改变 HEAD 的指向开始的。
+
 ## 版本控制
 
 - `git status` 仓库状态信息
 - `git add 文件名` 暂存单个文件 `.` 全部文件
-- `git commit -m 提交信息` 提交
+
 - `git reset 文件名` 取消暂存
 - `git reset commitID` 回退版本
 
@@ -38,19 +106,10 @@
 - `git log` 提交日志
 - `git reflog` 所有操作记录
 
-- `git branch` 查看本地分支
-- `git checkout -b 新分支名 模板` 从模板分支创建本地新分支
-- `git checkout 分支` 切换分支
-- `git merge 分支` 合并分支
-
 - `git fetch` 拉取远程分支
 - `git pull` 自动 fetch + merge
 - `git branch -u origin/分支名` 设置远程分支(简写)
-- `git push --set-upstream origin 分支名` 设置远程分支并推送
-
-- `git rebase` 重新排列 commit
-
-  - `git rebase --continue` 继续执行排列
+- `git push --set-upstream origin 分支名` 设置远程分支并推送 s
 
 ## 设置
 
