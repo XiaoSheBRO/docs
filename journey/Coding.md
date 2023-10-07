@@ -16,3 +16,56 @@ import 'vant/es/toast/style/index' // 在组件或 main.js 中引入相关样式
 @tab cause
 无法自动引用样式，具体原因未知
 :::
+
+#### (Vue3) element-plus 分页器新写法
+
+::: tabs
+@tab solution
+
+```html
+<el-pagination
+  background
+  :current-page="meta.currentPage"
+  layout="->, total, sizes, prev, pager, next, jumper"
+  :page-size="meta.perPage"
+  :total="meta.totalCount"
+  @update:current-page="handleCurrentChange()"
+  @update:page-size="handleSizeChange()" />
+```
+
+```ts
+const meta = ref({
+  currentPage: 1,
+  perPage: 10,
+  totalCount: 0,
+})
+const handleSizeChange = (val: any) => {
+  meta.value.perPage = val
+  fetchTable()
+}
+const handleCurrentChange = (val: any) => {
+  meta.value.currentPage = val
+  fetchTable()
+}
+
+const handleSearch = () => {
+  meta.value = {
+    currentPage: 1,
+    perPage: 10,
+    totalCount: 0,
+  }
+  fetchTable()
+}
+
+const handleReset = () => {
+  // searchForm.value = {...}
+  meta.value = {
+    currentPage: 1,
+    perPage: 10,
+    totalCount: 0,
+  }
+  fetchTable()
+}
+```
+
+:::
