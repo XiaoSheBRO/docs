@@ -69,3 +69,18 @@ const handleReset = () => {
 ```
 
 :::
+
+#### element/element-plus `el-button` focus 颜色问题
+
+::: tabs
+@tab solution
+
+加上以下事件
+
+```html
+<el-button @mousedown="($event) => $event.preventDefault()"></el-button>
+```
+
+@tab cause
+element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效果易混淆
+:::
