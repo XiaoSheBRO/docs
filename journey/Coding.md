@@ -70,7 +70,7 @@ const handleReset = () => {
 
 :::
 
-#### element/element-plus `el-button` focus 颜色问题
+#### element/element-plus `el-button` .focus 颜色问题
 
 ::: tabs
 @tab solution
@@ -79,7 +79,7 @@ const handleReset = () => {
 
 ```html
 <!-- vue3+js -->
-<el-button @mousedown="($event) => $event.preventDefault()"></el-button>
+<!-- <el-button @mousedown="($event) => $event.preventDefault()"></el-button> -->
 <!-- vue3+ts -->
 <el-button @mousedown.prevent></el-button>
 ```
@@ -87,3 +87,28 @@ const handleReset = () => {
 @tab cause
 element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效果易混淆
 :::
+
+#### element-plus `el-table` 中使用 `el-image` 预览图片样式问题
+
+::: tabs
+@tab solution
+
+加上以下样式
+
+```css
+:deep(.el-table__cell) {
+  position: static !important;
+}
+```
+
+:::
+
+#### :v-deep 弃用
+
+新写法
+
+```css
+:deep(.class-name) {
+  //...
+}
+```
