@@ -78,7 +78,10 @@ const handleReset = () => {
 加上以下事件
 
 ```html
+<!-- vue3+js -->
 <el-button @mousedown="($event) => $event.preventDefault()"></el-button>
+<!-- vue3+ts -->
+<el-button @mousedown.prevent></el-button>
 ```
 
 @tab cause
