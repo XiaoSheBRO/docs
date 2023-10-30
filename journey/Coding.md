@@ -27,8 +27,8 @@ import 'vant/es/toast/style/index' // 在组件或 main.js 中引入相关样式
   layout="->, total, sizes, prev, pager, next, jumper"
   :page-size="meta.perPage"
   :total="meta.totalCount"
-  @update:current-page="handleCurrentChange()"
-  @update:page-size="handleSizeChange()" />
+  @update:current-page="handleCurrentChange"
+  @update:page-size="handleSizeChange" />
 ```
 
 ```ts
@@ -117,3 +117,32 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
 gap: 20px;
 gap: 20px 10px; // y x
 ```
+
+### (Css3) `flex-box` 宽度自适应下 `text-overflow: ellipsis` 失效解决方法(单行)
+
+::: tabs
+@tab solution
+
+```css
+.container {
+  display: flex;
+
+  .left {
+    flex: 1;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+  }
+
+  .right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+}
+```
+
+@tab cause
+待补充
+:::
