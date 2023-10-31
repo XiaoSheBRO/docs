@@ -394,7 +394,7 @@ class Boy extends class Student{
 
 ### 事件流
 
-![1658989747466](../../archive/_resources/1658989747466.png)
+![1658989747466](../../archive/_resources/images/1658989747466.png)
 
 - `false` 绑定事件默认为冒泡阶段触发(_从内到外_)
 - `true` 改为捕获阶段触发
@@ -512,7 +512,7 @@ let mark = true
 
 ## 原始类型与引用类型
 
-![1659080264172](../../archive/_resources/1659080264172.png)
+![1659080264172](../../archive/_resources/images/1659080264172.png)
 
 ### 赋值区别
 
