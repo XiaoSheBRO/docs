@@ -27,7 +27,7 @@
 
 ## 分支
 
-::: code-tabs#常用命令
+::: tabs
 @tab branch
 
 ```bash
