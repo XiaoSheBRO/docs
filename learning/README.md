@@ -1,11 +1,9 @@
-# 学习路线
+# 学习清单
 
 ## [前端](../learning/frontend/)
 
-- JS 高级，ES6+，TS，css 框架、机制，[Vue3](../learning/frontend/Vue3.x.md)，React，常用业务组件
-- 调试，构建，部署，测试
-- [前端工程化](../learning/frontend/Engineering.md)，常用设计模式，CI/CD，性能优化，多端适配
-- electron
+- [Vue3](../learning/frontend/Vue3.x.md)
+- [前端工程化](../learning/frontend/Engineering.md)
 
 ## 其他
 
