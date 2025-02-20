@@ -6,8 +6,6 @@
 
 ### 提交规范
 
-`git commit -m "feat: xxx"`
-
 - `feat` 增加新功能
 - `fix` 修复问题/BUG
 - `style` 代码风格相关无影响运行结果的
@@ -19,11 +17,9 @@
 - `chore` 依赖更新/脚手架配置修改等
 - `workflow` 工作流改进
 - `ci` 持续集成
-- `mod` 不确定分类的修改
-- `wip` 开发中
 - `types` 类型修改
 
-> 提交前校验钩子见项目管理（待补充）
+示例：`git commit -m "feat: xxx"`
 
 ## 分支
 
