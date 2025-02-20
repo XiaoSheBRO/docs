@@ -44,7 +44,7 @@ export default {
     return {
       // 暴露数据、函数
     }
-  },
+  }
 }
 ```
 

@@ -28,7 +28,8 @@ import 'vant/es/toast/style/index' // 在组件或 main.js 中引入相关样式
   :page-size="meta.perPage"
   :total="meta.totalCount"
   @update:current-page="handleCurrentChange"
-  @update:page-size="handleSizeChange" />
+  @update:page-size="handleSizeChange"
+/>
 ```
 
 ```ts

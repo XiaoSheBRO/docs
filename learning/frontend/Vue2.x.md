@@ -28,7 +28,7 @@
     },
     methods: {
       // 绑定函数
-    },
+    }
   })
 </script>
 ```
@@ -57,7 +57,7 @@
 Vue.config.productionTip = false
 //配置开发选项，false:友好的错误提示 true:无错误提示
 new Vue({
-  render: (h) => h(App), //箭头函数，传入组件并渲染
+  render: (h) => h(App) //箭头函数，传入组件并渲染
 }).$mount('#app') //挂载到#app
 ```
 
@@ -83,7 +83,7 @@ export default {
     // node下 data 为函数形式
     return {}
   },
-  methods: {},
+  methods: {}
 }
 </script>
 
@@ -171,11 +171,11 @@ export default {
 ```js
 export default {
   state: {
-    message: 'hello vue', // 共享的数据
+    message: 'hello vue' // 共享的数据
   },
   setStateMessage(str) {
     this.state.message = str // set方法
-  },
+  }
 }
 ```
 
@@ -293,15 +293,15 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: HomeView
     },
     {
       path: '/about',
       name: 'about',
       // lazy-loaded
-      component: () => import('../views/AboutView.vue'),
-    },
-  ],
+      component: () => import('../views/AboutView.vue')
+    }
+  ]
 })
 
 export default router
