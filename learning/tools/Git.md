@@ -23,7 +23,7 @@
 
 ## 分支
 
-::: tabs
+::: code-tabs
 @tab branch
 
 ```bash
