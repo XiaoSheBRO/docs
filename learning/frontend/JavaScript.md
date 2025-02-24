@@ -2,36 +2,35 @@
 
 ## js
 
-控制网页的行为：用户与浏览器交互、浏览器与服务器的交互  
+控制网页的行为：用户与浏览器交互、浏览器与服务器的交互
 js = ECMAScript + DOM + BOM
 
-> `alert()`  
-> `console.log()`
+> `alert()` > `console.log()`
 
 ### 变量与数据类型
 
-`var x = *;` 声明变量  
-`var x = *, y = "";` 多个变量用**,**隔开  
+`var x = *;` 声明变量
+`var x = *, y = "";` 多个变量用**,**隔开
 **命名规则**：字母、数字(_不能作为开头_)、$、下划线
 
 > 驼峰：首字母小写，第二个单词首字母大写
 
 **数据类型**：String, Number, Boolean, Object 对象, NUll, Undefined 未定义
 
-> `var x;` x 值为未定义  
+> `var x;` x 值为未定义
 > Undefined 一般不用于赋值；变量尽量不要不定义
 
 ### 运算符
 
-> ++x 值为 x + 1  
-> x++ 的输出是 x,但 x 稍后会自增  
+> ++x 值为 x + 1
+> x++ 的输出是 x,但 x 稍后会自增
 > (java 中运算过程也有先后，但输出值相同)
 
-`==` 只比较数值，自动转换类型  
+`==` 只比较数值，自动转换类型
 `===` 比较值和数据类型(最佳实践，为了性能尽量用`===` `!==`)
 
 **简化条件运算**
-`条件表达式` ? `值1` : `值2`;  
+`条件表达式` ? `值1` : `值2`;
 例：`z` = `x` > `y` ? `true情况的值` : `false情况的值`;
 
 ### 条件语句
@@ -107,8 +106,8 @@ list.map(function(value,index)){
 ```
 
 数值常用方法
-`list.push(*)` 结尾增加值  
-`list.sort()` 排序  
+`list.push(*)` 结尾增加值
+`list.sort()` 排序
 `list.filter()` 列表过滤
 
 ```js
@@ -154,12 +153,12 @@ var newList = list.filter(function(item)){
 
 用途：匹配字符串；字符串截取、替换、验证
 
-`var reg = /.../;`  
-`reg.test(str)` 匹配是否正确，返回 _true/false_  
-`reg.exec(str)` 返回符合的匹配内容**数组**格式  
-`/.../g` 全局匹配  
-`^` 限定匹配内容开头  
-`$` 限定匹配内容结尾  
+`var reg = /.../;`
+`reg.test(str)` 匹配是否正确，返回 _true/false_
+`reg.exec(str)` 返回符合的匹配内容**数组**格式
+`/.../g` 全局匹配
+`^` 限定匹配内容开头
+`$` 限定匹配内容结尾
 `[]` 指定内容限制范围
 
 - `[a-z0-9A-Z_]`或`\w` 数字&字母&下划线
@@ -208,10 +207,10 @@ var newList = list.filter(function(item)){
 
 ### 解构赋值
 
-数组形式：`let [x, y] = [1, 2];`  
+数组形式：`let [x, y] = [1, 2];`
 `[x, y] = [y, x];` 方便值的调换
 
-对象形式：`let {name, age} = {name:"小米", age:10};`  
+对象形式：`let {name, age} = {name:"小米", age:10};`
 方便拿到属性，传递参数
 
 ```js
@@ -352,9 +351,9 @@ class Boy extends class Student{
 
 ### 节点操作
 
-创建元素节点：`document.createElement("网页元素")`  
-创建文本节点：`document.createTextNode("文本")`  
-添加节点：`*.appendChild(*)`  
+创建元素节点：`document.createElement("网页元素")`
+创建文本节点：`document.createTextNode("文本")`
+添加节点：`*.appendChild(*)`
 删除节点：`*.removeChild(*)`
 
 ## 事件
@@ -363,9 +362,9 @@ class Boy extends class Student{
 
 监听事件(_多个同样事件会被覆盖，冒泡阶段触发_) `*.on+事件类型`
 
-> `*.onclick` 点击  
-> `*.onmouseenter` 鼠标移入  
-> `*.onmouseleave` 鼠标移出  
+> `*.onclick` 点击
+> `*.onmouseenter` 鼠标移入
+> `*.onmouseleave` 鼠标移出
 > `*.onmousemove` 鼠标移动
 
 ```js
@@ -374,7 +373,7 @@ class Boy extends class Student{
 
 ### 事件对象
 
-`event` 作为形参放在事件函数内  
+`event` 作为形参放在事件函数内
 `事件 = function (event) {};`
 
 > 由于是形参所以可以任意改名，一般简写作`e`
@@ -399,7 +398,7 @@ class Boy extends class Student{
 - `false` 绑定事件默认为冒泡阶段触发(_从内到外_)
 - `true` 改为捕获阶段触发
 
-**阻止继续冒泡，避免重复触发外层事件** `e.stopPropagation();`  
+**阻止继续冒泡，避免重复触发外层事件** `e.stopPropagation();`
 **取消 html 元素默认行为** `e.preventDefault();`/`return false;`
 
 ### 事件委托
@@ -533,7 +532,7 @@ let mark = true
 - `typeof(原始类型)` (_除了`null`，`引用类型`全检测为`object`_)
 - `变量 instanceof 类型` 引用类型检测**是否**在某一类型内
 
-> `null` 为原始类型  
+> `null` 为原始类型
 > 所有对象都继承于 `object`
 
 ## 异步编程
