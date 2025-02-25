@@ -8,6 +8,9 @@ HTML: `HyperText Markup Language` 超文本标记语言，用于定义网页内�
 
 元素 = 起始标记（_begin tag_） + 元素内容 + 结束标记（_end tag_） + 元素属性
 
+> 元素的嵌套：元素不能相互嵌套
+> 元素关系：父元素、子元素、兄弟元素、祖先元素、后代元素
+
 _空元素_：没有结束标记
 
 > `<br>` & `<br />`：
@@ -18,11 +21,8 @@ _空元素_：没有结束标记
 
 ### 属性的分类
 
-- 局部属性：某些原色特有的属性
-- 全局属性：所有元素都可用的属性
-
-> 元素的嵌套：元素不能相互嵌套
-> 元素关系：父元素、子元素、兄弟元素、祖先元素、后代元素
+- **全局属性**：所有元素都可用的属性
+- **局部属性**：某些原色特有的属性
 
 ## 标准文档结构
 
@@ -30,7 +30,7 @@ _空元素_：没有结束标记
 <!DOCTYPE html>
 ```
 
-文档声明，告诉浏览器使用 HTML5 标准（_最新版本_）解析文档。
+文档声明：告诉浏览器使用 HTML5 标准（_最新版本_）解析文档。
 
 > 不写文档声明将导致浏览器进入怪异渲染模式。
 
@@ -41,31 +41,33 @@ _空元素_：没有结束标记
 ```
 
 根元素：一个页面最多存在一个根元素，且该元素是所有其他元素的父元素或祖先元素。
-`lang` 属性：language 的缩写，全局属性，用于定义页面的自然语言。
 
-> HTML5 规范中，没有强制要求使用 `<html>` 作为根元素。
+> HTML5 规范中， `<html>` 作为根元素不具有强制性。
+
+`lang`：**全局属性**，用于定义页面的自然语言。
+
 > 简体中文最新表示：`zh-CN` ==> `cmn-hans`
 
 ### `head` 元素
 
 文档头，_文档头内部的内容不会显示在页面内_。
 
-```html
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-</head>
-```
-
 #### `meta` 元素
 
 文档的元数据：附加信息。
 
-- ① `charset` 属性：指定网页内容编码。
-- ② `viewport`：网页视口设置。
-- ③ 解决IE兼容问题
+```html
+<head>
+  <!-- charset 指定网页内容编码，局部属性 -->
+  <meta charset="UTF-8" />
+  <!-- viewport 设置网页视口 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 解决IE兼容问题 -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- 网页标题 -->
+  <title>Document</title>
+</head>
+```
 
 ### `body` 元素
 
