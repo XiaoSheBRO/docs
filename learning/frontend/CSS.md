@@ -194,7 +194,7 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `display` 属性默认值为 `inline`
 - 浏览器默认样式表设置为块盒的元素：`容器元素`、`<H1>~<H6>`、`<p>`
 - 浏览器默认样式表设置为行盒的元素：`<span>`、`<a>`、`<img>`、`多媒体元素`
-- 文字一定在行盒中，如果文字没有在行盒中，浏览器会直接生成一个行盒包裹文字
+- 文字一定在行盒中，如果文字没有在行盒中，浏览器会直接生成一个行盒包裹文字，该行盒叫 _匿名行盒_
 
 ### 盒子的组成部分
 
@@ -344,13 +344,16 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 2. 浮动元素的包含块和常规流一样，为**父元素的内容盒**
 3. 浮动元素在包含块中排列时会**避开**上文的常规流**块盒**
 4. 常规流**块盒**在排列时**无视**浮动元素
-5. 行盒排列时会避开浮动元素，用来实现文字环绕
+5. 行盒排列时会避开浮动元素
+   - 用来实现文字环绕
+6. 外边距合并不会发生
 
 #### 浮动盒子规则
 
 - `width:auto` 适应内容宽度
 - `height:auto` 适应内容高度
 - `margin:auto` 所有方向为 `0`
+- [百分比取值](#百分比取值)
 
 #### 应用场景
 
@@ -370,4 +373,54 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
    ```
 
 2. 横向排列
-3. [百分比取值](#百分比取值)
+
+#### 高度坍塌
+
+高度坍塌的根源：浮动元素脱离了常规流，常规流盒子的自动高度，在计算时不会考虑浮动元素。
+
+清除浮动：
+
+- `clear:none` _默认值_
+- `clear:both` 清除左右浮动，该元素必须出现在前面所有浮动盒子的下方
+- `clear:left` 清除左浮动，该元素必须出现在前面所有左浮动盒子的下方
+- `clear:right` 清除右浮动，该元素必须出现在前面所有右浮动盒子的下方
+
+```html
+<style>
+  .float-left {
+    float: left;
+  }
+  .float-right {
+    float: right;
+  }
+  .clearfix {
+    clear: both;
+  }
+</style>
+
+<div class="container">
+  <div class="float-left">float-left</div>
+  <div class="float-right">float-right</div>
+  <div class="clearfix"></div>
+</div>
+```
+
+```html
+<style>
+  .clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .float-left {
+    float: left;
+  }
+  .float-right {
+    float: right;
+  }
+</style>
+<div class="container clearfix">
+  <div class="float-left">float-left</div>
+  <div class="float-right">float-right</div>
+</div>
+```
