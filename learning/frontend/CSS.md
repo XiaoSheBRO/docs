@@ -84,6 +84,7 @@ css规则 = 选择器 + 声明块
   - 单行文本垂直居中：`line-height` = **内容盒高度**
 - `letter-spacing` 文字间距
 - `text-align` 元素内部文字的水平排列方式
+- `cursor` 鼠标光标样式
 
 ### 常见简写属性
 
