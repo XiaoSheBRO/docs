@@ -128,10 +128,6 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
 }
 ```
 
-## (CSS) `line-height = height`的使用场景
-
-`height`一定是内容盒的高度，若为 `box-sizing: border-box` 时，此时的 `height` 为整个盒子的高度，在 `box-sizing: content-box` 的情况下，需要减去 `padding`,`border` 的尺寸才为真实的内容盒的 `height`
-
 ## (CSS) 父元素 `flex: 1` 的条件下，子元素宽度与父元素保持一致且不撑开父元素，使文字自动超出隐藏
 
 ```css
