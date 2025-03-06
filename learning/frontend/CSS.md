@@ -517,7 +517,24 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 `cursor` 属性：设置鼠标指针的样式
 
-- `cursor:auto` _默认值_ 由浏览器决定
+- `cursor:auto` _默认值_ 由浏览器控制
+- `cursor:pointer` 手型
+- `cursor:url('path/to/image'),auto` 设置鼠标为自定义图片，若浏览器不支持自定义鼠标，则由浏览器控制
+
+### 盒子隐藏
+
+- `display:none` 不生成盒子
+- `visibility:hidden` 生成盒子，从视觉上移除盒子，但仍占据空间
+
+### 背景图
+
+- `img` 元素属于 `HTML`概念，而背景图属于 `CSS` 的概念
+- 当图片属于网页内容时，必须使用 `img` 元素
+- 当图片仅用于美化页面时，必须使用背景图
+- `background-image:url(image.jpg)` 设置背景图片 _文件路径相对于CSS文件位置_
+- `background-repeat` 控制背景图重复方式
+
+默认情况下，背景图会在横坐标和纵坐标中进行重复
 
 ## Demo
 
