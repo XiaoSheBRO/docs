@@ -180,3 +180,22 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
 ```
 
 > 普通文字显示直接在父级加上 `overflow: hidden; text-overflow: ellipsis;` 即可
+
+## (CSS) 多背景图垂直拼接
+
+```css
+.container {
+  width: 600px;
+  min-height: 400px;
+  background-image: url('header.png'), url('body.png'), url('footer.png');
+  background-repeat: no-repeat;
+  background-position:
+    left top,
+    left 100px,
+    left bottom;
+  background-size:
+    100% 100px,
+    100% calc(100% - 100px - 200px),
+    100% 200px;
+}
+```
