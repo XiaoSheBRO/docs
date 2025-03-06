@@ -1,8 +1,8 @@
-# CSS轮播图样式
+# CSS轮播图(float + margin)
 
 <!-- #region demo -->
 
-::: normal-demo CSS轮播图样式
+::: normal-demo CSS轮播图(float + margin)
 
 ```html
 <style>
@@ -20,13 +20,13 @@
   }
 
   .carousel .img-container .carousel-item {
-    float: left;
+    float: left; /* 使用float横向排列item */
     width: 300px;
     height: 200px;
   }
 
   .carousel .img-container .carousel-item:nth-child(1) {
-    margin-left: -300px;
+    margin-left: -300px; /* 使用margin偏移切换item */
   }
 
   .carousel .left-btn,
@@ -83,7 +83,7 @@
   }
 
   .carousel .modal .dots .dot {
-    display: inline-block;
+    display: inline-block; /* 使用inline-block排列dot */
     margin-right: 5px;
     width: 8px;
     height: 8px;
