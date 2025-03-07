@@ -114,6 +114,7 @@ css规则 = 选择器 + 声明块
   3. `-top & -bottom` `-left & -right`
   4. `-top & -right & -bottom & -left`
 - `border`
+- `background`: `background-image` `background-repeat` `background-position`/`background-size` `background-attachment` `background-color`
 - `font`: `font-style` `font-variant` `font-weight` `font-size`/`line-height` `font-family`
 
 ## 层叠
@@ -213,8 +214,8 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 ### 盒子类型
 
-1. 行盒：`display: inline` 的元素，在页面中不换行
-2. 块盒：`display: block` 的元素，在页面中独占一行
+1. 行盒：`display:inline` 的元素，在页面中不换行
+2. 块盒：`display:block` 的元素，在页面中独占一行
 
 - `display` 属性默认值为 `inline`
 - 浏览器默认样式表设置为块盒的元素：`容器元素`、`<H1>~<H6>`、`<p>`
@@ -303,7 +304,7 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 ### 行块盒模型的特点
 
-`display: inline-block` 的盒子
+`display:inline-block` 的盒子
 
 1. 不独占一行，适应行高
 2. 盒模型中所有尺寸直接设置都有效
@@ -323,7 +324,10 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 ### 调整图片适应盒子的方式
 
-- `object-fit:fill` _默认值_ // TODO
+- `object-fit:fill` _默认值_ 拉伸图片，使其完全适应盒子
+- `object-fit:contain` 保持图片比例，使其完全显示，可能留有“_黑边_“
+- `object-fit:cover` 保持图片比例，裁剪图片，使其完全覆盖盒子
+- `object-fit:none` 保持原有尺寸
 
 ## 视觉格式化模型
 
@@ -357,7 +361,7 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 4. _外边距合并_：两个常规流块盒（_兄弟，父子_），**上下**外边距**相邻**，两个外边距会合并，取最大值。
 
 - _在常规流中，块盒在包含块内水平居中_：定宽且左右 `margin` 为 `auto`
-- `margin:0 -100px; width: auto` 宽度超出父元素
+- `margin:0 -100px; width:auto` 宽度超出父元素
 
 ### 浮动
 
@@ -528,13 +532,37 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 ### 背景图
 
+背景图使用场景：
+
 - `img` 元素属于 `HTML`概念，而背景图属于 `CSS` 的概念
 - 当图片属于网页内容时，必须使用 `img` 元素
 - 当图片仅用于美化页面时，必须使用背景图
-- `background-image:url(image.jpg)` 设置背景图片 _文件路径相对于CSS文件位置_
-- `background-repeat` 控制背景图重复方式
+- 背景图可与背景颜色配合使用
 
-默认情况下，背景图会在横坐标和纵坐标中进行重复
+相关属性：
+
+- `background-image:url(image.jpg)` 设置背景图片 _文件路径相对于CSS文件位置_
+- `background-repeat` 控制背景图重复方式，默认情况下，背景图会在横坐标和纵坐标中进行重复
+  - `background-repeat:repeat` _默认值_ 重复
+  - `background-repeat:no-repeat` 不重复
+- `background-size` 控制背景图的尺寸
+  - `background-size:auto` _默认值_ 背景图的尺寸由图片本身决定
+  - `background-size:cover` 背景图完全覆盖元素，比例不变，可能裁剪部分图片
+  - `background-size:contain` 完整显示背景图，比例不变，可能不完全覆盖元素
+  - `background-size:100px 100%` 宽度为 `100px`，高度为 `100%`
+- `background-position` 控制背景图的位置
+  - 预设值：`top` `center` `bottom` `left` `right`
+  - `background-position:center` 横向纵向居中
+  - `background-position:top left` 纵向靠上 横向靠左
+  - `background-position:10px 20px` 背景图左边距离左边界为 `10px`，上边距离上边界为 `20px`
+- `background-attachment` 控制背景图是否固定
+  - `background-attachment:scroll` _默认值_ 背景图随元素一起滚动
+  - `background-attachment:fixed` 背景图相对于视口固定
+
+雪碧图（精灵图 _sprites_）：
+
+- 将多个小图片拼接合并成一张图片，减少文件和请求次数，提高渲染效率
+- 调整 `background-position` 属性和容器宽高，将小图标取出，放置在合适的位置
 
 ## Demo
 
