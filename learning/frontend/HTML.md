@@ -244,6 +244,44 @@ _布尔属性_：不写或取值为属性名，HTML5 中可以省略属性值
 - `<section>` 元素：通常用于表示文章中的一个区域，如文章中的一节。
 - `<aside>` 元素：通常用于表示附加信息，如页面的侧边栏。
 
+### `<iframe>` 元素
+
+_可替换元素_，通常用于在一个页面中嵌入另一个页面，CSS 不能控制其中的样式。
+
+- `allowfullscreen` 属性：设置是否允许全屏显示
+- `width` 和 `height` 属性：设置宽高
+
+#### 应用场景
+
+1. 嵌入无法使用链接播放的视频（如bilibili）
+2. 与 `<a>` 元素配合
+
+   ```html
+   <!-- 使用a元素切换iframe嵌入网页 -->
+   <a href="https://www.taobao.com" target="iframe1"></a>
+   <iframe name="iframe1" src="https://www.baidu.com"></iframe>
+   ```
+
+### 嵌入元素
+
+- `<object>` 元素，_可替换元素_，用于引入外部资源
+  - `data` 属性：嵌入资源的路径
+  - `type` 属性：嵌入文件的类型(_MIME类型_)
+  - `<param name="" value="" />` 子元素：用于传递参数，`name` 属性表示参数名，`value` 属性表示参数值
+- `<embed>` 元素，_可替换元素_，用于引入外部资源
+  - `src` 属性：嵌入资源的路径
+  - `type` 属性：嵌入文件的类型(_MIME类型_)
+
+> MIME：(_Multipurpose Internet Mail Extensions_) 多用途互联网邮件类型，如图片 `image/jpeg`
+
+由于两者的兼容性不同，采用兼容性写法：
+
+```html
+<object data="movie.swf" type="application/x-shockwave-flash">
+  <embed src="movie.swf" type="application/x-shockwave-flash" />
+</object>
+```
+
 ## 元素的包含关系
 
 > 以前：块级元素独占一行，行级元素不换行；块级元素可以包含行级元素，行级元素不能包含块级元素，`<a>` 元素除外。
