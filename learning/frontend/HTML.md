@@ -2,7 +2,7 @@
 
 HTML: `HyperText Markup Language` 超文本标记语言，用于定义网页内容。
 
-> 由 w3c （_互联网标准组织_） 定义 HTML 语言标准。
+> 由 w3c（_互联网标准组织_） 定义 HTML 语言标准。
 
 ## 元素 `element`
 
