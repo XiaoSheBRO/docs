@@ -38,30 +38,8 @@ CSS规则 = 选择器 + 声明块
   - `:active` 激活状态，鼠标按下
   - **注意多个伪类的书写顺序**，_爱恨法则(按以上顺序)_
 - 伪元素选择器：定位 HTML 中未包含的实体以及无法以其他方式定位的内容部分（_伪元素：文档树中不存在的抽象元素_）
-  - `::before` _创建一个伪元素_，它是所选元素的第一个子元素。
-  - `::after` _创建一个伪元素_，它是所选元素的最后一个子元素。
-
-### 更多选择器
-
-更多伪类选择器：
-
-- `:first-child` 选中第一个子元素(_可以直接使用，但一般配合元素选择器使用_)
-  - `p:first-child` 选中是 `p` 元素**且**为父元素第一个子元素的元素
-- `:first-of-type` 选中子元素中第一个为某类型的元素
-  - `a:first-of-type` 选中父元素的子元素中第一个 `a` 元素
-- `:last-child` 选中最后一个子元素
-- `:last-of-type` 选中子元素中最后一个为某类型的元素
-- `:nth-child(n)` 选中父元素的第 `n` 个子元素，`n = 0,1,2,3...`
-  - `p:nth-child(2n+1)` / `p:nth-child(odd)` 选中父元素的**奇数**子元素且为 `p` 元素的元素
-  - `p:nth-child(2n)` / `p:nth-child(even)` 选中父元素的**偶数**子元素且为 `p` 元素的元素
-- `:nth-of-type(n)` 选中父元素的子元素中第 `n` 个为某类型的元素
-  - `a:nth-of-type(2)` 选中父元素的子元素中第二个 `a` 元素
-
-更多伪元素选择器：
-
-- `::first-letter` 选中元素中的第一个字母
-- `::first-line` 选中元素中的第一行文字
-- `::selection` 选中被用户选中的文本
+  - `::before` _创建一个伪元素_，它是所选元素的第一个子元素
+  - `::after` _创建一个伪元素_，它是所选元素的最后一个子元素
 
 ### 选择器的组合
 
@@ -80,43 +58,7 @@ CSS规则 = 选择器 + 声明块
 
 ### 选择器的并列
 
-多个选择器可以用逗号 `,` 分隔
-
-## 常用属性
-
-- `width` 元素的宽度
-- `height` 元素的高度
-- `color` 元素内部文字的颜色
-- `background-color` 元素的背景颜色
-- `font-size` 字体尺寸大小，可以简单理解为文字的高度
-- `font-weight` 字体粗细程度，需要字体适配
-  - `normal` = `400` _默认值_
-  - `bold` = `700`
-- `font-family` 字体，可以使用多个字体以匹配不同环境
-  - `sans-serif` 无衬线字体，操作系统自动选择
-- `font-style` 字体样式，通常用于设置斜体
-  - `normal` 正常
-  - `italic` 斜体
-- `text-align` 文本对齐方式
-- `text-decoration` 文本修饰，如下划线、删除线等
-- `text-indent` 首行文本缩进
-- `line-height` 每行文本的高度，值越大每行距离越大
-  - 直接设置数字值：表示相对于当前元素的字体大小，一般用于多行文字
-  - 单行文本垂直居中：`line-height` = **内容盒高度**
-- `letter-spacing` 文字间距
-- `text-align` 元素内部文字的水平排列方式
-  - 对元素内行(行块)盒都生效
-
-### 常见简写属性
-
-- `padding` / `margin`
-  1. `-top` `-right` `-bottom` `-left`
-  2. `-top` `-left & -right` `-bottom`
-  3. `-top & -bottom` `-left & -right`
-  4. `-top & -right & -bottom & -left`
-- `border`
-- `background`: `background-image` `background-repeat` `background-position`/`background-size` `background-attachment` `background-color`
-- `font`: `font-style` `font-variant` `font-weight` `font-size`/`line-height` `font-family`
+多个选择器之间用逗号 `,` 分隔，表示属性同时应用于多个选择器
 
 ## 层叠
 
@@ -151,8 +93,8 @@ _声明冲突_：同一个样式多次应用到同一个元素
 
 ### 实际应用
 
-- 重置样式表：书写一个（_通用_）作者样式表，覆盖浏览器默认样式
-- _爱恨法则_：特殊性相同，按照交互逻辑的效果，利用源次序来达到想要的效果
+1. 重置样式表：书写一个（_通用_）作者样式表，覆盖浏览器默认样式
+2. _爱恨法则_：特殊性相同，按照交互逻辑的效果，利用源次序来达到想要的效果
 
 > 常用的CSS重置样式表： [normalize.css](https://github.com/necolas/normalize.css/) [reset.css](https://www.joshwcomeau.com/css/custom-css-reset/) [meyer.css](https://meyerweb.com/eric/tools/css/reset/)
 
@@ -162,8 +104,8 @@ _声明冲突_：同一个样式多次应用到同一个元素
 
 ## 属性值的计算过程
 
-- 浏览器渲染每个元素的前提条件：该元素的**所有css属性**都必须有值
 - 浏览器渲染页面时，按照页面文档的树型目录结构，从上到下，从左到右依次渲染
+- 浏览器渲染每个元素的前提条件：该元素的**所有css属性**都必须有值
 
 一个元素从所有css属性都没有值到全部有值的过程叫属性值的**计算过程**：
 
@@ -172,19 +114,7 @@ _声明冲突_：同一个样式多次应用到同一个元素
 3. 继承：对仍然没有值的CSS属性，若可以继承，则**继承**父元素的属性值
 4. 使用默认值：如果仍然没有值，则使用默认值(_每个CSS属性都有默认值_)
 
-## 常用属性值
-
-### 颜色值表示
-
-1. 预设值：定义好的单词，如 `red`
-2. 三原色（_红、绿、蓝_）色值：
-   - RGB (_十进制_): `rgb(red, green, blue)` 每个颜色取值范围为 `0~255`
-   - HEX (_十六进制_): `#RRGGBB` 每个颜色取值范围为 `00` ~ `FF`, 如果每种颜色两位都相同，可以简写为 `#RGB`
-3. 三原色+透明通道(_alpha_)：
-   - RGBA: `rgba(red, green, blue, alpha)` 透明通道取值范围为 `0~1`，`0` 为完全透明，`1` 为完全不透明
-   - HEXA: `#RRGGBBAA` 透明通道取值范围为 `00` ~ `FF`
-
-### 特殊取值
+## 特殊取值
 
 - 强制继承：`inherit`
   - 可使不能继承的属性强制使用父元素的值
@@ -192,20 +122,19 @@ _声明冲突_：同一个样式多次应用到同一个元素
 
 生效时间：**在层叠时确定值为特殊值，并不会使用后续步骤**
 
+## 尺寸
+
 ### 尺寸单位
 
 - `px` 像素
 - `em` _相对单位_，相对于父元素的字体大小的倍数，
 
-> 每个元素必须有字体大小，如果一个元素没有声明字体大小，则会继承其父元素；
-> 如果没有父元素，则使用基准字号（_浏览器设置的默认字号_，通常是16px）。
-
 ### 百分比取值
 
-- `padding`, `margin`, `width` 所有百分比（**所有方向**）相对于**包含块**的宽度
+- `padding`, `margin`, `width` **所有方向**的百分比相对于**包含块的宽度**
 - `height` 的百分比：
-  - 包含块的高度取决于子元素，设置高度百分比无效
-  - 包含块的高度不取决于子元素，高度百分比相对于父元素高度
+  - 若包含块的高度取决于子元素（包含块高度`auto`），设置高度百分比无效
+  - 若包含块的高度不取决于子元素，高度百分比相对于父元素高度
 
 ## 盒模型
 
@@ -221,7 +150,6 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `display` 属性默认值为 `inline`
 - 浏览器默认样式表设置为块盒的元素：`容器元素`、`<H1>~<H6>`、`<p>`
 - 浏览器默认样式表设置为行盒的元素：`<span>`、`<a>`、`<img>`、`多媒体元素`
-- 文字一定在行盒中，如果文字没有在行盒中，浏览器会直接生成一个行盒包裹文字，该行盒叫 _匿名行盒_
 
 ### 盒子的组成部分
 
@@ -240,34 +168,42 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 4. 外边距 _margin_：边框到其他盒子的距离
    - `margin` 设置外边距
 
-### 相关属性的应用
-
-#### 改变宽高范围
+### `box-sizing`
 
 默认情况下，`width` 和 `height` 设置的是内容盒的宽高，但衡量设计稿是往往是边框盒的宽高。
 
-解决方案：
+开发方案：
 
-1. 精确计算
-2. (_CSS3中_)可以使用 `box-sizing` 属性改变宽高的影响范围
+1. 精确计算相关属性的值
+2. 使用 `box-sizing` 属性改变宽高的影响范围（_CSS3_）
    - `box-sizing:content-box` (_默认值_)，宽高影响内容盒
    - `box-sizing:border-box` 改变宽高的影响范围为边框盒
 
-> `outline` 外边框，不占据空间
+### 行盒盒模型的特点
 
-#### 改变背景覆盖范围
+1. 盒子跟随内容延伸
+2. 宽高由内容决定，设置的宽高无效
+   - 如果需要调整盒子宽高，需要通过 `font-size`, `line-height`, `font-family` 等属性间接设置
+3. 对于内边距（_填充区_），设置水平方向有效，垂直方向不会占据实际空间（_仅会影响背景_）
+4. 边框同上
+5. 外边距同上
 
-默认情况下，背景覆盖边框盒。
+### 行块盒模型的特点
 
-(_CSS3中_)通过 `background-clip` 属性可以改变背景覆盖范围。
+`display:inline-block` 的盒子为行块盒
 
-- `background-clip:border-box` (_默认值_) 背景覆盖边框盒
-- `background-clip:padding-box` 背景覆盖填充盒
-- `background-clip:content-box` 背景覆盖内容盒
+1. 不独占一行，适应行高
+2. 盒模型相关尺寸设置都有效
 
-#### 溢出处理
+### 行盒空白折叠
 
-当设置宽高时，内容超出盒子范围时默认可见，(_CSS3中_)可以通过 `overflow` 属性（_简写属性_）设置溢出处理。
+空白折叠发生在行盒（含行块盒）内部或行盒（含行块盒）之间，无法消除
+
+> 除非源代码紧连在一起
+
+### 溢出处理
+
+当设置宽高时，内容超出盒子范围时默认可见，(_CSS3_)可以通过 `overflow` 属性（_简写属性_）设置溢出处理
 
 - `overflow:visible` (_默认值_) 超出内容可见
 - `overflow:hidden` 超出内容隐藏
@@ -275,58 +211,17 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `overflow:auto` 自动生成滚动条
 
 > 网站标题为图片时，`H1` 元素的伪元素中用文字填写标题内容，再利用 `overflow:hidden` 隐藏文字，即实现了语义化，优化了SEO，又不影响图片的显示。
+>
+> 当一个元素垂直方向上存在滚动条时，其最后一个子元素的 `margin-bottom` 可能存在于不可见区域内，因为父元素没有足够的内容来滚动到那个位置。
 
-当一个元素垂直方向上存在滚动条时，其最后一个子元素的 `margin-bottom` 可能存在于不可见区域内，因为父元素没有足够的内容来滚动到那个位置。
-
-#### 断词规则
-
-(_CSS3中_) `word-break` 属性影响文字在**什么位置**被截断换行
-
-- `word-break:normal` (_默认值_) 对于 `CJK` 字符在文字截断，非 `CJK` 字符在单词截断
-- `word-break:break-all` 截断所有；对于所有字符都在文字截断
-- `word-break:keep-all` 保持所有；所有字符都在单词截断
-
-#### 空白处理
-
-(_CSS3中_) `white-space` 属性控制元素内的空白字符（_空格、换行符等_）的处理规则
-
-- `white-space:normal` (_默认值_)
-- `white-space:nowrap` 不换行
-  - 与 `overflow:hidden; text-overflow:ellipsis;` 结合使用，可以实现**单行文本溢出显示省略号**
-
-> `pre` 元素的 `white-space` 属性值为 `pre`，禁止空白折叠
-
-### 行盒盒模型的特点
-
-1. 盒子沿着内容延伸
-2. 宽高由内容决定，直接设置的宽高无效；如果需要调整盒子宽高，需要通过`font-size`, `line-height`, `font-family` 等属性间接设置
-3. 水平方向上，盒子的左右边界由内容决定，不受 `padding` 影响；垂直方向上，盒子的上下边界由内容决定，不受 `border` 影响
-4. 对于内边距（_填充区_），设置水平方向有效，垂直方向仅会影响背景，不会占据实际空间
-5. 边框同上
-6. 外边距同上
-
-### 行块盒模型的特点
-
-`display:inline-block` 的盒子
-
-1. 不独占一行，适应行高
-2. 盒模型中所有尺寸直接设置都有效
-
-### 行盒的空白折叠
-
-空白折叠发生在行盒（含行块盒）内部或行盒（含行块盒）之间，无法消除
-
-> 除非源代码紧连在一起
-
-## 可替换元素和非可替换元素
+### 可替换元素和非可替换元素
 
 - 非可替换元素：大部分元素，页面上显示的结果，取决于元素的内容
-- 可替换元素：少部分元素，显示结果取决于元素属性
-  - 如 `<img>`, `video`, `audio`, `input`, `button`
+- 可替换元素：少部分元素，显示结果取决于元素**属性**，如 `<img>`, `video`, `audio`, `input`, `button`
   - 绝大部分可替换元素是行盒，但效果类似于行块盒，**所有盒模型中所有尺寸设置都有效**
   - CSS 不能完全控制其中所有的样式
 
-### 调整图片适应盒子的方式
+#### 调整 `<img>` 元素适应盒子的方式
 
 - `object-fit:fill` _默认值_ 拉伸图片，使其完全适应盒子
 - `object-fit:contain` 保持图片比例，使其完全显示，可能留有“_黑边_“
@@ -355,17 +250,18 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 #### 块盒规则
 
-1. 每个块盒的盒子总宽度**必须**刚好等于其包含块的宽度
+1. 水平方向上，块盒的盒子总占位**必须**刚好等于其**包含块的宽度**
    - `width:auto` _默认值_，将剩余空间吸收；`width` 吸收能力强于 `margin`
-   - 水平方向上，若 `width`, `border`, `padding`, `margin` 计算后仍有剩余空间，该剩余空间被 `margin-right` 全部吸收
-2. 每个块盒垂直方向上
-   - `height:auto` _默认值_，高度由**内容**决定
+   - 若 `width`, `border`, `padding`, `margin` 水平方向计算后仍有剩余空间，该剩余空间被 `margin-right` 全部吸收
+2. 垂直方向上，块盒高度默认由**内容**决定
+   - `height:auto` _默认值_
+3. 外边距
    - `margin:auto` 垂直方向 `margin` 为 `0`，水平方向吸收剩余空间
-3. [百分比取值](#百分比取值)
-4. _外边距合并_：两个常规流块盒（_兄弟，父子_），**上下**外边距**相邻**，两个外边距会合并，取最大值。
+   - _外边距合并_：两个常规流块盒（_兄弟，父子_），**上下**外边距**相邻**，两个外边距会合并，取最大值。
+4. [百分比取值](#百分比取值)
 
-- _在常规流中，块盒在包含块内水平居中_：定宽且左右 `margin` 为 `auto`
-- `margin:0 -100px; width:auto` 宽度超出父元素
+> _在常规流中，块盒在包含块内水平居中_：定宽且左右 `margin` 为 `auto`。
+> `margin:0 -100px; width:auto` 宽度超出父元素
 
 ### 浮动
 
@@ -514,16 +410,143 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - 通常情况下，`z-index` 值越大，越靠近用户
 - 一个元素的 `z-index` 可以为负值，常规流元素和浮动元素将他会覆盖
 
-## 常见效果
+## 颜色
+
+### 颜色值表示
+
+1. 预设值：定义好的单词，如 `red`
+2. 三原色（_红、绿、蓝_）色值：
+   - RGB (_十进制_): `rgb(red, green, blue)` 每个颜色取值范围为 `0~255`
+   - HEX (_十六进制_): `#RRGGBB` 每个颜色取值范围为 `00` ~ `FF`, 如果每种颜色两位都相同，可以简写为 `#RGB`
+3. 三原色 + 透明通道(_alpha_)：
+   - RGBA: `rgba(red, green, blue, alpha)` 透明通道取值范围为 `0~1`，`0` 为完全透明，`1` 为完全不透明
+   - HEXA: `#RRGGBBAA` 透明通道取值范围为 `00` ~ `FF`
+
+## 文本
+
+> 文本一定在行盒中，如果文字没有在行盒中，浏览器会直接生成一个行盒包裹文字，该行盒叫 _匿名行盒_
+>
+> 每个元素必须有字体大小，如果一个元素没有声明字体大小，则会继承其父元素；
+> 如果没有父元素，则使用基准字号（_浏览器设置的默认字号_，通常是16px）。
+
+### 文本样式
+
+- `color` 元素内部文字的颜色
+- `font-size` 字体尺寸大小，可以简单理解为文字的高度
+- `font-weight` 字体粗细程度，需要字体适配
+  - `normal` = `400` _默认值_
+  - `bold` = `700`
+- `font-family` 字体，可以使用多个字体以匹配不同环境
+  - `sans-serif` 无衬线字体，操作系统自动选择
+- `font-style` 字体样式，通常用于设置斜体
+  - `normal` 正常
+  - `italic` 斜体
+- `text-decoration` 文本修饰，如下划线、删除线等
+- `text-indent` 首行文本缩进
+- `line-height` 每行文本的高度，值越大每行距离越大
+  - 直接设置数字值：表示相对于当前元素的字体大小，一般用于多行文字
+  - 单行文本垂直居中：`line-height` = **内容盒高度**
+- `letter-spacing` 文字间距
+- `text-align` 元素内部文字的水平排列方式
+  - 对元素内行(行块)盒都生效
+
+### 断词规则
+
+(_CSS3中_) `word-break` 属性影响文字在**什么位置**被截断换行
+
+- `word-break:normal` (_默认值_) 对于 `CJK` 字符在文字截断，非 `CJK` 字符在单词截断
+- `word-break:break-all` 截断所有；对于所有字符都在文字截断
+- `word-break:keep-all` 保持所有；所有字符都在单词截断
+
+### 空白处理
+
+(_CSS3中_) `white-space` 属性控制元素内的空白字符（_空格、换行符等_）的处理规则
+
+- `white-space:normal` (_默认值_)
+- `white-space:nowrap` 不换行
+  - 与 `overflow:hidden; text-overflow:ellipsis;` 结合使用，可以实现**单行文本溢出显示省略号**
+
+> `pre` 元素的 `white-space` 属性值为 `pre`，禁止空白折叠
+
+### 更多伪元素选择器
+
+- `::first-letter` 选中元素中的第一个字母
+- `::first-line` 选中元素中的第一行文字
+- `::selection` 选中被用户选中的文本
+
+## 背景
+
+### `background-clip`
+
+默认情况下，背景覆盖边框盒，通过 `background-clip` 属性可以改变背景覆盖范围。
+
+- `background-clip:border-box` (_默认值_) 背景覆盖边框盒
+- `background-clip:padding-box` 背景覆盖填充盒
+- `background-clip:content-box` 背景覆盖内容盒
+
+### `background-color`
+
+元素的背景颜色
+
+### 背景图
+
+#### 使用场景
+
+- `img` 元素属于 `HTML`概念，而背景图属于 `CSS` 的概念
+- 当图片属于网页内容时，必须使用 `img` 元素
+- 当图片仅用于美化页面时，必须使用背景图
+- 背景图可与背景颜色配合使用
+
+#### `background-image`
+
+`background-image:url(image.jpg)` 设置背景图片 _文件路径相对于CSS文件位置_
+
+#### `background-repeat`
+
+控制背景图重复方式，默认情况下，背景图会在横坐标和纵坐标中进行重复
+
+- `background-repeat:repeat` _默认值_ 重复
+- `background-repeat:no-repeat` 不重复
+
+#### `background-size`
+
+控制背景图的尺寸
+
+- `background-size:auto` _默认值_ 背景图的尺寸由图片本身决定
+- `background-size:cover` 背景图完全覆盖元素，比例不变，可能裁剪部分图片
+- `background-size:contain` 完整显示背景图，比例不变，可能不完全覆盖元素
+- `background-size:100px 100%` 宽度为 `100px`，高度为 `100%`
+
+#### `background-position`
+
+控制背景图的位置，预设值：`top` `center` `bottom` `left` `right`
+
+- `background-position:center` 横向纵向居中
+- `background-position:top left` 纵向靠上 横向靠左
+- `background-position:10px 20px` 背景图左边距离左边界为 `10px`，上边距离上边界为 `20px`
+
+#### `background-attachment`
+
+控制背景图是否固定
+
+- `background-attachment:scroll` _默认值_ 背景图随元素一起滚动
+- `background-attachment:fixed` 背景图相对于视口固定
+
+### 雪碧图 _sprites_
+
+> 也叫精灵图
+
+- 将多个小图片拼接合并成一张图片，减少文件和请求次数，提高渲染效率
+- 调整 `background-position` 属性和容器宽高，将小图标取出，放置在合适的位置
+
+## 常用效果
 
 ### 设置透明度
 
 - `opacity` 属性：设置整个元素的透明度，取值范围 `0~1`，`0` 为完全透明，`1` 为完全不透明
 - [在颜色位置设置 `alpha` 通道](#颜色值表示)
 
-### 鼠标样式
-
-`cursor` 属性：设置鼠标指针的样式
+### 设置鼠标样式
 
 - `cursor:auto` _默认值_ 由浏览器控制
 - `cursor:pointer` 手型
@@ -534,39 +557,71 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `display:none` 不生成盒子
 - `visibility:hidden` 生成盒子，从视觉上移除盒子，但仍占据空间
 
-### 背景图
+### 外边框
 
-背景图使用场景：
+- `outline` 外边框，不占据空间
+- `outline-outset` 外边框偏移量
 
-- `img` 元素属于 `HTML`概念，而背景图属于 `CSS` 的概念
-- 当图片属于网页内容时，必须使用 `img` 元素
-- 当图片仅用于美化页面时，必须使用背景图
-- 背景图可与背景颜色配合使用
+### 表单元素美化
 
-相关属性：
+- `::focus` 伪类：元素聚焦时的样式
+- `::checked` 伪类：单选或多选被选中的样式
 
-- `background-image:url(image.jpg)` 设置背景图片 _文件路径相对于CSS文件位置_
-- `background-repeat` 控制背景图重复方式，默认情况下，背景图会在横坐标和纵坐标中进行重复
-  - `background-repeat:repeat` _默认值_ 重复
-  - `background-repeat:no-repeat` 不重复
-- `background-size` 控制背景图的尺寸
-  - `background-size:auto` _默认值_ 背景图的尺寸由图片本身决定
-  - `background-size:cover` 背景图完全覆盖元素，比例不变，可能裁剪部分图片
-  - `background-size:contain` 完整显示背景图，比例不变，可能不完全覆盖元素
-  - `background-size:100px 100%` 宽度为 `100px`，高度为 `100%`
-- `background-position` 控制背景图的位置
-  - 预设值：`top` `center` `bottom` `left` `right`
-  - `background-position:center` 横向纵向居中
-  - `background-position:top left` 纵向靠上 横向靠左
-  - `background-position:10px 20px` 背景图左边距离左边界为 `10px`，上边距离上边界为 `20px`
-- `background-attachment` 控制背景图是否固定
-  - `background-attachment:scroll` _默认值_ 背景图随元素一起滚动
-  - `background-attachment:fixed` 背景图相对于视口固定
+- `resize` 属性：文本框是否可调整尺寸
+  - `resize:none` 不可调整
+  - `resize:both` _默认值_，可调整宽高
+  - `resize:horizontal` 可调整宽度
+  - `resize:vertical` 可调整高度
+- `padding` 可设置输入框内边距
+- `text-indent` 首行缩进，可设置输入框开头缩进距离
 
-雪碧图（精灵图 _sprites_）：
+```css
+/* 重置表单元素的默认样式 */
+input,
+textarea,
+button,
+select {
+  border: none;
+}
 
-- 将多个小图片拼接合并成一张图片，减少文件和请求次数，提高渲染效率
-- 调整 `background-position` 属性和容器宽高，将小图标取出，放置在合适的位置
+input:focus,
+textarea:focus,
+button:focus,
+select:focus {
+  outline: none;
+  outline-offset: 0;
+}
+```
+
+<!-- @include: @demo/CSS-2-DiyRadio.md#demo-->
+
+> 表单元素通过点击聚焦，其他元素可以通过键盘 `tab` 键聚焦
+> 元素的 `tabIndex` 属性：_全局属性_，设置元素的 tab 键顺序，默认值为 `0`
+
+## 更多伪类选择器
+
+- `:first-child` 选中第一个子元素(_可以直接使用，但一般配合元素选择器使用_)
+  - `p:first-child` 选中是 `p` 元素**且**为父元素第一个子元素的元素
+- `:first-of-type` 选中子元素中第一个为某类型的元素
+  - `a:first-of-type` 选中父元素的子元素中第一个 `a` 元素
+- `:last-child` 选中最后一个子元素
+- `:last-of-type` 选中子元素中最后一个为某类型的元素
+- `:nth-child(n)` 选中父元素的第 `n` 个子元素，`n = 0,1,2,3...`
+  - `p:nth-child(2n+1)` / `p:nth-child(odd)` 选中父元素的**奇数**子元素且为 `p` 元素的元素
+  - `p:nth-child(2n)` / `p:nth-child(even)` 选中父元素的**偶数**子元素且为 `p` 元素的元素
+- `:nth-of-type(n)` 选中父元素的子元素中第 `n` 个为某类型的元素
+  - `a:nth-of-type(2)` 选中父元素的子元素中第二个 `a` 元素
+
+## 常见简写属性
+
+- `padding` / `margin`
+  1. `-top` `-right` `-bottom` `-left`
+  2. `-top` `-left & -right` `-bottom`
+  3. `-top & -bottom` `-left & -right`
+  4. `-top & -right & -bottom & -left`
+- `border`
+- `background`: `background-image` `background-repeat` `background-position`/`background-size` `background-attachment` `background-color`
+- `font`: `font-style` `font-variant` `font-weight` `font-size`/`line-height` `font-family`
 
 ## Demo
 
