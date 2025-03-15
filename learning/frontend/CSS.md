@@ -286,6 +286,8 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `margin:auto` 所有方向为 `0`
 - [百分比取值](#百分比取值)
 
+<!-- @include: @demo/CSS-1-Carousel.md#demo -->
+
 #### 应用场景
 
 1. 文字环绕
@@ -622,7 +624,3 @@ select:focus {
 - `border`
 - `background`: `background-image` `background-repeat` `background-position`/`background-size` `background-attachment` `background-color`
 - `font`: `font-style` `font-variant` `font-weight` `font-size`/`line-height` `font-family`
-
-## Demo
-
-<!-- @include: @demo/CSS-1-Carousel.md#demo -->
