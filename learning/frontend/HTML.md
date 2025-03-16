@@ -65,10 +65,33 @@ _布尔属性_：不写或取值为属性名，HTML5 中可以省略属性值
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- 解决IE兼容问题 -->
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- 网页关键词，用于SEO优化 -->
+  <meta name="keywords" content="WEB 前端, HTML, CSS, JavaScript" />
+  <!-- 网页作者 -->
+  <meta name="author" content="Shaw" />
+  <!-- 网页描述，出现在搜索引擎搜索结果中 -->
+  <meta name="description" content="This is a web page." />
   <!-- 网页标题 -->
   <title>Document</title>
 </head>
 ```
+
+#### `<link>` 元素
+
+用于链接外部资源：CSS、JavaScript、图标等。
+
+```html
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <!-- 网站图标，也可之间取名为 favicon.ico 放在网站根目录下 -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+```
+
+- `rel` 属性：_relationship_，描述当前文档与被链接的资源之间的关系
+  - `stylesheet`：样式表
+- `type` 属性：描述被链接资源的 MIME 类型，_可省略_
+- `href` 属性：被链接资源的路径
 
 ### `<body>` 元素
 
@@ -484,6 +507,23 @@ _可替换元素_，通常用于在一个页面中嵌入另一个页面，CSS �
   </fieldset>
 </form>
 ```
+
+### 表格元素
+
+在 CSS 技术出现之前，网页通常使用表格布局。表格渲染速度过慢，因此现在不适用于网页布局。
+
+<!-- @include: @demo/HTML-1-Table.md#demo-->
+
+### 其他元素
+
+- `<abbr title="HyperText Markup Language">HTML</abbr>` 缩写元素
+- `<time datetime="2021-01-01">21年元旦</time>` 提供给浏览器或搜索引擎识别的时间元素
+- `<b>` 以前是无语义元素，表示加粗字体；HTML5 中表示强调语气，_默认样式为加粗字体_
+- `<q>` 一小段引用文本，_默认样式用双引号包裹_
+- `<blockquote>` 大段引用文本
+  - `cite` 属性：引用的来源
+- `<br>` 用于在文本中换行，_空元素，无语义元素_，无法控制样式
+- `<hr>` 用作分割线，_空元素，无语义元素_
 
 ## HTML实体 `HTML Entity`
 
