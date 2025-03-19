@@ -1,24 +1,36 @@
-# 不同厂商的滚动条样式定义
+# Chrome 滚动条样式定义 FireFox 不兼容
 
 <!-- #region demo -->
 
-::: normal-demo 不同厂商的滚动条样式定义
+::: normal-demo Chrome 滚动条样式定义 FireFox 不兼容
 
 ```html
 <style>
   .scroll-view {
     margin: 0 auto;
-    width: 200px;
-    height: 100px;
+    width: 400px;
+    height: 150px;
     overflow: auto;
+    background-color: #f5f5f5;
   }
-  /* chrome, safari */
   .scroll-view::-webkit-scrollbar {
+    /* 总体样式，设置后不在使用默认样式 */
     width: 10px;
-    height: 10px;
+    background-color: lightblue;
   }
-  /* firefox */
-  /* todo */
+  .scroll-view::-webkit-scrollbar-track {
+    /* 轨道样式 */
+    background-color: red;
+  }
+  .scroll-view::-webkit-scrollbar-thumb {
+    /* 滑块样式 */
+    background-color: green;
+    border-radius: 15px;
+  }
+  .scroll-view::-webkit-scrollbar-button {
+    /* 按钮样式 */
+    background-color: blue;
+  }
   .content {
     height: 1000px;
   }
