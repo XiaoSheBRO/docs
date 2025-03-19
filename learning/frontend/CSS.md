@@ -791,3 +791,33 @@ at-rule，@语句，CSS语句，CSS指令
 - `border`
 - `background`: `background-image` `background-repeat` `background-position`/`background-size` `background-attachment` `background-color`
 - `font`: `font-style` `font-variant` `font-weight` `font-size`/`line-height` `font-family`
+
+## 浏览器兼容问题
+
+### 兼容问题产生原因
+
+1. 市场竞争
+2. 标准版本变化
+
+### 厂商前缀
+
+产生原因：
+
+1. 标准未发布时，各浏览器厂商发布的属性
+2. 标准仍在讨论，但浏览器厂商希望先支持
+
+常见厂商前缀：
+
+- `-webkit-` Chrome，Safari
+- `-moz-` Firefox
+- `-ms-` IE
+- `-o-` Opera
+
+> 当与常规属性冲突时，满足层叠规则
+> 浏览器在处理元素及样式时，当遇到无法识别的代码会直接略过
+
+::: tip 自动添加厂商前缀
+使用vscode插件 `autoprefixer`
+:::
+
+<!-- @include: @demo/CSS-3-ScrollBarStyle.md#demo-->
