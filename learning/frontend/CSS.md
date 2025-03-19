@@ -676,7 +676,7 @@ _Block Formatting Context_，简称 BFC。
 
 #### 行盒（行块盒）水平居中
 
-设置父元素 `text-align:center`
+- 设置父元素 `text-align:center`
 
 #### 常规流块盒水平居中
 
@@ -691,11 +691,11 @@ _Block Formatting Context_，简称 BFC。
 
 #### 单行文本垂直居中
 
-设置 `line-height` = 内容盒高度
+- 设置 `line-height` = 内容盒高度
 
 #### 行块盒或块盒内多行文本的垂直居中
 
-没有完美方案，设置盒子上下内边距相同
+- 没有完美方案，设置盒子上下内边距相同
 
 #### 绝对定位的垂直居中
 
