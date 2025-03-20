@@ -8,13 +8,13 @@ CSS规则 = 选择器 + 声明块
 
 ## CSS 代码位置
 
-- 内部样式：写在 `<style>` 元素中，通常放在 `<head>` 元素中，保证浏览器最先加载样式。
-  - 样式很少时，放在内部样式中用来性能优化；浏览器只读取一个文件，提高网页的加载速度。
-- 内联样式：直接写在元素的 `style` 属性中。
-- 外部样式表：将样式表放在单独的 CSS 文件中，通过 `<link>` 元素引入，通常放在 `<head>` 元素中。
-  - 可以解决多页面样式复用的问题。
-  - 有利于浏览器缓存，提高网站的加载速度。
-  - 有利于代码分离，便于维护。
+1. 内部样式：写在 `<style>` 元素中，通常放在 `<head>` 元素中，保证浏览器最先加载样式。
+   - 样式很少时，放在内部样式中用来性能优化；浏览器只读取一个文件，提高网页的加载速度。
+2. 内联样式：直接写在元素的 `style` 属性中。
+3. 外部样式表：将样式表放在单独的 CSS 文件中，通过 `<link>` 元素引入，通常放在 `<head>` 元素中。
+   - 可以解决多页面样式复用的问题。
+   - 有利于浏览器缓存，提高网站的加载速度。
+   - 有利于代码分离，便于维护。
 
 ## 选择器
 
@@ -213,9 +213,9 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 
 视觉格式化模型（布局规则）：页面中多个盒子的排列规则，大体分为三种：
 
-- 常规流
-- 浮动
-- 定位
+1. 常规流
+2. 浮动
+3. 定位
 
 ### 包含块 _containing block_
 
@@ -537,42 +537,82 @@ _Block Formatting Context_，简称 BFC。
 
 #### 文字
 
-文字是通过一些文字制作软件制作的，制作文字时会有几根参考线；
-不同的字体参考线不同，同种字体参考线相同。
+文字是通过一些文字制作软件制作的，制作文字时会有多根参考线；不同的字体参考线不同，同种字体参考线相同；字体的参考线：
 
-字体的参考线：
-
-- 顶线 _text top, ascent_
+- 顶线 _text top / ascent_
 - 上基线 _super_
 - 基线 _baseline_
 - 下基线 _sub_
-- 底线 _text bottom, descent_
+- 底线 _text bottom / descent_
 
-常用文字尺寸相对大小：1000, 1024, 2048
+从顶线到底线的距离是文字的实际大小（_content area 内容区_），实际宽度取决于字体设计
 
-> ![字体](../../assets/images/CSS-1-Font.png)
+- `font-size` 设置的是文字的相对大小
+- 行盒的背景覆盖**内容区**
+
+> 常用文字尺寸相对大小：1000, 1024, 2048
+
+::: tip
+
+![Consolas](../../assets/images/CSS-1-Font.png)
+
 > Consolas 字体的相对大小 2048
 > ascent ~ baseline 顶线相对基线的距离 1884
 > descent ~ baseline 底线相对基线的距离 514
 > ascent ~ descent 实际高度 2398
 > 即当字体大小为 2048px 时，实际占据高度为 2398px
 
-- `font-size` 设置的是文字的相对大小
-- 从顶线到底线的距离是文字的实际大小（_content area 内容区_），实际宽度取决于设计
-- 行盒的背景覆盖**内容区**
+:::
 
 #### 行高
 
-line gap: 顶线向上延伸的空间 / 底线向下延伸的空间（_两段相等_），默认由字体设计者决定
+line gap: 顶线向上延伸的空间 / 底线向下延伸的空间（_两者相等_），默认距离由字体设计者决定
 
 ![行高](../../assets/images/CSS-2-LineHeight.png)
 
-top ~ bottom 叫做 virtual-area 虚拟区域 即 **行高**
-
+- top ~ bottom 的距离叫做 **virtual-area**，即 **行高**
 - `line-height:normal` _默认值_，使用文字默认 line gap
-- `line-height:1`
 
 <!-- @include: @demo/CSS-4-Font.md#demo-->
+
+> content area 一定居中
+> `line-height:1` 不是一种好做法
+
+#### `vertical-align`
+
+一个元素如果子元素出现行盒，该元素内部也会产生参考线；`font-family`, `font-size`, `line-height` 确定即确定参考线
+
+- `vertical-align:baseline` _默认值_，该元素的基线与父元素的基线对齐
+- `vertical-align:super` 该元素的基线与父元素的上基线对齐
+- `vertical-align:sub` 该元素的基线与父元素的下基线对齐
+- `vertical-align:text-top` 该元素的 virtual-area 的 top 对齐父元素的顶线
+- `vertical-align:text-bottom` 该元素的 virtual-area 的 bottom 对齐父元素的底线
+- `vertical-align:middle` 该元素的中线（content area 的一半）于父元素的 `X` 字母高度一半的位置对齐
+- `vertical-align:top` 该元素的 virtual-area 的 top 对齐 line-box 的 top
+- `vertical-align:bottom` 该元素的 virtual-area 的 bottom 对齐 line-box 的 bottom
+- `vertical-align` 为数值：相对于基线的偏移量，向上为正，向下为负
+- `vertical-align` 为百分比：相对于基线的偏移量，百分比 \* 自身的 virtual-area 的高度
+
+==行盒（inline-box）组合起来，可以形成多行；每一行的区域叫做 line-box，line-box的 top 是该行最高的 top，bottom 是该行最低的 bottom==
+
+实际上，一个元素的实际高度（_`height:auto`_）的计算通过 line-box 计算
+
+==line-box 是承载文字内容的必要条件==
+
+以下情况不生成 line-box
+
+1. 某元素中没有任何行盒
+2. 某元素字体大小为 0 (_有兼容性问题_)
+
+#### 可替换元素和行块盒的基线
+
+- 图片的基线位于图片的下外边距边缘
+- 表单元素的基线在内容的 bottom
+
+行块盒的基线：
+
+1. 行块盒最后一行有line-box，用最后一行的的基线作为行块盒的基线
+2. 如果行块盒的最后一行没有行盒，则使用下外边距边缘作为基线
 
 ### 更多伪元素选择器
 
@@ -753,10 +793,12 @@ top ~ bottom 叫做 virtual-area 虚拟区域 即 **行高**
 
 #### 图片底部白边
 
-图片父元素为块盒且高度自动时，图片底部和父元素之间有一条白边
+图片父元素为块盒且高度自动时，图片底部和父元素之间有一条白边（_图片基线与父元素基线对齐_）
 
-- 设置父元素字体大小为 `0`，（_有副作用_）
-- 将图片设置为块盒
+解决方案（_使父元素不产生line-box_）：
+
+1. 设置父元素字体大小为 `0`，（_有副作用_）
+2. 将图片设置为块盒
 
 ### 盒子隐藏
 
