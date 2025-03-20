@@ -485,7 +485,7 @@ _Block Formatting Context_，简称 BFC。
 
 :::
 
-### 文本样式属性
+### 文本相关属性
 
 - `color` 元素内部文字的颜色
 - `font-size` 字体尺寸大小，可以简单理解为文字的高度
@@ -499,7 +499,7 @@ _Block Formatting Context_，简称 BFC。
   - `italic` 斜体
 - `text-decoration` 文本修饰，如下划线、删除线等
 - `text-indent` 首行文本缩进
-- `line-height` 每行文本的高度，值越大每行距离越大
+- `line-height` 行高，值越大每行距离越大
 - `letter-spacing` 文字间距
 - `text-align` 元素内部文字的水平排列方式
   - 对元素内行(行块)盒都生效
@@ -532,6 +532,47 @@ _Block Formatting Context_，简称 BFC。
 3. 无单位数值：相对于当前元素字体大小的倍数
    - 先继承倍数在计算具体像素值
 4. 百分比：同 em 单位
+
+### 深入理解字体
+
+#### 文字
+
+文字是通过一些文字制作软件制作的，制作文字时会有几根参考线；
+不同的字体参考线不同，同种字体参考线相同。
+
+字体的参考线：
+
+- 顶线 _text top, ascent_
+- 上基线 _super_
+- 基线 _baseline_
+- 下基线 _sub_
+- 底线 _text bottom, descent_
+
+常用文字尺寸相对大小：1000, 1024, 2048
+
+> ![字体](../../assets/images/CSS-1-Font.png)
+> Consolas 字体的相对大小 2048
+> ascent ~ baseline 顶线相对基线的距离 1884
+> descent ~ baseline 底线相对基线的距离 514
+> ascent ~ descent 实际高度 2398
+> 即当字体大小为 2048px 时，实际占据高度为 2398px
+
+- `font-size` 设置的是文字的相对大小
+- 从顶线到底线的距离是文字的实际大小（_content area 内容区_），实际宽度取决于设计
+- 行盒的背景覆盖**内容区**
+
+#### 行高
+
+line gap: 顶线向上延伸的空间 / 底线向下延伸的空间（_两段相等_），默认由字体设计者决定
+
+![行高](../../assets/images/CSS-2-LineHeight.png)
+
+top ~ bottom 叫做 virtual-area 虚拟区域 即 **行高**
+
+- `line-height:normal` _默认值_，使用文字默认 line gap
+- `line-height:1`
+
+<!-- @include: @demo/CSS-4-Font.md#demo-->
 
 ### 更多伪元素选择器
 
