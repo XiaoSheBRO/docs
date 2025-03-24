@@ -537,7 +537,7 @@ Each embedded browsing context has its own document and allows URL navigations. 
 
 ### 空白折叠
 
-在HTML源码中，连续多个空白符（空格、制表符、换行符）会被自动合并为一个空白符。
+在 HTML 源码中，连续多个空白符（空格、制表符、换行符）会被自动合并为一个空白符。
 
 ### HTML实体表示方式
 
@@ -595,8 +595,8 @@ Each embedded browsing context has its own document and allows URL navigations. 
 2. 有利于动态生成数据
 3. 增加了资源的体积；导致传输内容增加，从而增加单个资源的传输时间
 4. 不利于浏览器缓存
-   - 浏览器通常会缓存图片，CSS, JS等
-5. 会增加原资源的体积（base64编码后增加1/3）
+   - 浏览器通常会缓存图片，CSS, JS 等
+5. 会增加原资源的体积（base64 编码后增加 1/3）
 
 ### 应用场景
 
