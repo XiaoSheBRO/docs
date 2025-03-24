@@ -203,12 +203,36 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
   - 绝大部分可替换元素是行盒，但效果类似于行块盒，**所有盒模型中所有尺寸设置都有效**
   - CSS 不能完全控制其中所有的样式
 
+::: tip
+如果 `<img>` 元素的资源链接失效，那么其特性和普通行盒相同 —— 无法设置宽高
+可将其设为块盒或行块盒解决
+:::
+
 #### 调整 `<img>` 元素适应盒子的方式
 
 - `object-fit:fill` _默认值_ 拉伸图片，使其完全适应盒子
 - `object-fit:contain` 保持图片比例，使其完全显示，可能留有“_黑边_“
 - `object-fit:cover` 保持图片比例，裁剪图片，使其完全覆盖盒子
 - `object-fit:none` 保持原有尺寸
+
+::: tip
+行盒中包含行块盒或可替换元素会导致行盒高度与其内部的行块盒或可替换元素无关，参见[line-box](#line-box)
+:::
+
+### `display:list-item`
+
+设置为该属性值的盒子本质上仍然是一个块盒，但同时该盒子会附带另一个盒子；
+元素本身生成的盒子叫主盒子，附带的盒子叫次盒子，次盒子与主盒子水平排列。
+
+> `<li>` 元素的默认样式为 `display:list-item`
+
+#### 相关属性
+
+- `list-style-type` 设置次盒子内容的类型
+- `list-style-position` 此盒子相对于主盒子的位置
+- `list-style-image` 设置次盒子内容的图像
+- 简写属性：`list-style: <list-style-type> <list-style-position> <list-style-image>`
+  - 清空次盒子：`list-style: none`
 
 ## 视觉格式化模型
 
@@ -503,9 +527,34 @@ _Block Formatting Context_，简称 BFC。
 - `line-height` 行高，值越大每行距离越大
 - `letter-spacing` 文字间距
 - `text-align` 元素内部文字的水平排列方式
-  - 对元素内行(行块)盒都生效
 
 > `sans-serif` 无衬线字体，操作系统自动选择
+
+### `text-align`
+
+> `text-align` 对元素内行(行块)盒都生效
+
+- `text-align:left` 左对齐
+- `text-align:right` 右对齐
+- `text-align:center` 居中对齐
+- `text-align:justify` 除最后一行外，分散对齐
+  - 可用于行块盒横向分散排列
+
+::: tip
+`text-align:justify` 使最后一行也分散对齐：使用一个行块盒占位
+
+```css
+p {
+  text-align: justify;
+}
+p::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+```
+
+:::
 
 ### 断词规则
 
@@ -593,6 +642,8 @@ line gap: 顶线向上延伸的空间 / 底线向下延伸的空间（_两者相
 - `vertical-align:bottom` 该元素的 virtual-area 的 bottom 对齐 line-box 的 bottom
 - `vertical-align` 为数值：相对于基线的偏移量，向上为正，向下为负
 - `vertical-align` 为百分比：相对于基线的偏移量，百分比 \* 自身的 virtual-area 的高度
+
+#### line-box
 
 行盒（inline-box）组合起来，可以形成多行；每一行的区域叫做 line-box，line-box的 top 是该行最高的 top，bottom 是该行最低的 bottom
 
@@ -856,6 +907,36 @@ select:focus {
 
 > 表单元素通过点击聚焦，其他元素可以通过键盘 `tab` 键聚焦
 > 元素的 `tabIndex` 属性：_全局属性_，设置元素的 tab 键顺序，默认值为 `0`
+
+### 制作一个三角形
+
+一个宽高为 `0` 的元素，设置 `border` 样式
+
+```html
+<style>
+  .triangle {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: red;
+  }
+</style>
+<div class="triangle"></div>
+```
+
+### 网页方向
+
+开始和结束方向是相对的，左右是绝对的
+
+- `direction` 设置开始到结束的方向
+  - `ltr` _默认值_，文本从左到右
+  - `rtl` 文本从右到左
+- `writing-mode` 设置文本书写方向
+  - 设置父元素
+
+### 伪元素中的字符
+
+utf-8 编码下，字符在 CSS 中的使用：`\`<十六进制数字>
 
 ## @规则
 
