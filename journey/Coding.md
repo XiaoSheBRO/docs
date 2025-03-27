@@ -199,3 +199,49 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
     100% 200px;
 }
 ```
+
+### (CSS) 标签页效果
+
+```html
+<style>
+  .container {
+    padding: 200px;
+    background-color: blue;
+  }
+
+  .tab {
+    position: relative;
+    width: 200px;
+    height: 88px;
+    border-radius: 18px 18px 0 0;
+    background: linear-gradient(180deg, #ffe9ec 0%, #ffffff 100%);
+  }
+
+  .tab::before {
+    position: absolute;
+    left: -75px;
+    top: 12px;
+    content: '';
+    display: block;
+    width: 76px;
+    height: 76px;
+    background: linear-gradient(180deg, #ffe9ec 0%, #ffffff 100%);
+    clip-path: polygon(100% 0, 55% 100%, 100% 100%);
+  }
+
+  .tab::after {
+    position: absolute;
+    right: -75px;
+    top: 12px;
+    content: '';
+    display: block;
+    width: 76px;
+    height: 76px;
+    background: linear-gradient(180deg, #ffe9ec 0%, #ffffff 100%);
+    clip-path: polygon(0 0, 0 100%, 45% 100%);
+  }
+</style>
+<div class="container">
+  <div class="tab"></div>
+</div>
+```
