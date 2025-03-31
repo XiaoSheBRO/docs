@@ -469,7 +469,7 @@ _Block Formatting Context_，简称 BFC。
 #### 创建堆叠上下文的元素
 
 1. `<html>` 元素
-2. 设置了 `z-index` 数值（_非 `auto`_）的定位元素
+2. **设置了 `z-index` 数值（_非 `auto`_）**的定位元素
 
 #### 同一个堆叠上下文中的排列
 
