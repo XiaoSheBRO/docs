@@ -396,6 +396,7 @@ Each embedded browsing context has its own document and allows URL navigations. 
   - `range` 滑块，可同时设置 `min`, `max` 属性，_有兼容性问题_
 - `value` 属性：输入框的值
 - `placeholder` 属性：提示文本，_文本框没有内容时显示_
+- `maxlength` 属性：最大字符数
 - `min` 属性：最小值
 - `max` 属性：最大值
 - `step` 属性：步长
@@ -436,7 +437,8 @@ Each embedded browsing context has its own document and allows URL navigations. 
 
 - `cols` 属性：文字列数
 - `rows` 属性：文字行数
-- 无空白折叠
+
+> `textarea` 无空白折叠
 
 #### `<button>` 元素
 
@@ -604,3 +606,9 @@ Each embedded browsing context has its own document and allows URL navigations. 
 - 图片由其他代码动态生成，且图片较小
 
 > `base64`: 一种编码方式，通常用于将一些二进制数据转变为用字符串可书写的形式。
+
+## 补充内容
+
+### `contenteditable` 属性
+
+_全局属性，布尔属性_，表示元素是否可编辑；常用于制作富文本编辑器

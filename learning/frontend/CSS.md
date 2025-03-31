@@ -161,6 +161,18 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `box-sizing:content-box` (_默认值_)，宽高影响内容盒
 - `box-sizing:border-box` 改变宽高的影响范围为边框盒
 
+::: tip 常用设置
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```
+
+:::
+
 ### 行盒盒模型的特点
 
 1. 盒子跟随内容延伸
@@ -235,6 +247,15 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - `list-style-image` 设置次盒子内容的图像
 - 简写属性：`list-style: <list-style-type> <list-style-position> <list-style-image>`
   - 清空次盒子：`list-style: none`
+
+### 最大最小宽高
+
+当一个元素尺寸会自动变化时设置最大最小宽，可以让它不至于变得过小或过大
+
+- `max-width` 设置最大宽度
+- `min-width` 设置最小宽度
+- `max-height` 设置最大高度
+- `min-height` 设置最小高度
 
 ## 视觉格式化模型
 
@@ -502,6 +523,8 @@ _Block Formatting Context_，简称 BFC。
 3. 三原色 + 透明通道(_alpha_)：
    - RGBA: `rgba(red, green, blue, alpha)` 透明通道取值范围为 `0~1`，`0` 为完全透明，`1` 为完全不透明
    - HEXA: `#RRGGBBAA` 透明通道取值范围为 `00` ~ `FF`
+
+> RGBA 还可以写作 `rgb(0,0,0 / 0.5)`
 
 ## 文本
 
@@ -879,17 +902,25 @@ line gap: 顶线向上延伸的空间 / 底线向下延伸的空间（_两者相
 
 ### 表单元素美化
 
+#### 伪类及伪元素
+
 - `:focus` 伪类：元素聚焦时的样式
 - `:checked` 伪类：单选或多选被选中的样式
+- `:disabled` 伪类：禁用状态的样式
 - `::placeholder` 伪元素：提示文字样式
 
-- `resize` 属性：文本框是否可调整尺寸
+#### 输入框内部边距
+
+- `padding`
+- `text-indent` 首行缩进，可设置输入框开头缩进距离
+
+#### 多行文本框尺寸调整
+
+- `resize` 属性：是否可调整尺寸
   - `resize:none` 不可调整
   - `resize:both` _默认值_，可调整宽高
   - `resize:horizontal` 可调整宽度
   - `resize:vertical` 可调整高度
-- `padding` 可设置输入框内边距
-- `text-indent` 首行缩进，可设置输入框开头缩进距离
 
 ```css
 /* 重置表单元素的默认样式 */
