@@ -249,7 +249,7 @@ a = 123 // 将 123 存放到变量 a 中
 
 ```js
 var a = 1
-var b = a // 将变量 a 的数据复制到变量 b 中
+var b = a // 将变量 a 的数据**复制**到变量 b 中
 b = 2 // 不影响变量 a 的数据
 ```
 
@@ -273,8 +273,154 @@ var user = {
 
 读取对象中的某个属性：`变量名.属性名`
 
+- 当读取的属性不存在时，会返回 `undefined`
+- 当读取的对象属性值不存在（_为 `undefined` 或 `null`_）时，会报错
+
+通过变量更改对象的属性：
+
+```js
+var user = {
+  account: 'abc',
+  password: '123456',
+  isVip: true
+}
+user.password = '654321' // 修改对象属性
+```
+
+- 当赋值的属性不存在时会添加属性
+
+```js
+var user // user 为 undefined
+user.name = '小红' // 会报错：原始类型 undefined 不可以添加属性
+```
+
+删除属性：`delete 变量名.属性名`
+
+> 一般将属性值设为 `undefined`
+
+**属性表达式**：给属性属性赋值或读取属性时可以使用 `变量名["属性名"]`
+
+```js
+var prop = 'name' // 字符串类型
+user[prop] = 'a' // 即 user.name = 'a'
+```
+
+属性表达式的使用场景：
+
+- 属性名中包含特殊字符（_不是标准标识符_）
+  - 实际上 JS 对属性名的命名并不严格，属性名可以为任意形式（_字符串_）
+- 属性名为变量
+
+::: tip
+属性名只能为字符串
+如果不是字符串（如数字），宿主环境会自动转换为字符串
+
+```js
+var obj = {
+  0： 'zero',
+}
+obj[0] = '1'
+obj['0'] = '2'
+console.log(obj['0']) // '2'
+```
+
+:::
+
 ### 变量的声明提升
 
 **JS 中存在变量提升**：所有变量的**声明**会自动提升到代码最顶部
 
 > JS 中允许定义多个同名变量，**变量提升后会变为一个**
+
+### 全局对象
+
+JS 大部分宿主环境，都会提供一个特殊的对象，该对象可以在 JS 代码中直接访问，称为**全局对象**
+
+- 浏览器全局对象：`window`; 表示整个窗口
+- Node.js 全局对象：`global`; 表示当前 Node.js 进程
+
+> 全局对象中的所有属性可以直接使用，前面无需加上全局对象名
+
+==开发者定义的所有变量实际上会成为全局对象的属性；如果变量没有被赋值，则该变量不会覆盖全局对象中的同名属性==
+
+```js
+var console = 'abc'
+console.log('hello world') // 报错，console 被覆盖为字符串
+```
+
+```js
+var console
+console.log('hello world') // 正常输出
+console = 'abc' // 无法访问 console 变量，访问的是全局对象中的 console 属性
+```
+
+```js
+var name
+console.log(name) // ''
+console.log(typeof name) // string
+// 因为 window 对象中含有属性 name
+```
+
+```js
+var name = undefined
+console.log(name) // 'undefined'
+console.log(typeof name) // string
+// name 属性会将任何赋值特殊处理为字符串
+```
+
+> 变量使用时可以不写 var 关键字，相当于直接给 `window` 的某个属性赋值
+
+### 引用类型变量的存储机制
+
+- 原始类型的变量存放具体的内容到内存中
+
+  ```js
+  var a = '123'
+  var b = a
+  b = '456'
+  console.log(a) // '123'
+  console.log(b) // '456'
+  ```
+
+- 引用类型的变量会开辟一块新的内存空间，存放对象的内容，再将该**内存空间的地址**赋值给变量
+
+  ```js
+  var obj1 = { name: '123' }
+  var obj2 = obj1
+  obj2.name = '456'
+  console.log(obj1.name) // '456'
+  console.log(obj2.name) // '456'
+  ```
+
+  - obj1指向某对象 / obj1 持有某对象的引用
+  - obj2指向同一对象 / obj2 也持有同一对象的引用
+
+- 出现**对象字面量**的位置，都一定会在内存中出现一个**新的**对象
+
+  ```js
+  var user1 = {
+    name: '小明',
+    age: 18,
+    address: {
+      country: '中国'
+      city: '苏州'
+    }
+  }
+  var user2 = {
+    name: '小红',
+    age: 18,
+    address: user1.address
+  }
+  user2.name = '小刚'
+  user2.address.city = '杭州'
+  console.log(user1.name, user2.name) // '小明' '小刚'
+  console.log(user1.address.city, user2.address.city) // '杭州' '杭州'
+  ```
+
+  > 出现一对 `{}` 即为一块新的内存空间
+
+  <!-- @include: @demo/JS-1-VariableSwitch.md#demo-->
+
+#### JS 中的垃圾回收
+
+JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对象，该对象称之为垃圾，JS 引擎会在合适的时间将其占用费的内存释放。
