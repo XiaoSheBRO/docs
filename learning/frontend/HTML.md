@@ -347,7 +347,7 @@ _可替换元素_，通常用于在一个页面中嵌入另一个页面，CSS �
 <iframe name="iframe1" src="https://www.baidu.com"></iframe>
 ```
 
-::: tip
+::: info
 Each embedded browsing context has its own document and allows URL navigations. The navigations of each embedded browsing context are linearized into the session history of the topmost browsing context.
 每个嵌入式浏览上下文的导航都会被线性嵌入到顶级浏览上下文的会话历史记录中。
 :::
