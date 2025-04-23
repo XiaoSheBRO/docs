@@ -2,7 +2,7 @@
 
 <!-- #region demo -->
 
-::: details 📝练习：变量交换
+::: details 📝 练习：变量交换
 
 ```html
 <script>
