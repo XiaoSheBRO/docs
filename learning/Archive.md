@@ -11,13 +11,14 @@ import 'vant/es/toast/style/index'
 
 ```html
 <el-pagination
-  background
-  :current-page="meta.currentPage"
-  layout="->, total, sizes, prev, pager, next, jumper"
-  :page-size="meta.perPage"
+  v-model:page-size="meta.perPage"
+  v-model:current-page="meta.currentPage"
   :total="meta.totalCount"
-  @update:current-page="handleCurrentChange"
-  @update:page-size="handleSizeChange"
+  :page-sizes="[meta.perPage, 20, 50, 100, 200]"
+  background
+  layout="->, total, sizes, prev, pager, next, jumper"
+  @update:current-page="fetchTable"
+  @update:page-size="fetchTable"
 />
 ```
 
@@ -53,15 +54,6 @@ const handleSearch = () => {
 const handleReset = () => {
   searchForm.value = JSON.parse(searchFormDefault)
   meta.value = JSON.parse(metaDefault)
-  fetchTable()
-}
-// page
-const handleSizeChange = (val) => {
-  meta.value.perPage = val
-  fetchTable()
-}
-const handleCurrentChange = (val) => {
-  meta.value.currentPage = val
   fetchTable()
 }
 ```
