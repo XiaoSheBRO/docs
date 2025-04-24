@@ -2,7 +2,7 @@
 
 <!-- #region demo -->
 
-::: details SVG 示例
+::: details 📍 SVG 示例
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>

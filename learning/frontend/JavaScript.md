@@ -50,26 +50,39 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 ## JavaScript 语言特性
 
 1. JavaScript 是一种解释型语言
-2. JavaScript 是一个弱类型语言；存放的数据类型可变。
+2. JavaScript 是一个弱类型语言
 3. 单线程：上一件事情没有做完，下一件事情必须等待（_同步现象_）
 4. 异步：提高单线程的执行效率
 
-> 编译型语言：C、C++ 等
->
-> > 编译型语言会经过一个翻译的过程，负责编译的叫做编译器，翻译的结果叫做编译结果；优点：执行速度快；缺点：某个编译结果，难以适用于各种环境（跨平台障碍），部署繁琐。
->
-> 解释型语言：JavaScript、Php 等
->
-> > 解释型语言没有编译结果；优点：跨平台，部署简单；缺点：执行速度稍慢。
->
-> 强类型语言：存放的数据类型不可变；优点：严谨；缺点：灵活性差，不易上手。
-> 弱类型语言：存放的数据类型可变；优点：灵活，易上手；缺点：不严谨。
->
-> > 通常将弱类型的解释型语言称为 _脚本语言_ 。
+::: details 📚
+
+编译型语言：编译型语言会经过一个翻译的过程，负责编译的叫做编译器；翻译的结果叫做编译结果。
+
+> 如 C、C++ 等；
+> 优点：执行速度快；
+> 缺点：某个编译结果，难以适用于各种环境（_跨平台障碍_），部署繁琐。
+
+解释型语言：没有编译结果。
+
+> 如 JavaScript、Php 等；
+> 优点：跨平台，部署简单；
+> 缺点：执行速度稍慢。
+
+强类型语言：存放的数据类型不可变；
+
+> 优点：严谨；缺点：灵活性差，不易上手。
+
+弱类型语言：存放的数据类型可变；
+
+> 优点：灵活，易上手；缺点：不严谨。
+
+通常将弱类型的解释型语言称为 _脚本语言_ 。
+
+:::
 
 ## JS 代码书写位置（_浏览器环境_）
 
-1. 直接书写到页面中的 `<script>` 元素中
+1. 直接书写在页面中的 `<script>` 元素中
 2. 写到外部 js 文件中，通过 `<script>` 元素的 `src` 属性引入
    - 有利于浏览器缓存
    - 有利于代码分离（_内容，样式，功能三者分离_），便于维护和阅读
@@ -78,10 +91,9 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 - 页面中可以存在多个 `<script>` 元素，执行顺序从上到下。
 - 如果一个 `<script>` 元素使用 `src` 引入了外部代码，其内部书写的代码无效。
+- `<script>` 元素的 `type` 属性可以指定代码语言；值为 MIME 类型。
 
 :::
-
-> `<script>` 元素的 `type` 属性：用于指定代码语言，属性值为 MIME 类型。
 
 ## 基本语法规则
 
@@ -181,6 +193,8 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 属性：对象的成员
 
+::: details 📍 对象示例
+
 ```js
 {
   name: "小明",
@@ -195,17 +209,21 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 }
 ```
 
+:::
+
 ### 判断数据的类型
 
 #### typeof 操作符
 
+返回数据的类型字符串
+
 ```js
-typeof 123 // number
-typeof 'abc' // string
-typeof true // boolean
-typeof undefined // undefined
-typeof null // object (JS 特性)
-typeof {} // object
+typeof 123 // 'number'
+typeof 'abc' // 'string'
+typeof true // 'boolean'
+typeof undefined // 'undefined'
+typeof null // 'object' (_JS 特性_)
+typeof {} // 'object'
 ```
 
 ## 变量 variable
@@ -221,8 +239,8 @@ typeof {} // object
 #### 声明（定义）变量
 
 ```js
-var a // 声明了一个变量，目前变量为 undefined
-console.log(a) // 输出变量的值 undefined
+var a // 声明了一个变量，声明后变量默认为 undefined
+console.log(a) // undefined
 ```
 
 ::: info 标识符的命名
@@ -247,12 +265,15 @@ console.log(a) // 输出变量的值 undefined
 向变量的内存空间中存放数据
 
 ```js
-a = 123 // 将 123 存放到变量 a 中
+// 将 123 存放到变量 a 中
+a = 123
 ```
 
-- JS 中变量的值和类型是可变的；变量可以被重新赋值，新的值会取代旧的值
+- 变量可以被重新赋值，新的值会取代旧的值（_JS 中变量的数据类型是可变的_）
 - 声明和赋值可以合并（_语法糖_）
 - 多个变量可以合并声明并赋值（_语法糖_）
+
+::: details 📍 语法糖示例
 
 ```js
 var a = 1
@@ -265,6 +286,8 @@ var a = 1,
   b = 2,
   c = 3
 ```
+
+:::
 
 > 语法糖只是方便书写或记忆，没有实质性改变。
 
@@ -287,7 +310,7 @@ var user = {
 
 :::
 
-通过变量更改对象的属性：
+更改对象变量的属性：
 
 ```js
 var user = {
@@ -295,7 +318,8 @@ var user = {
   password: '123456',
   isVip: true
 }
-user.password = '654321' // 修改对象的属性值
+// 修改 user 对象的 password 属性值
+user.password = '654321'
 ```
 
 > 当赋值的属性不存在时会添加属性
@@ -319,12 +343,12 @@ user.name = 'shaw' // 会报错：原始类型 undefined 不可以添加属性
 
 属性表达式的使用场景：
 
-- 属性名中包含特殊字符（_不是标准标识符_）
-  - 实际上 JS 对属性名的命名并不严格，属性名可以为任意格式（_字符串_）
-- 属性名为变量
+1. 属性名中包含特殊字符（_不是标准标识符_）
+   - 实际上 JS 对属性名的命名并不严格，属性名可以为任意格式（_字符串_）
+2. 属性名为变量
 
 ```js
-var prop = 'name' // 字符串类型
+var prop = 'name'
 user[prop] = 'shaw' // 即 user.name = 'shaw'
 ```
 
@@ -353,8 +377,8 @@ console.log(obj[0]) // 'zero'
 
 JS 大部分宿主环境，都会提供一个特殊的对象，该对象可以在 JS 代码中直接访问，称为**全局对象**
 
-- 浏览器全局对象：`window`; 表示整个窗口
-- Node.js 全局对象：`global`; 表示当前 Node.js 进程
+- 浏览器全局对象：`window` (_表示整个窗口_)
+- Node.js 全局对象：`global` (_表示当前 Node.js 进程_)
 
 ==开发者定义的所有变量实际上会成为全局对象的属性；但如果变量没有被赋值，则该变量不会覆盖全局对象中的同名属性==
 
@@ -369,10 +393,10 @@ console.log('hello world') // 报错：console 被覆盖为字符串
 ```js
 var console
 console.log('hello world') // 正常输出
-console = 'abc' // 无法访问 console 变量，实际访问的是全局对象中的 console 属性
+console = 'abc' // 无法访问声明的 console 变量，实际访问的是全局对象中的 console 属性
 ```
 
-::: tip 特殊的 `name` 属性
+::: info `window` 中特殊的 `name` 属性
 
 ```js
 var name
@@ -402,7 +426,7 @@ console.log(typeof name) // string
   console.log(b) // '456'
   ```
 
-- 引用类型的变量会开辟一块新的内存空间，存放对象的内容，再将该**内存空间的地址**存放到变量中
+- 引用类型的变量会另外开辟一块新的内存空间，存放对象的内容，再将该**内存空间的地址**存放到变量中
 
   ```js
   var obj1 = { name: '123' }
@@ -415,29 +439,29 @@ console.log(typeof name) // string
   - `obj1` 指向某对象 / `obj1` 持有某对象的引用
   - `obj2` 指向同一对象 / `obj2` 也持有同一对象的引用
 
-- ==出现对象字面量的位置，都一定会在内存中开辟一个新的空间==
+==出现对象字面量的位置，都一定会在内存中开辟一个新的空间==
 
-  ```js
-  var user1 = {
-    name: '小明',
-    age: 18,
-    address: {
-      // 新的空间
-      country: 'china'
-    }
+```js
+var user1 = {
+  name: '小明',
+  age: 18,
+  address: {
+    // 新的空间
+    country: 'china'
   }
-  var user2 = {
-    name: '小红',
-    age: 18,
-    address: user1.address
-  }
-  user2.name = '小刚'
-  user2.address.country = 'uk'
-  console.log(user1.name, user2.name) // '小明' '小刚'
-  console.log(user1.address.country, user2.address.country) // 'uk' 'uk'
-  ```
+}
+var user2 = {
+  name: '小红',
+  age: 18,
+  address: user1.address
+}
+user2.name = '小刚'
+user2.address.country = 'uk'
+console.log(user1.name, user2.name) // '小明' '小刚'
+console.log(user1.address.country, user2.address.country) // 'uk' 'uk'
+```
 
-  > 出现一对 `{}` 即为一块新的内存空间
+> 出现一对 `{}` 即为一块新的内存空间
 
   <!-- @include: @demo/JS-1-VariableSwitch.md#demo-->
 
@@ -457,10 +481,14 @@ JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对�
 - 操作符不一定只有一个符号
 - 操作符出现在不同的位置可能具有不同的含义
 
+::: details 📍 操作符示例
+
 1. `=` 赋值符，将右边的数据赋值给左边
 2. `.` 访问符，用于访问对象的属性
 3. `[]` 访问符，同上
 4. `()` 函数调用符
+
+:::
 
 ### 运算符的分类
 
@@ -487,7 +515,7 @@ JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对�
 
 每个表达式都有一个运算结果，该结果称为**返回值**；返回值的类型叫做**返回类型**
 
-==所有的表达式都可以当作数据使用== ==> 变量中可以存放表达式
+==所有的表达式都可以当作数据使用==
 
 #### 常见表达式的返回
 
@@ -502,8 +530,6 @@ JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对�
 > ```js
 > console.log(console.log('')) // 输出：undefined
 > ```
->
-> `typeof` 返回类型为 `string`
 
 ::: info
 浏览器控制台的环境为 `REPL` 环境
@@ -517,7 +543,7 @@ REPL(Read-Eval-Print-Loop)：读取-执行-打印-循环
 - `-` 减 / 负
 - `*` 乘
 - `/` 除
-- `%` 求余数（_取模，但有细微区别_）
+- `%` 求余数（_与取模有细微区别_）
 - `++` 自增
 - `--` 自减
 - `**` 幂运算
@@ -530,31 +556,35 @@ REPL(Read-Eval-Print-Loop)：读取-执行-打印-循环
   - 被除数为负数：`-Infinity` 负无穷
   - 被除数为 `0`：`NaN` (_Not a Number, 非数字，`number` 类型_)
 
+::: tip
+`NaN` 虽然虽然是数字，但其和任何数字进行算术运算的结果都是 `NaN`
+
 ```js
-typeof 1 / 0 // NaN
-// typeof 1 // "number"
-// "number" / 0 ==> NaN / 0 // NaN
+typeof 1 / 0 // typeof 优先级高于 /
+// "number" / 0
+// NaN / 0
+// NaN
 ```
 
-> `NaN` 虽然虽然是数字，但其和任何数字进行算术运算的结果都是 `NaN`
+:::
 
-::: tip
+::: details 📚 `isNaN` 函数：返回一个数据是否为 `NaN`
 
-- `isNaN` 函数：返回一个数据是否为 `NaN`
+```js
+isNaN(NaN) // true
+isNaN(123) // false
+```
 
-  ```js
-  isNaN(NaN) // true
-  isNaN(123) // false
-  ```
+:::
 
-- `isFinite` 函数：返回一个数据是否为有限数字
+::: details 📚 `isFinite` 函数：返回一个数据是否为有限数字
 
-  ```js
-  isFinite(Infinity) // false
-  isFinite(-Infinity) // false
-  isFinite(NaN) // false
-  isFinite(123) // true
-  ```
+```js
+isFinite(Infinity) // false
+isFinite(-Infinity) // false
+isFinite(NaN) // false
+isFinite(123) // true
+```
 
 :::
 
@@ -569,9 +599,11 @@ console.log(-10 % -3) // -1
 
 余数的符号与被除数的符号相同
 
-#### 其他原始类型使用算术运算符
+#### 非数字类型使用算术运算符
 
-除 `+` （_加法_）外的其他运算符遇到非数字的类型时，会将原始类型转换为数字类型（_自动完成转换_）,然后进行运算；转换规则：
+除 `+` 加运算符外：
+
+运算符遇到非数字的**原始类型**时，会将原始类型转换为数字类型（_自动完成转换_）,然后进行运算；转换规则：
 
 1. `true` ==> `1`; `false` ==> `0`
 2. `null` ==> `0`
@@ -581,37 +613,41 @@ console.log(-10 % -3) // -1
    - 如果字符串内部不是一个正确的数字，则转换为 `NaN`
    - 如果是一个空字符串 `""`，转换为 `0`
    - 字符串转换时会忽略文字首尾空格
-5. `object` 类型：
-   - 将对象类型先转换为字符串 `"[object Object]"`, 然后再将该字符串转换为数字类型
-   - 对象转换数字时为 `NaN`
 
-::: tip
-
-通常在非数字的类型前面加 `+` 正运算符，可以强制转换为数字类型
-
-> `+true` ==> `1`
-
-:::
-
-> JS 中 `0` 分为 `+0` 和 `-0` 两种形式。
+运算符遇到 `object` 类型时：先将对象类型先转换为字符串 `"[object Object]"`, 然后再将该字符串转换为数字类型进行运算
 
 ```js
 {} * 5 // 报错：{} 被解释为代码块
 ({}* 5) // ==> NaN * 5 // NaN
 ```
 
-`+` 加号运算符的运算规则：
+::: tip
 
-1. 加号其中一边为 `string` 类型：字符串拼接
-   - 将另一边的其他类型转为字符串：
-   - 数字 ==> 数字字符串
-   - `null` ==> `"null"`
-   - `undefined` ==> `"undefined"`
-   - `boolean` ==> `"true"` / `"false"`
-   - `object` ==> `"[object Object]"`
-2. 加号两边都没有字符串但有对象：将对象转为字符串再拼接
-3. 加号两边都为非数字非字符串非对象类型：转为数字运算
+通常在非数字的类型前面加上 `+` 正运算符，可以强制转换为数字类型
 
-#### 优先级
+- `+true` ==> `1`
+- `+{}` ==> `NaN`
 
-`+` 正，`-` 负 > `*`，`/`，`%` > `+` 加，`-` 减
+:::
+
+> JS 中 `0` 分为 `+0` 和 `-0` 两种形式。
+
+`+` 加运算符的运算规则：
+
+1. 加号两边都为数字：直接相加
+2. 加号其中一边为 `string` / `object` 类型：两边转为字符串进行拼接
+3. 加号两边都为其他原始类型：转为数字运算相加
+
+其他类型转为字符串规则：
+
+- 数字类型 ==> 数字字符串
+- `null` 类型 ==> `"null"`
+- `undefined` 类型 ==> `"undefined"`
+- `boolean` 类型 ==> `"true"` / `"false"`
+- `object` 类型 ==> `"[object Object]"`
+
+::: tip 运算符优先级
+
+`+` 正，`-` 负 >> `*`，`/`，`%` >> `+` 加，`-` 减
+
+:::
