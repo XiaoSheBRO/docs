@@ -195,13 +195,13 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 ::: details 📍 对象示例
 
-```js
+```json
 {
   name: "小明",
   age: 18,
   isStudent: true,
   address: {
-    country: 'china'，
+    country: "china",
     province: "jiangsu",
     city: "suzhou"
   }，
@@ -260,9 +260,9 @@ console.log(a) // undefined
 
 :::
 
-#### 赋值
+#### 变量的赋值
 
-向变量的内存空间中存放数据
+赋值：向变量的内存空间中存放数据
 
 ```js
 // 将 123 存放到变量 a 中
@@ -291,7 +291,7 @@ var a = 1,
 
 > 语法糖只是方便书写或记忆，没有实质性改变。
 
-#### 变量中存放对象
+### 变量中的对象
 
 ```js
 var user = {
@@ -441,6 +441,8 @@ console.log(typeof name) // string
 
 ==出现对象字面量的位置，都一定会在内存中开辟一个新的空间==
 
+::: details 📍 对象的存储机制示例
+
 ```js
 var user1 = {
   name: '小明',
@@ -461,6 +463,8 @@ console.log(user1.name, user2.name) // '小明' '小刚'
 console.log(user1.address.country, user2.address.country) // 'uk' 'uk'
 ```
 
+:::
+
 > 出现一对 `{}` 即为一块新的内存空间
 
   <!-- @include: @demo/JS-1-VariableSwitch.md#demo-->
@@ -476,7 +480,7 @@ JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对�
 ### 操作符和操作数
 
 操作符：运算符，参与运算的符号
-操作数：参与运算的数据，也称之为 _元_
+操作数：参与运算的数据，也称之为 _元_、_目_
 
 - 操作符不一定只有一个符号
 - 操作符出现在不同的位置可能具有不同的含义
