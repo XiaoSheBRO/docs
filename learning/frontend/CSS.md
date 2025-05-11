@@ -647,7 +647,7 @@ line gap: 顶线向上延伸的空间 / 底线向下延伸的空间（_两者相
 - top ~ bottom 的距离叫做 **virtual-area**，即 **行高**
 - `line-height:normal` _默认值_，使用文字默认 line gap
 
-<!-- @include: @demo/CSS-4-Font.md#demo-->
+<!-- @include: @demo/CSS-4-Font.md#demo -->
 
 > content area 一定居中
 > `line-height:1` 不是一种好做法：line-gap 可能为负
@@ -939,7 +939,7 @@ select:focus {
 }
 ```
 
-<!-- @include: @demo/CSS-2-DiyRadio.md#demo-->
+<!-- @include: @demo/CSS-2-DiyRadio.md#demo -->
 
 > 表单元素通过点击聚焦，其他元素可以通过键盘 `tab` 键聚焦
 > 元素的 `tabIndex` 属性：_全局属性_，设置元素的 tab 键顺序，默认值为 `0`
@@ -1043,7 +1043,7 @@ at-rule，@语句，CSS语句，CSS指令
 使用vscode插件 `autoprefixer`
 :::
 
-<!-- @include: @demo/CSS-3-ScrollBarStyle.md#demo-->
+<!-- @include: @demo/CSS-3-ScrollBarStyle.md#demo -->
 
 ### CSS hack
 

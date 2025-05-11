@@ -520,7 +520,7 @@ Each embedded browsing context has its own document and allows URL navigations. 
 
 在 CSS 技术出现之前，网页通常使用表格布局。表格渲染速度过慢，因此现在不适用于网页布局。
 
-<!-- @include: @demo/HTML-1-Table.md#demo-->
+<!-- @include: @demo/HTML-1-Table.md#demo -->
 
 ### 其他元素
 
