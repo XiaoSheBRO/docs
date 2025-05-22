@@ -445,6 +445,10 @@ box(_CSS3 概念_): 盒子，每个元素在页面中都会生成一个矩形区
 - 固定定位的元素的包含块固定为**视口**（_viewport 浏览器可视窗口_）
 - 其他同绝对定位
 
+::: tip
+当元素祖先的 `transform`、`perspective`、`filter` 或 `backdrop-filter` 属性非 `none` 时，容器由视口改为该祖先。
+:::
+
 ### 块级格式化上下文
 
 _Block Formatting Context_，简称 BFC。
