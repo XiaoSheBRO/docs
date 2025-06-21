@@ -1,8 +1,8 @@
-# CSS实现自定义单选/多选
+# CSS 实现自定义单选 / 多选
 
 <!-- #region demo -->
 
-::: normal-demo CSS实现自定义单选/多选
+::: normal-demo CSS 实现自定义单选 / 多选
 
 ```html
 <style>

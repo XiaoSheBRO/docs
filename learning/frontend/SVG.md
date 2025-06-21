@@ -23,7 +23,7 @@ svg 使用 xml 格式定义
 
 ## 基本语法
 
-<!-- @include: @demo/SVG-1-Demo.md#demo-->
+<!-- @include: @demo/SVG-1-Demo.md#demo -->
 
 ### `<svg>`
 

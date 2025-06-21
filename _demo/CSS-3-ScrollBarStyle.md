@@ -1,8 +1,8 @@
-# Chrome 滚动条样式定义 FireFox 不兼容
+# Chrome 滚动条样式定义
 
 <!-- #region demo -->
 
-::: normal-demo Chrome 滚动条样式定义 FireFox 不兼容
+::: normal-demo Chrome 滚动条样式定义（FireFox 不兼容）
 
 ```html
 <style>
