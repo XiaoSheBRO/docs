@@ -1291,6 +1291,8 @@ arr.lastIndexOf(元素)
 
 返回数组中指定元素的最后一个下标（_严格相等_）；如果不存在，则返回 `-1`
 
+> 无法使用 `indexOf` / `lastIndexOf` 查找对象，因为是严格相等
+
 #### fill 数组填充
 
 ```js
@@ -1378,3 +1380,8 @@ arr2[0] = 10
 console.log(arr1) // [10, 2, 3]
 console.log(arr2) // [10, 2, 3]
 ```
+
+<!-- @include: @demo/JS-7-FibonacciArray.md#demo -->
+<!-- @include: @demo/JS-8-TwoDimensionalArray.md#demo -->
+<!-- @include: @demo/JS-9-SortArray.md#demo -->
+<!-- @include: @demo/JS-10-ArrayCount.md#demo -->
