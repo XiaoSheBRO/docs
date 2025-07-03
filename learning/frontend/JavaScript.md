@@ -1118,13 +1118,13 @@ for (初始化表达式; 条件表达式; 迭代表达式) {
 ```
 
 ```mermaid
-graph LR
-S((开始循环)) --> A[初始化表达式]
-A --> B{条件表达式}
-B --true--> C[代码块]
-C --> D[迭代表达式]
-D --> B
-B --false--> E((退出循环))
+flowchart LR
+  S((开始循环)) --> A[初始化表达式]
+  A --> B{条件表达式}
+  B -- true --> C[代码块]
+  C --> D[迭代表达式]
+  D --> B
+  B -- false --> E((退出循环))
 ```
 
 #### `while` 循环
@@ -1136,11 +1136,11 @@ while (条件表达式) {
 ```
 
 ```mermaid
-graph LR
-S((开始循环)) --> A{条件表达式}
-A --true--> B[代码块]
-B --> A
-A --false--> E((退出循环))
+flowchart LR
+  S((开始循环)) --> A{条件表达式}
+  A -- true --> B[代码块]
+  B --> A
+  A -- false --> E((退出循环))
 ```
 
 #### `do-while` 循环
@@ -1154,11 +1154,11 @@ do {
 先运行一次循环体再进行条件判断
 
 ```mermaid
-graph LR
-S((开始)) --> B[代码块]
-B --> A{条件表达式}
-A --true--> B
-A --false--> E((退出))
+flowchart LR
+  S((开始)) --> B[代码块]
+  B --> A{条件表达式}
+  A -- true --> B
+  A -- false --> E((退出))
 ```
 
 #### `for in` 循环
@@ -1633,6 +1633,8 @@ var myFunctions = {
 
 ### 构造函数
 
+> 也称构造器
+
 用函数创建对象可以减少繁琐的流程
 
 1. 函数返回一个对象（_工厂函数_）：
@@ -1715,8 +1717,74 @@ function User(name, age) {
 }
 ```
 
-// TODO: 英雄打怪游戏
+// TODO: 英雄打怪游戏(构造函数)
 
 ### 函数的本质
 
-函数的本质就是一个对象
+函数的本质就是对象
+
+```js
+var sum = new Function('a', 'b', 'return a + b')
+console.log(sum(1, 2)) // 3
+console.log(typeof sum) // 'function'
+```
+
+所有的函数都是通过 `new Function()` 创建的
+
+- `Function` 构造函数由浏览器提供
+- `Function` --> 产生函数对象 --> 产生普通对象
+
+由于函数本身是一个对象，所以函数可以拥有属性
+
+```js
+console.log(typeof Number) // 'function'
+console.log(typeof Number.isNaN) // 'function'
+console.log(Number.MAX_SAFE_INTEGER) // 2^53 - 1
+```
+
+#### 包装类
+
+JS 为了增强原始类型的功能，为 `boolean`、`string`、`number` 专门创建了构造函数
+
+如果语法上将原始类型当作对象使用时（_一般在使用属性时_），JS 会自动在该位置利用对应的构造函数，创建一个对象来访问该原始类型的该属性。
+
+```js
+var a = 3.1415
+a.toFixed(2)(
+  // '3.14'
+  new Number(3.1415)
+).toFixed(2) // '3.14'
+```
+
+```js
+var x = 123
+var y = new Number(123)
+console.log(x == y) // true
+console.log(x === y) // false // 类型不同
+```
+
+> 在 JS 中，可以认为类就是构造函数，创建的对象就是实例
+> 成员方法（属性） / 实例方法（属性）：通过构造函数创建的对象上的方法（属性）
+> 静态方法（属性） / 类方法（属性）：通过构造函数本身调用的方法（属性）
+
+### 递归
+
+函数内部直接或间接调用自身
+
+```js
+// 求斐波那契数列第 n 项
+function f(n) {
+  if (n === 1 || n === 2) {
+    return 1
+  }
+  return f(n - 1) + f(n - 2)
+}
+```
+
+#### 执行栈 _call stack_
+
+无论任何代码的执行，都必须有一个执行环境，执行环境为代码执行提供支持；执行环境全部放在执行栈中。
+
+每个函数的调用都需要创建一个函数执行环境，函数调用结束，该执行环境就会被销毁
+
+<!-- @include: @demo/JS-14-CallStack.md#demo -->
