@@ -1763,9 +1763,13 @@ console.log(x == y) // true
 console.log(x === y) // false // 类型不同
 ```
 
-> 在 JS 中，可以认为类就是构造函数，创建的对象就是实例
-> 成员方法（属性） / 实例方法（属性）：通过构造函数创建的对象上的方法（属性）
-> 静态方法（属性） / 类方法（属性）：通过构造函数本身调用的方法（属性）
+::: important
+
+- 在 JS 中，可以认为类就是构造函数，创建的对象就是实例
+- 成员方法（属性） / 实例方法（属性）：通过构造函数创建的对象上的方法（属性）
+- 类方法（属性） / 静态方法（属性）：通过构造函数本身调用的方法（属性）
+
+:::
 
 ### 递归
 
@@ -1788,3 +1792,341 @@ function f(n) {
 每个函数的调用都需要创建一个函数执行环境，函数调用结束，该执行环境就会被销毁
 
 <!-- @include: @demo/JS-14-CallStack.md#demo -->
+
+```js
+// n 的阶乘
+
+function f(n) {
+  if (n === 1) {
+    return 1
+  }
+  return n * f(n - 1)
+}
+```
+
+**递归使用时要避免无限递归（_没有终止条件_）**
+
+执行栈有相对固定的大小，如果执行环境太多，执行栈无法容纳，会报错：`Maximum call stack size exceeded`（_栈溢出_）
+
+::: tip 对比无限循环
+
+死循环不会报错，也不会导致栈溢出（_只有一个执行环境_）
+
+:::
+
+::: info 尾调用
+
+如果一个函数最后一条语句是调用函数，且最后一条语句表达式仅由调用函数组成，则称该语句为**尾调用**；如果尾调用是调用函数自身，则称为**尾递归**
+
+某些语言或执行环境会对尾调用进行优化：会立即销毁当前函数的执行环境，避免执行栈空间被占用。
+
+在浏览器环境中均未实现尾调用优化（_由于调试、性能分析、栈追踪等开发体验问题，暂无计划_）；但 node 环境中可以使用
+
+:::
+
+### `arguments`
+
+`arguments` 关键字：表示函数调用时传入的所有参数（_实参_）组成的**类数组**（_伪数组_）
+
+- 可以取到未定义但传入的多余参数
+- `arguments` 的值会与对应的形参绑定，但未传的参数不会映射
+
+> 伪数组：没有通过 `Array` 构造器创建的类似数组的结构，缺少很多数组的实例方法
+
+## 标准库
+
+标准库也称标准 API
+标准：ECMA 标准
+
+库：_library_，一组预先编写好的代码，可以直接使用，无需自己编写
+API：_Application Programming Interface_，应用程序编程接口
+
+### `Object`
+
+```js
+new Object(value)
+Object(value)
+```
+
+`Object()` 构造函数将输入转换为一个对象
+
+- 如果该值是 `null` 或者 `undefined`，它会生成并返回一个空对象
+- 如果该值已经是一个对象，则返回该值
+- 否则，返回与给定值对应的类型的对象
+
+  ```js
+  var x = new Object(123) // new Number(123)
+  ```
+
+#### `Object` 的静态成员
+
+属性：
+
+- `Object.length` 固定为 `1`，表示参数个数
+
+方法：
+
+1. `Object.keys(obj)`
+
+   - 参数 `obj` 是一个对象
+   - 返回给定对象自身可枚举的属性名（_键_）组成的字符串数组
+
+2. `Object.values(obj)`
+
+   - 参数 `obj` 是一个对象
+   - 返回给定对象自有可枚举键的值组成的数组
+
+3. `Object.entries(obj)`
+   - 参数 `obj` 是一个对象
+   - 返回一个数组，数组的每一项是一个 `[key, value]` 数组，表示对象自身可枚举的键值对
+
+```js
+var obj = { a: 1, b: 2, c: 3 }
+console.log(Object.keys(obj)) // ['a', 'b', 'c']
+console.log(Object.values(obj)) // [1, 2, 3]
+```
+
+#### `Object` 的实例成员
+
+只要是对象，都有 `Object` 的实例成员
+
+1. `Object.prototype.toString()` 返回该对象的字符串
+
+   ```js
+   var obj = { a: 1, b: 2, c: 3 }
+   console.log(obj.toString()) // [object Object]
+   ```
+
+   默认情况下，对象的 `toString()` 方法返回 `[object Object]`；**但实例成员可以被重写**，如数组的 `toString()` 方法
+
+2. `Object.prototype.valueOf()` 返回对象的值；默认情况下，返回对象本身
+
+   ```js
+   var obj = { a: 1, b: 2, c: 3 }
+   console.log(obj.valueOf()) // { a: 1, b: 2, c: 3 }
+   console.log(obj.valueOf() === obj) // true
+   ```
+
+::: important
+
+在 JS 中，当自动进行类型转换时，如果转换的是一个对象，实际上会先调用对象的 `valueOf()` 方法，然后调用返回结果的 `toString()` 方法，然后将得到的结果进行进一步转换。
+
+```js
+var obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  toString() {
+    return 'hello'
+  }
+}
+console.log(obj + 1) // 'hello1'
+```
+
+```js
+var obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  valueOf() {
+    return 123
+  }
+}
+console.log(obj + 1) // 124
+```
+
+==如果调用 `valueOf()` 已经得到原始类型的值，则不会再调用 `toString()` 方法==
+
+:::
+
+### `Function`
+
+#### `Function` 的实例成员
+
+所有函数都具有 `Function` 的实例成员
+
+属性：
+
+- `Function.length` 函数形参的个数
+- `Function.name` 函数名
+
+方法：
+
+- `Function.prototype.apply(thisArg, argsArray)` 调用函数同时指定该函数的 `this` 指向
+
+  - `thisArg` 参数：需要绑定的 `this` 指向
+  - `argsArray` 调用函数的参数数组
+
+- `Function.prototype.call(thisArg, ...args)` 调用函数同时指定该函数的 `this` 指向
+
+  - `thisArg` 参数：需要绑定的 `this` 指向
+  - `...args` 参数：调用函数的参数列表
+
+- `Function.prototype.bind(thisArg, ...args)` 返回一个同样的新函数，绑定该函数的 `this` 指向，适用于多次调用
+
+```js
+function sayHello(a) {
+  console.log(this.name, 'hello')
+  console.log(a)
+}
+var usr = { name: 'John' }
+sayHello.apply(usr, [1]) // John hello
+sayHello.call(usr, 1)
+```
+
+通常可以利用 `apply()` 或 `call()` 方法，将某个伪数组转为真数组
+
+```js
+function toArr() {
+  console.log(arguments)
+  // 伪数组转真数组
+  var arr = [].slice.call(arguments)
+  console.log(arr)
+}
+toArr(1, 2, 3)
+```
+
+- `Function.prototype.toString()` 获取函数实现源码的字符串（_覆盖了 `Object.prototype.toString()`_）
+
+### `Array`
+
+所有通过 `Array` 构造器创建的对象都是数组
+
+#### `Array` 的静态成员
+
+属性：
+
+- `Array.from()` 将一个伪数组转换为真数组
+
+  ```js
+  function toArr() {
+    return Array.from(arguments)
+  }
+  toArr(1, 2, 3) // [1, 2, 3]
+  ```
+
+- `Array.isArray()` 判断一个值是否为数组
+
+  ```js
+  function toArr() {
+    return Array.isArray(arguments)
+  }
+  toArr() // false
+  ```
+
+- `Array.of()` 根据参数创建一个数组
+
+  ```js
+  Array.of(1, 2, 3) // [1, 2, 3]
+  Array.of(3) // [3]
+  ```
+
+#### `Array` 的实例成员
+
+方法：[见](#数组的常用操作)
+
+- `Array.prototype.fill()`
+- `Array.prototype.pop()`
+- `Array.prototype.push()`
+- `Array.prototype.reverse()` 对数组进行反序并返回
+- `Array.prototype.shift()`
+- `Array.prototype.unshift()`
+- `Array.prototype.splice()`
+- `Array.prototype.sort()` 对数组进行排序并返回
+
+  ```js
+  var arr1 = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+  arr1.sort() // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+  var arr2 = [11, 211, 22, 12, 111]
+  arr2.sort() // [11, 111, 12, 211, 22]
+  ```
+
+  **默认按照字符串的 Unicode 编码进行排序**
+
+  `Array.prototype.sort(compareFunction)` 可以传入比较函数
+
+  ```js
+  var arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+  arr.sort(function (a, b) {
+    return a - b
+  }) // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+  ```
+
+  ```js
+  // 随机排序 / 乱序
+  arr.sort(function (a, b) {
+    return Math.random() - 0.5
+  })
+  ```
+
+> 纯函数 / 无副作用函数不会导致当前对象发生改变
+
+- `Array.prototype.concat()`
+- `Array.prototype.includes()` 判断数组是否包含满足条件的值（_严格相等_）
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  console.log(arr.includes(3)) // true
+  // 从下标 3 开始查找
+  console.log(arr.includes(3, 3)) // false
+  ```
+
+- `Array.prototype.join()`
+- `Array.prototype.slice()`
+- `Array.prototype.toString()`
+- `Array.prototype.indexOf()`
+- `Array.prototype.lastIndexOf()`
+- `Array.prototype.forEach()` 遍历数组
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.forEach(function (item, index, arr) {
+    console.log(item, index, arr)
+  })
+  ```
+
+- `Array.prototype.every()` 判断是否所有元素都满足条件
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.every(function (item, index, arr) {
+    return item > 0 && item < 6
+  }) // true
+  ```
+
+- `Array.prototype.some()` 判断数组中至少有一个元素满足条件
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.some(function (item, index, arr) {
+    return item > 4
+  }) // true
+  ```
+
+- `Array.prototype.filter()` 返回一个新数组，包含所有满足条件的元素
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.filter(function (item, index, arr) {
+    return item > 4
+  }) // [5]
+  ```
+
+- `Array.prototype.find()` 返回第一个满足条件的元素，如果没有返回 `undefined`
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.find(function (item, index, arr) {
+    return item > 4
+  }) // 5
+  ```
+
+- `Array.prototype.findIndex()` 返回第一个满足条件的元素的下标，如果没有返回 `-1`
+- `Array.prototype.map()` 将数组的每一项映射为一个新值，返回一个新数组
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.map(function (item, index, arr) {
+    return item * 2
+  }) // [2, 4, 6, 8, 10]
+  ```
