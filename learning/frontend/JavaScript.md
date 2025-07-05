@@ -138,15 +138,12 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 ### JS 中的数据类型
 
 1. 原始类型(_不可再细分的类型_)
-
    - `number` 数字类型
    - `string` 字符串类型
    - `boolean` 布尔类型
    - `undefined` 未定义类型
    - `null` 空类型
-
 2. 引用类型
-
    - `object` 对象
    - `function` 函数
 
@@ -568,7 +565,6 @@ JS 引擎会在合适的时间将垃圾占用的内存空间释放。
    - 如果为声明 + 赋值的表达式，返回值为 `undefined`
 2. `.` 访问符：返回属性的值
 3. `()` 函数调用符：返回的结果取决于函数的运行结果
-
    - `console.log()` 的返回值为 `undefined`
 
    > ```js
@@ -1877,12 +1873,10 @@ Object(value)
 方法：
 
 1. `Object.keys(obj)`
-
    - 参数 `obj` 是一个对象
    - 返回给定对象自身可枚举的属性名（_键_）组成的字符串数组
 
 2. `Object.values(obj)`
-
    - 参数 `obj` 是一个对象
    - 返回给定对象自有可枚举键的值组成的数组
 
@@ -1963,12 +1957,10 @@ console.log(obj + 1) // 124
 方法：
 
 - `Function.prototype.apply(thisArg, argsArray)` 调用函数同时指定该函数的 `this` 指向
-
   - `thisArg` 参数：需要绑定的 `this` 指向
   - `argsArray` 调用函数的参数数组
 
 - `Function.prototype.call(thisArg, ...args)` 调用函数同时指定该函数的 `this` 指向
-
   - `thisArg` 参数：需要绑定的 `this` 指向
   - `...args` 参数：调用函数的参数列表
 
@@ -2189,7 +2181,127 @@ arr
 
 - `Number.isNaN()` 全局 `isNaN()` 的更健壮版本：不会尝试将参数转换为数字，因此非数字总是返回 `false`
 - `Number.isInteger(value)` 判断传入的值是否为整数（_只要值是整数，无论是整数型还是浮点数型_）
-- `Number.parseInt(value)` 将数据进行强制字符串转换再转换为整数，直接舍去小数（_与全局 `parseInt()` 完全相同_）
-- `Number.parseFloat(value)` 数据数据进行强制字符串转换再转换为浮点数（_与全局 `parseFloat()` 完全相同_）
+- `Number.parseInt(string)` 将数据进行强制字符串转换再转换为整数，直接舍去小数（_与全局 `parseInt()` 完全相同_）
+  - `radix` 参数（_可选_）：指定进制，默认 `10`
+- `Number.parseFloat(string)` 数据数据进行强制字符串转换再转换为浮点数（_与全局 `parseFloat()` 完全相同_）
+
+```js
+Number.parseInt(3.6) // 3
+Number.parseInt('333', 2) // NaN
+Number.parseInt('103', 2) // 2
+Number.parseInt(1.111, 2) // 1
+
+Number.parseFloat(3) // 3.000
+Number.parseFloat('   3.14') // 3.14
+Number.parseFloat('3.14abc') // 3.14
+Number.parseFloat('abc3.14') // NaN
+Number.parseFloat('3.14.56') // 3.14
+```
 
 > 从字符串开始位置进行查找，找到第一个**有效数字**进行转换，如果没有找到，返回 `NaN`
+
+// TODO: 得到最小值和最大值之间的随机整数
+
+实例成员：
+
+- `Number.prototype.toFixed(num)` 返回数字指定小数位数的字符串，会有四舍五入
+- `Number.prototype.toPrecision(num)` 返回数字的指定精度（_有效数字_）的字符串，会有四舍五入
+
+```js
+var num = 123.456
+console.log(num.toFixed(2)) // "123.46"
+console.log(num.toPrecision(3)) // 123
+console.log(num.toPrecision(2)) // "1.2e+2" // 科学计数法 e 表示 10 的幂
+```
+
+#### `Boolean` 构造函数
+
+实例成员：
+
+- `Boolean.prototype.toString()` 返回布尔值的字符串表示
+
+#### `String` 构造函数
+
+静态成员：
+
+- `String.fromCharCode()` 通过 Unicode 编码创建字符串（_超出编码范围会截断但不会报错_）
+
+  ```js
+  String.fromCharCode(65, 66) // "AB"
+  ```
+
+- `String.fromCodePoint()` 通过 Unicode 码点（_有效编码_）创建字符串
+
+实例成员：
+
+- `String.prototype.length` 返回字符串的长度
+- `String.prototype.charAt(index)` 返回指定索引处的字符，超出索引返回空字符串
+- `String.prototype.charCodeAt(index)` 返回指定索引处的 Unicode 码点，超出索引返回 `NaN`
+- `String.prototype.concat()` 连接多个字符串，返回一个连接后的新字符串
+- `String.prototype.includes()` 判断字符串是否包含指定字符串
+- `String.prototype.endsWith()` 判断字符串是否以指定字符串结尾
+- `String.prototype.startsWith()` 判断字符串是否以指定字符串开头
+- `String.prototype.indexOf()` 返回指定字符串第一次出现的索引，不存在返回 `-1`
+- `String.prototype.lastIndexOf()` 返回指定字符串最后一次出现的索引，不存在返回 `-1`
+- `String.prototype.padEnd(length, str)` 以指定字符填充字符串的末尾以达到指定长度，返回填充后的新字符串
+- `String.prototype.padStart(length, str)` 以指定字符填充字符串的开头以达到指定长度，返回填充后的新字符串
+- `String.prototype.repeat(num)` 返回字符串重复指定次数的新字符串
+- `String.prototype.slice()` 返回指定**指定索引开始到指定索引结束**的子字符串，与数组的 `slice()` 方法类似；**索引可以为负数**
+- `String.prototype.substr(start, length)` 返回从指定索引开始的**指定长度**的子字符串；**索引可以为负数**
+- `String.prototype.substring(index1, index2)` 返回从**指定索引开始到指定索引结束**的子字符串；
+  - **索引不能为负数**，负数索引会被自动转换为 `0`
+  - **参数顺序可以调换**
+- `String.prototype.toLowerCase()` 返回字符串的小写版本
+- `String.prototype.toUpperCase()` 返回字符串的大写版本
+- `String.prototype.trim()` 返回字符串去除首尾空白字符的新字符串
+- `String.prototype.split(separator)` 返回一个由指定分隔符分割的字符串数组
+
+::: tip
+
+字符串是一个伪数组：有 `length` 属性，且可以通过索引访问字符串中的字符
+
+```js
+var str = 'hello'
+Array.from(str) // ["h", "e", "l", "l", "o"]
+```
+
+:::
+
+```js
+var str = 'hello'
+console.log(str.length) // 5
+console.log(str.charAt(2)) // "l"
+console.log(str.charCodeAt(2)) // 108
+console.log(str.concat(' ', 'world')) // "hello world"
+console.log(str.includes('l')) // true
+console.log(str.endsWith('o')) // true
+console.log(str.indexOf('l')) // 2
+console.log(str.lastIndexOf('l')) // 3
+console.log(str.padEnd(10, '-')) // "hello-----"
+console.log(str.padStart(10, 'abcd')) // "abcdahello"
+console.log(str.repeat(3)) // "hellohellohello"
+```
+
+> 字符串字面量可以直接使用实例方法
+
+### `Math` 对象
+
+> `Math` 是一个对象，不是构造函数
+
+- `Math.random()` 得到一个大于等于 `0` 且小于 `1` 的随机数
+- `Math.PI` 返回圆周率
+- `Math.abs(x)` 返回 `x` 的绝对值
+- `Math.floor(x)` 将 `x` 向下取整
+- `Math.ceil(x)` 将 `x` 向上取整
+- `Math.max(x, y, ...)` 得到一组数据的最大值，如果没有参数，返回 `-Infinity`
+- `Math.min(x, y, ...)` 得到一组数据的最小值，如果没有参数，返回 `Infinity`
+- `Math.pow(x, y)` 返回 `x` 的 `y` 次方
+- `Math.round(x)` 将 `x` 四舍五入为整数，负数向数轴的正方向五入
+
+### `Date` 构造函数
+
+> GMT（_Greenwich Mean Time_）格林威治世界时，太阳时，精确到毫秒
+> UTC（_Universal Time Coordinated_）世界协调时，原子时，精确到纳秒
+> UTC 时间与 GMT 时间误差不超过 0.9 秒
+
+时间戳：`1970-01-01 00:00:00 UTC` 到某个时间的毫秒数
