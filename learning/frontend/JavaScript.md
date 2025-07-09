@@ -655,6 +655,8 @@ console.log(-10 % -3) // -1
 
 ::: important （_非 `+` 运算符_）转换规则
 
+> `valueOf()`
+
 1. `true` ==> `1`; `false` ==> `0`
 2. `null` ==> `0`
 3. `undefined` ==> `NaN`
@@ -686,6 +688,8 @@ console.log(-10 % -3) // -1
 :::
 
 ::: important 多元 `+` 运算符的运算规则
+
+> `valueOf()` 再 `toString()`
 
 1. 加号某一边出现 `string` / `object` 类型：进行字符串拼接(_将其他类型转为字符串_)
    - 数字 ==> 数字字符串
@@ -2305,3 +2309,52 @@ console.log(str.repeat(3)) // "hellohellohello"
 > UTC 时间与 GMT 时间误差不超过 0.9 秒
 
 时间戳：`1970-01-01 00:00:00 UTC` 到某个时间的毫秒数
+
+#### 创建事件对象
+
+> 不使用构造函数，直接调用 `Date()`， 会忽略所有参数，直接返回当前时间的字符串
+
+`new Date()` 创建日期兑现
+
+- 无参数：返回当前时间的对象
+- 单个参数，为数字：传入时间戳，返回对应的日期对象
+- 多个参数，分别为年、月、日、时、分、秒、毫秒：返回对应的日期对象
+  - 月份从 `0` 开始
+  - 日、时、分、秒、毫秒可以省略，默认 `0`
+  - 可以传负数，会根据指定日期进行计算
+
+#### 实例成员
+
+- `Date.prototype.getDate()` 返回日期对象对应的日期，`1` ~ `31`
+- `Date.prototype.getUTCDate()` 返回日期对象对应的日期（_UTC 时间_）
+- `Date.prototype.getDay()` 返回日期对象对应的星期几，`0` ~ `6`，`0` 为星期日
+- `Date.prototype.getFullYear()` 返回日期对象对应的(_完整_)年份
+- `Date.prototype.getMonth()` 返回日期对象对应的月份，`0` ~ `11`
+- `Date.prototype.getHour()` 返回日期对象对应的小时，`0` ~ `23`
+- `Date.prototype.Minute()` 返回日期对象对应的分钟，`0` ~ `59`
+- `Date.prototype.getSeconds()` 返回日期对象对应的秒，`0` ~ `59`
+- `Date.prototype.getMilliseconds()` 返回日期对象对应的毫秒，`0` ~ `999`
+- `Date.prototype.getTime()` 返回日期对象对应的时间戳
+- `Date.prototype.setDate(date)` 设置日期对象对应的日期
+- `Date.prototype.setDay(day)` 设置日期对象对应的星期几
+- `Date.prototype.setMonth(month)` 设置日期对象对应的月份
+- `Date.prototype.setFullYear(year)` 设置日期对象对应的年份
+- `Date.prototype.setHours(hour)` 设置日期对象对应的小时
+- `Date.prototype.setMinutes(minute)` 设置日期对象对应的分钟
+- `Date.prototype.setSeconds(second)` 设置日期对象对应的秒
+- `Date.prototype.setMilliseconds(millisecond)` 设置日期对象对应的毫秒
+- `Date.prototype.setTime(timestamp)` 设置日期对象对应的时间戳
+- `Date.prototype.toDateString()` 返回日期对象对应的日期字符串，`Tue Jun 18 2019`
+- `Date.prototype.toISOString()` 返回日期对象对应的 ISO 标准格式字符串，`yyyy-mm-ddTHH:MM:SS.sssZ`
+- `Date.prototype.toLocaleDateString()` 根据系统时区，返回日期对象对应的本地日期字符串，`yyyy/mm/dd`
+- `Date.prototype.toLocaleString()` 根据系统时区，返回日期对象对应的本地日期时间字符串，`yyyy/mm/dd 上午HH:MM:SS`
+- `Date.prototype.toLocaleTimeString()` 根据系统时区，返回日期对象对应的本地时间字符串，`下午HH:MM:SS`
+- `Date.prototype.toUTCString()` 返回日期对象对应的 UTC 标准格式字符串，`Tue, 18 Jun 2019 08:00:00 GMT`
+- `Date.prototype.toString()` 返回日期对象对应的字符串，根据系统时区，`Tue Jun 18 2019 08:00:00 GMT+0800 (中国标准时间)`
+
+#### 日期运算
+
+日期对象重写了 `Object` 对象的 `valueOf()` 方法，返回日期对象对应的时间戳数字；
+因此日期对象可以进行运算
+
+// TODO: 根据当天月份输出本月每天的星期
