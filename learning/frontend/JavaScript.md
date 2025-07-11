@@ -2323,7 +2323,7 @@ console.log(str.repeat(3)) // "hellohellohello"
   - 日、时、分、秒、毫秒可以省略，默认 `0`
   - 可以传负数，会根据指定日期进行计算
 
-#### 实例成员
+#### 日期对象实例成员
 
 - `Date.prototype.getDate()` 返回日期对象对应的日期，`1` ~ `31`
 - `Date.prototype.getUTCDate()` 返回日期对象对应的日期（_UTC 时间_）
@@ -2358,3 +2358,275 @@ console.log(str.repeat(3)) // "hellohellohello"
 因此日期对象可以进行运算
 
 // TODO: 根据当天月份输出本月每天的星期
+
+## 正则表达式
+
+一个规则，用于验证字符串
+
+### 基础规则
+
+1. 字面量匹配：规则中直接书写字面量
+
+   ```js
+   var reg = /abc/ // 匹配 "abc"
+   ```
+
+2. 特殊字符：
+   - `.` 匹配除了换行符外任意字符
+   - `^` 匹配字符串的开始
+   - `$` 匹配字符串的结束
+
+3. 转义符：
+   - `\` 将特殊字符转义，匹配该字符本身
+   - `\n` 匹配换行符
+   - `\t` 匹配制表符
+   - `\s` 匹配空白字符（_包括空格、制表符、换行符等_）；`\S` 匹配非空白字符
+   - `\b` 匹配单词边界；`\B` 匹配非单词边界
+   - `\d` 匹配一个数字；`\D` 匹配一个非数字
+   - `\w` 匹配一个字母、数字或下划线；`\W` 匹配一个非字母、数字或下划线
+   - `\u` 匹配 Unicode 字符
+
+4. 字符集： `[]` 匹配指定范围内的字符
+   - `[a-z]` 匹配小写字母
+   - `[A-Z]` 匹配大写字母
+   - `[0-9]` 匹配数字，相当于 `\d`
+   - `[\u4e00-\u9fa5]` 匹配中文字符
+   - `[^]` 对字符集取反，匹配不在字符集内的字符
+
+5. 量词：前面的规则出现的次数
+   - `*` 匹配前面的规则零次或多次
+   - `+` 匹配前面的规则一次或多次
+   - `?` 匹配前面的规则零次或一次
+   - `{n}` 匹配前面的规则 `n` 次
+   - `{n,}` 匹配前面的规则 `n` 次或更多次
+   - `{n,m}` 匹配前面的规则 `n` 次到 `m` 次
+
+6. 或者：`|` 多个匹配规则中的任意一个
+7. 括号：`()` 用于分组
+
+### JS 中的正则表达式
+
+JS 中正则表达式表现为一个对象；该对象由构造函数 `RegExp` 创建
+
+1. `/pattern/flags`
+2. `new RegExp('pattern', 'flags')`
+
+标志位 _flags_：
+
+- `g` 全局匹配模式（_默认模式只匹配第一个匹配项_）
+- `i` 忽略大小写
+- `m` 多行模式（_默认模式只匹配一行_）
+
+#### 正则表达式实例成员
+
+- `RegExp.prototype.global` 是否开启全局匹配模式（_布尔值_），只读属性
+- `RegExp.prototype.ignoreCase` 是否忽略大小写（_布尔值_），只读属性
+- `RegExp.prototype.multiline` 是否开启多行模式（_布尔值_），只读属性
+- `RegExp.prototype.source` 规则字符串
+- `RegExp.prototype.test(str)` 验证某个字符串是否满足规则，返回一个布尔值
+  - 开启全局匹配模式时，会从 `RegExp.lastIndex` 继续匹配，直到没有匹配项为止
+- `RegExp.prototype.exec(str)` 执行匹配，返回一个数组，包含匹配结果；如果没有匹配项，返回 `null`
+  - 属性 `0` 匹配项
+  - 属性 `index` 匹配项在字符串中的索引
+  - 属性 `input` 被匹配的字符串
+
+```js
+// 判断匹配多少处
+var str = 'hello world, hello world, hello world'
+var reg = /hello/g
+var count = 0
+while (reg.exec(str)) {
+  count++
+}
+console.log(count) // 3
+```
+
+::: info 贪婪模式
+
+默认情况下，正则表达式匹配使用贪婪模式，即尽可能多的匹配字符
+
+在量词后面加上 `?` 使其变为非贪婪模式，即尽可能少的匹配字符
+
+:::
+
+#### 字符串中的正则表达式
+
+- `String.prototype.match(reg)` 返回一个数组，包含所有匹配项；如果没有匹配项，返回 `null`
+- `String.prototype.search(reg)` 返回第一个匹配项的下标；如果没有匹配项，返回 `-1`
+- `String.prototype.split(reg)` 按匹配项分割字符串
+- `String.prototype.replace(reg, newStr/func)` 替换所有匹配项，返回替换后的字符串
+
+```js
+var str = 'hello world'
+var reg = /\b[a-z]/g
+str = str.replace(reg, function (match) {
+  return match.toUpperCase()
+}) // "Hello World"
+```
+
+// TODO: 得到一个字符串中中文字符的数量
+
+// TODO: 将敏感词库的词语替换成 \*
+
+// TODO: 得到一个html字符串中出现的章节数量
+
+### 进阶规则
+
+#### 捕获组
+
+用 `()` 包裹的部分称为捕获组，捕获组会出现在匹配结果中
+
+```js
+var reg = /(\d[a-z])[a-z]+/g
+var str = '123abc456def'
+console.log(reg.exec(str)) // ["3abc", "3a"] // "3a" 是捕获组
+```
+
+```js
+// 得到所有日期，并得到具体年月日
+var s = '2025-05-01, 2025-05-02, 2025-05-03'
+var reg = /(\d{4})-(\d{2})-(\d{2})/g
+while ((result = reg.exec(s))) {
+  console.log(result) // ["2015-05-01", "2015", "05", "01"]
+}
+```
+
+> 捕获组按括号从左到右顺序排列
+
+- 捕获组命名：
+
+  ```js
+  var reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/g
+  var str = '2025-05-01, 2025-05-02, 2025-05-03'
+  while ((result = reg.exec(str))) {
+    console.log(result.groups.year, result.groups.month, result.groups.day)
+  }
+  ```
+
+  - 命名后的捕获组称为具名捕获组，可以通过 `result.groups` 访问
+
+- 非捕获组：使用 `?:` 包裹的部分称为非捕获组，不会出现在匹配结果中
+
+  ```js
+  var reg = /(?:\d{4})/g
+  ```
+
+`String.prototype.replace()` 可以使用捕获组：
+
+```js
+var str = '2025-05-01, 2025-05-02, 2025-05-03'
+var reg = /(\d{4})-(\d{2})-(\d{2})/g
+var str2 = str.replace(reg, function (match, p1, p2, p3) {
+  return `${p1}/${p2}/${p3}`
+}) // "2025/05/01, 2025/05/02, 2025/05/03"
+var str3 = str.replace(reg, '$1/$2/$3') // "2025/05/01, 2025/05/02, 2025/05/03"
+```
+
+#### 反向引用
+
+在正则表达式中使用 `\n` 引用前面捕获组的第 `n` 个匹配项；或者使用 `\k<name>` 引用具名捕获组的匹配项
+
+```js
+// 匹配连续相同数字
+var reg = /(\d{2}\1)/g
+var str = '1212'
+reg.test(str) // true
+```
+
+#### 正向断言 / 正向预查
+
+检查某个字符后面的字符是否满足规则，满足该规则的字符不成为匹配结果
+
+使用 `(?=)` 避免匹配后面的字符
+
+```js
+var reg = /[a-z](?=\d)/g
+var str = 'a1b2c3'
+while ((result = reg.exec(str))) {
+  console.log(result[0])
+} // "a" // "b" // "c"
+```
+
+```js
+// 一个数字每隔三位加一个逗号
+var reg = /\B(?=(\d{3})+$)/g
+var str = '123456789'
+str = str.replace(reg, ',') // "123,456,789"
+```
+
+#### 负向断言 / 负向预查
+
+检查某个字符后面的字符是否不满足规则，满足该规则的字符不成为匹配结果和捕获组
+
+```js
+var reg = /[a-z](?!\d)/g
+var str = '1a2b3c'
+while ((result = reg.exec(str))) {
+  console.log(result[0])
+} // 'c'
+```
+
+```js
+// 判断密码：大小写字母、数字、特殊字符（!@#,.）、长度 8-16 位
+var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#,.]).{8,16}$/
+```
+
+先预查某个字符后有必须的字符，再检查长度
+
+// TODO: 判断密码强度，有特殊字符为强
+
+## 错误处理
+
+1. 语法错误：`Uncaught SyntaxError: Unexpected token ...` 导致整个脚本块无法执行
+2. 运行错误
+   1. 运行报错：导致当前脚本块后续无法运行
+   2. 运行结果不符合预期：无报错
+
+### 如何调试错误
+
+1. 控制台打印
+2. 断点调试
+   - step over：执行一行
+   - step into：进入当前函数
+
+### 抛出错误
+
+错误的本质在 js 中是一个对象
+
+抛出错误：`throw 错误对象`
+
+错误对象构造函数：`new Error('错误信息')`
+
+错误堆栈：抛出行 --> 执行的函数（_函数调用链_） --> 全局环境
+
+#### 错误对象
+
+静态成员：
+
+- `message` 错误信息
+- `stack` 错误堆栈
+
+#### 不同类型的错误
+
+- `new ReferenceError('引用错误')`
+- `new SyntaxError('语法错误')`
+- `new TypeError('类型错误')`
+- `new RangeError('范围错误')`
+
+### 捕获错误
+
+处理可能发生的问题
+
+```js
+try {
+  // 代码块 1
+} catch (错误对象) {
+  // 代码块 2
+} finally {
+  // 代码块 3
+}
+```
+
+当运行代码块 1 发生错误时，立即执行代码块 2，错误对象为抛出的错误对象；无论是否发生错误，都会执行代码块 3；处理完的错误会继续执行后续代码
+
+> 即使在 `catch` 中 `return` 也不会退出，而是继续执行 `finally` 中的代码块
