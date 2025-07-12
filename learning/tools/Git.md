@@ -159,7 +159,6 @@ git config (--global) --unset https.proxy
 
 - `git reset 文件名` 取消暂存
 - `git reset commitID` 回退版本
-
   - `--hard` 不保留当前所有变更
   - `--soft` 保留为(_staged_)暂存
   - `--mixed` 保留为(_Modified_)修改
