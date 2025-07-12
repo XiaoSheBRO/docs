@@ -1,8 +1,8 @@
 # JavaScript
 
-## JavaScript 起源
+## 起源
 
-网景公司（Netscape Communication Corporation）于 1994 年推出了第一款商用浏览器：网景（Netscape Navigator）。
+网景公司（_Netscape Communication Corporation_）于 1994 年推出了第一款商用浏览器：网景（_Netscape Navigator_）。
 1995 年，网景公司决定在浏览器中加入一门编程语言，用于实现用户交互效果，提高用户体验。
 网景公司聘请 **Brendan Eich** 开发这门语言。10 天后， LiveScript 语言诞生。后来为了商业考虑，更名为 JavaScript（_JS_）。
 
@@ -17,7 +17,7 @@ JS 推出之后，网景取得了极大的竞争优质。
 
 第一次浏览器大战是**标准之争**。
 
-1997 年，网景将 JavaScript 1.1 版本提交给 ECMA (欧洲计算机制造协会)，希望将其标准化。
+1997 年，网景将 JavaScript 1.1 版本提交给 ECMA (_欧洲计算机制造协会_)，希望将其标准化。
 ECMA 收录了 JavaScript 并提交给 ISO；经修改成为第一个JavaScript 标准，称为 **ECMAScript**，简称 ES。
 
 IE3 发布，并绑定 Windows 操作系统，网景市场份额不断下滑，于 1998 破产被收购。
@@ -29,7 +29,7 @@ Brendan Eich 在网景解散后，带领团队成立 Mozilla 基金会，并将�
 长时间内世界技术爱好者们对网景浏览器进行维护和修补。
 2002 年 Mozilla 基金会推出 Firefox 浏览器。
 2008 年 Google 推出 Chrome 浏览器；2010 年 Apple 推出 Safari 浏览器；2012 年 ASA 推出 Opera 浏览器。
-Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字节码；JS 代码的执行速度大幅提升，理论上已经接近汇编语言。从此 JS 具备了编写大型应用的能力，甚至服务器应用。**V8 引擎将 JS 的执行推向了一个新的台阶。**
+Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字节码；JS 代码的执行速度大幅提升，理论上已经接近汇编语言。从此 JS 具备了编写大型应用的能力，甚至服务器应用。**V8 引擎将 JS 的执行推向了一个新的台阶**。
 
 > Ryan Dahl 直接利用 V8 引擎完成了 node.js，使 JS 语言在服务器端可以运行。
 
@@ -47,7 +47,7 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 通常把 ES 运行的环境称为**宿主环境**
 
-## JavaScript 语言特性
+## 语言特性
 
 1. JavaScript 是一种解释型语言
 2. JavaScript 是一个弱类型语言
@@ -58,29 +58,31 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 编译型语言：编译型语言会经过一个翻译的过程，负责编译的叫做编译器；翻译的结果叫做编译结果。
 
-> 如 C、C++ 等；
-> 优点：执行速度快；
-> 缺点：某个编译结果，难以适用于各种环境（_跨平台障碍_），部署繁琐。
+> 如 C、C++ 等
+> 优点：执行速度快
+> 缺点：某个编译结果难以适用于各种环境（_跨平台障碍_）、部署繁琐
 
 解释型语言：没有编译结果。
 
-> 如 JavaScript、Php 等；
-> 优点：跨平台，部署简单；
-> 缺点：执行速度稍慢。
+> 如 JavaScript、Php 等
+> 优点：跨平台、部署简单
+> 缺点：执行速度稍慢
 
-强类型语言：存放的数据类型不可变；
+强类型语言：存放的数据类型不可变。
 
-> 优点：严谨；缺点：灵活性差，不易上手。
+> 优点：严谨
+> 缺点：灵活性差、不易上手
 
-弱类型语言：存放的数据类型可变；
+弱类型语言：存放的数据类型可变。
 
-> 优点：灵活，易上手；缺点：不严谨。
+> 优点：灵活、易上手
+> 缺点：不严谨
 
-通常将弱类型的解释型语言称为 _脚本语言_ 。
+通常将弱类型的解释型语言称为脚本语言。
 
 :::
 
-## JS 代码书写位置（_浏览器环境_）
+### 浏览器环境中 JavaScript 代码的书写位置
 
 1. 直接书写在页面中的 `<script>` 元素中
 2. 写到外部 js 文件中，通过 `<script>` 元素的 `src` 属性引入
@@ -95,7 +97,7 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 :::
 
-## 基本语法规则
+### 基本语法规则
 
 - JavaScript 语法部分必须是英文符号
 - JavaScript 代码由多条语句构成，语句以 `;` 结尾（_不具有强制性_）
@@ -106,15 +108,15 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 > 所有的输出输出语句都不是 ES 标准。
 
-#### 输出语句
+输出语句：
 
-- `document.write()` 用于将数据输出到页面
-- `alert()` 用于将数据以弹窗形式显示到页面
-- `console.log()` 用于将数据输出到控制台
+- `document.write()` 将数据输出到页面
+- `alert()` 将数据以弹窗形式显示到页面
+- `console.log()` 将数据输出到控制台
 
-#### 输入语句
+输入语句：
 
-- `prompt("请输入：")` 用于弹出输入框，获取用户输入的数据
+- `prompt("请输入：")` 弹出输入框，获取用户输入的数据
   - 点击取消返回 `null`
   - 点击确定返回用户输入的字符串
 
@@ -133,34 +135,37 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 数据：有用的信息
 数据类型：数据的分类
 
-> 直接书写的具体数据，称为**字面量**
+> 直接书写的具体数据，称为**字面量**。
 
 ### JS 中的数据类型
 
-- 原始类型(_不可再细分的类型_)
-  - `number` 数字类型
-  - `string` 字符串类型
-  - `boolean` 布尔类型
-  - `undefined` 未定义类型
-  - `null` 空类型
-- 引用类型
-  - `object` 对象
-  - `function` 函数
+1. 原始类型(不可再细分的类型)
+   - `number` 数字类型
+   - `string` 字符串类型
+   - `boolean` 布尔类型
+   - `undefined` 未定义类型
+   - `null` 空类型
+2. 引用类型
+   - `object` 对象
+   - `function` 函数
 
 #### 数字类型
 
-表示小数、整数等；书写方式：直接书写
+表示小数、整数等
+书写方式：直接书写
 
 > 数字类型可以加上前缀，表示不同的进制；不加默认为十进制。
 > 前缀 `0` 表示八进制；前缀 `0x` 表示十六进制；前缀 `0b` 表示二进制。
 
 #### 字符串类型
 
-表示一长串文本（_0 个或多个文本_）；书写方式：
+表示一长串文本（_0 个或多个文本_）
+
+书写方式：
 
 1. 单引号包裹 `'some text'`
 2. 双引号包裹 `"some text"`
-3. 反引号包裹（_模板字符串_）`` `some text` ``
+3. 反引号包裹（_**模板字符串**_）`` `some text` ``
 
 ::: tip 在字符串中表示特殊字符
 
@@ -173,28 +178,34 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 ::: tip 使用长数字还是字符串？
 
-如果按照数字阅读则使用数字类型；否则使用字符串类型。
+如果按照数字阅读则使用数字类型，否则使用字符串类型。
 
 :::
 
 #### 布尔类型
 
-表示真或假；书写方式：
+表示真或假
+
+书写方式：
 
 - `true` 真
 - `false` 假
 
-#### undefined 类型
+#### `undefined` 类型
 
-表示未定义；书写方式：`undefined`
+表示未定义
 
-#### null 类型
+书写方式：`undefined`
 
-表示空值；书写方式：`null`
+#### `null` 类型
+
+表示空值
+
+书写方式：`null`
 
 #### 对象
 
-表示事物、东西等；对象是由多个基本类型或对象组合而成
+表示事物、东西等；对象可以由多个基本类型或对象组合而成
 
 属性：对象的成员
 
@@ -218,35 +229,35 @@ Chrome 浏览器搭载了 JS 引擎 V8，可以将 JS 代码直接转换为字�
 
 ### 判断数据的类型
 
-#### typeof 操作符
+#### `typeof` 操作符
 
-返回数据的类型字符串
+返回数据类型的**字符串**
 
 ```js
 typeof 123 // 'number'
 typeof 'abc' // 'string'
 typeof true // 'boolean'
 typeof undefined // 'undefined'
-typeof null // 'object' (_JS 特性_)
+typeof null // 'object' // JS 特性
 typeof {} // 'object'
 ```
 
 > 函数写法： `typeof()`
 
-## 变量 variable
+## 变量 _variable_
 
-变量是一块**内存**空间，用于存放数据。
+变量是一块用于存放数据的**内存空间**。
 
 ### 变量的使用
 
 - 任何可以书写数据的地方都可以使用变量
-- 不可以使用一个未声明的变量，
+- 无法使用一个未声明的变量
   - 使用 `typeof` 时除外
 
-#### 声明（定义）变量
+#### 声明（_定义_）变量
 
 ```js
-var a // 声明了一个变量，声明后变量默认为 undefined
+var a // 声明了一个变量 a，声明后变量的值默认为 undefined
 console.log(a) // undefined
 ```
 
@@ -256,14 +267,14 @@ console.log(a) // undefined
 
 标识符的命名规则：
 
-- 必须以字母、下划线或 `$` 符号开头
-- 其他位置可以出现数字、字母、下划线或 `$` 符号
-- 不可以与关键字、保留字重复
+1. 必须以字母、下划线或 `$` 符号开头
+2. 其他位置可以出现数字、字母、下划线或 `$` 符号
+3. 不可以与关键字、保留字重复
 
 标识符命名命名规范：
 
-- 变量名应做到望文知义
-- 多个单词使用驼峰命名法
+1. 变量名应做到望文知义
+2. 多个单词使用驼峰命名法
 
 :::
 
@@ -276,7 +287,8 @@ console.log(a) // undefined
 a = 123
 ```
 
-- 变量可以被重新赋值，新的值会取代旧的值（_JS 中变量的数据类型是可变的_）
+- 变量可以被重新赋值，新的值会取代旧的值
+  - JS 中变量的数据类型是可变的
 - 声明和赋值可以合并（_语法糖_）
 - 多个变量可以合并声明并赋值（_语法糖_）
 
@@ -308,16 +320,16 @@ var user = {
 }
 ```
 
-读取对象中的某个属性：`变量名.属性名`
+读取对象变量的某个属性：`变量名.属性名`
 
 ::: important
 
-- 当读取的属性不存在时，会返回 `undefined`
-- 当读取的属性值不存在（_属性值为 `undefined` 或 `null`_）时，会报错
+- 当读取的属性不存在时，返回 `undefined`
+- 当读取的属性值不存在时（_属性值为 `undefined` / `null`_），会报错
 
 :::
 
-更改对象变量的属性：
+修改对象变量的属性：
 
 ```js
 var user = {
@@ -329,7 +341,7 @@ var user = {
 user.password = '654321'
 ```
 
-当赋值的属性不存在时会添加该属性
+当赋值的属性不存在时会自动添加该属性
 
 ::: warning
 
@@ -346,13 +358,13 @@ user.name = 'shaw' // 会报错：原始类型 undefined 不可以添加属性
 
 #### 属性表达式
 
-给属性属性赋值或读取属性时可以使用 `变量名["属性名"]`
+给属性赋值或读取属性时可以使用 `变量名["属性名"]`
 
 属性表达式的使用场景：
 
-1. 属性名中包含特殊字符（_不是标准标识符_）
-   - 实际上 JS 对属性名的命名并不严格，属性名可以为任意格式（_字符串_）
-2. 属性名为变量
+- 属性名中包含特殊字符（_不是标准标识符_）
+  - 实际上 JS 对属性名的命名并不严格，属性名可以为任意格式（_字符串_）
+- 属性名为变量
 
 ```js
 var prop = 'name'
@@ -362,7 +374,7 @@ user[prop] = 'shaw' // 即 user.name = 'shaw'
 ::: important
 
 属性名只能为**字符串**
-如果不是字符串（如数字），宿主环境会自动转换为字符串
+如果不是字符串，如数字，宿主环境会自动将其转换为字符串
 
 ```js
 var obj = {
@@ -379,7 +391,7 @@ console.log(obj[0]) // 'zero'
 
 **JS 中存在变量声明提升**：**所有**变量的**声明**会自动提升到代码最顶部
 
-> JS 中允许声明多个同名变量，**声明提升后会变为一个**
+JS 中允许声明多个同名变量，声明提升后**声明会变为一个**
 
 ### 全局对象
 
@@ -393,7 +405,7 @@ JS 大部分宿主环境，都会提供一个特殊的对象，该对象可以�
 ::: tip
 
 - 全局对象中的所有属性可以直接使用，前面无需加上全局对象名
-- 变量赋值时不写 var 关键字，相当于直接给 `window` 的某个属性赋值
+- 变量赋值时不写 `var` 关键字，相当于直接给 `window` 的某个属性赋值
 
 ```js
 var console = 'abc'
@@ -408,7 +420,7 @@ console = 'abc' // 无法访问声明的 console 变量，实际访问的是全�
 
 :::
 
-::: info `window` 中特殊的 `name` 属性
+::: details 📚 `window` 中特殊的 `name` 属性
 
 ```js
 var name
@@ -484,16 +496,17 @@ console.log(user1.address.country, user2.address.country) // 'uk' 'uk'
 
 #### JS 中的垃圾回收
 
-JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对象，该对象称之为垃圾，JS 引擎会在合适的时间将其占用的内存空间释放。
+JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对象，该对象称之为垃圾；
+JS 引擎会在合适的时间将垃圾占用的内存空间释放。
 
 ## 运算符
 
-解决数据的运算问题
+运算符解决数据的运算问题
 
 ### 操作符和操作数
 
-操作符：运算符，参与运算的符号
-操作数：参与运算的数据，也称之为 _元_、_目_
+操作符：_运算符_，参与运算的符号
+操作数：参与运算的数据，也称之为**元** / **目**
 
 ::: tip
 
@@ -534,9 +547,17 @@ JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对�
 
 表达式 = 操作符 + 操作数
 
-每个表达式都有一个运算结果，该结果称为**返回值**；返回值的类型叫做**返回类型**
+每个表达式都有一个运算结果，该结果称为**返回值**；返回值的类型称为**返回类型**
 
 ==所有的表达式都可以当作数据使用==
+
+::: tip 字面量与表达式
+
+- 字面量：直接书写的固定数据
+- 表达式：产生值的过程
+- 字面量是表达式的一个子集
+
+:::
 
 #### 常见表达式的返回值
 
@@ -545,10 +566,10 @@ JS 引擎中的垃圾回收器会定期的发现内存中无法访问到的对�
    - 如果为声明 + 赋值的表达式，返回值为 `undefined`
 2. `.` 访问符：返回属性的值
 3. `()` 函数调用符：返回的结果取决于函数的运行结果
-4. `console.log()` 的返回值为 `undefined`
+   - `console.log()` 的返回值为 `undefined`
 
    > ```js
-   > console.log(console.log('')) // 输出：undefined
+   > console.log(console.log('')) // undefined
    > ```
 
 ::: info `REPL` 环境
@@ -576,17 +597,17 @@ var example = `${user.name} is ${user.age} years old, gender is ${user.gender ==
 - `-` 减 / 负
 - `*` 乘
 - `/` 除
-- `%` 求余数（_与取模有细微区别_）
+- `%` 求余数（与取模有细微区别）
 - `++` 自增
 - `--` 自减
 - `**` 幂运算
 
 #### 运算中的特殊数字
 
-- 当除数为 `0` 时，得到关键字 `Infinity` (_`number` 类型_)
+- 当除数为 `0` 时，得到关键字 `Infinity` (`number` 类型)
   - 被除数为正数：`Infinity` 正无穷
   - 被除数为负数：`-Infinity` 负无穷
-  - 被除数为 `0`：`NaN` (_Not a Number, 非数字，`number` 类型_)
+  - 被除数为 `0`：`NaN` (_Not a Number_, 非数字，`number` 类型)
 - `NaN` 虽然虽然是数字，但其和任何数字进行算术运算的结果都是 `NaN`
 
 ::: details 📚 `isNaN` 函数：返回一个数据是否为 `NaN`
@@ -631,17 +652,19 @@ console.log(-10 % -3) // -1
 
 #### 非数字类型使用算术运算符
 
-算数运算符（_除 `+` 加法外_）遇到非数字的类型时，会将其转换为数字类型（_自动完成转换_），然后进行运算；
+算数运算符（除 `+` 外）遇到非数字的类型时，会将其转换为数字类型（自动完成转换），然后进行运算；
 
-##### 转换规则
+> 运算中的类型转换不会影响原数据
 
-::: important
+::: important （非 `+` 运算符）转换规则
+
+> `valueOf()`
 
 1. `true` ==> `1`; `false` ==> `0`
 2. `null` ==> `0`
 3. `undefined` ==> `NaN`
 4. `string` 类型：
-   - 如果字符串内部是一个正确的数字（_含 `Infinity`_），则直接转换为数字
+   - 如果字符串内部是一个正确的数字（含 `Infinity`），则直接转换为数字
    - 如果字符串内部不是一个正确的数字，则转换为 `NaN`
    - 如果是一个空字符串 `""`，转换为 `0`
    - 字符串转换时会忽略首尾空格
@@ -654,11 +677,9 @@ console.log(-10 % -3) // -1
 
 :::
 
-> 运算中的类型转换不会影响原数据
+::: tip 一元 `+`
 
-::: tip 强制转换
-
-通常在非数字的类型前面加 `+` 正运算符，可以强制转换为数字类型
+通常在非数字的类型前面加 `+` 运算符，可以强制转换为数字类型
 
 - `+true` ==> `1`
 - `+{}` ==> `NaN`
@@ -667,17 +688,17 @@ console.log(-10 % -3) // -1
 
 :::
 
-##### `+` 加运算符的运算规则
+::: important 多元 `+` 运算符的运算规则
 
-::: important
+> `valueOf()` 再 `toString()`
 
-1. 加号某一边出现 `string` / `object` 类型：进行字符串拼接(_将其他类型转为字符串_)
+1. 加号某一边出现 `string` / `object` 类型：进行字符串拼接(将其他类型转为字符串)
    - 数字 ==> 数字字符串
    - `null` ==> `"null"`
    - `undefined` ==> `"undefined"`
    - `boolean` ==> `"true"` / `"false"`
-   - `object` ==> `"[object Object]"`
-2. 加号两边都为其他原始类型：[转为数字运算](#转换规则)
+   - 普通 `object` ==> `"[object Object]"`
+2. 加号两边都为其他原始类型：[转为数字运算](#非数字类型使用算术运算符)
 
 :::
 
@@ -726,16 +747,16 @@ console.log(a++) // 1
 
 比较规则：
 
-1. 其中一边为非字符串的原始类型：[转换为数字比较](#转换规则)
+1. 其中一边为**非字符串**的原始类型：[转换为数字比较](#非数字类型使用算术运算符)
 2. 两边都为字符串：比较对位字符的 ASCII 编码(_从前往后，没有对位按 0 计算_)
 
    ```js
    console.log('A' > 'B') // 65 > 66 ==> false
-   console.log(`AB` > `AC`) // 66 > 67 ==> false
-   console.log('11' > '1') // 49 > 0 ==> true
+   console.log(`AB` > `AC`) // 65 = 65; 66 > 67 ==> false
+   console.log('11' > '1') // 49= 49; 49 > 0 ==> true
    ```
 
-3. 其中一边为对象：将对象转换为原始类型再按以上两种规则比较
+3. 其中一边为对象：将对象转换为原始类型（_`"[object Object]"` ==> `NaN`_）再按以上两种规则比较
 
 ::: tip 特殊数字比较规则
 
@@ -755,7 +776,7 @@ console.log(a++) // 1
 两边类型不同：
 
 1. `null` 与 `undefined` 互相相等；但与其他类型不等
-2. 其他原始类型[转换为数字比较](#转换规则)
+2. 其他原始类型[转换为数字比较](#非数字类型使用算术运算符)
 3. 其中一边为对象比较时，转换为原始类型再比较
 
 ::: important 特殊数字相等规则
@@ -795,9 +816,7 @@ console.log(a++) // 1
 若<表达式 1>判定结果为假，则直接返回<表达式 1>的结果，**而不执行<表达式 2>**；
 若<表达式 1>为真，则返回<表达式 2>的结果（_短路规则_）
 
-##### Boolean判定
-
-::: important
+::: important Boolean 判定
 
 以下数据均判断为 `false` (_其他数据均为 `true`_)：
 
@@ -820,7 +839,7 @@ console.log(a++) // 1
 
 #### 非 `!`
 
-`!` <数据>：将数据的 Boolean 判定结果取反（_一定返回 `Boolean` 类型_）
+`!` <表达式>：将表达式的 Boolean 判定结果取反（_一定返回 `Boolean` 类型_）
 
 ```js
 console.log(!true) // false
@@ -887,7 +906,7 @@ x = (x++ * 2, x++ * 2, x++ * 2) // x = 6
 
 ==在对精度要求很高的系统中，或要对小数运算结果进行比较时，需要特别注意==
 
-::: info 计算机语言存储数字的方式
+::: details 📚 计算机语言存储数字的方式
 
 1. 整数法
 2. 浮点法
@@ -902,7 +921,7 @@ x = (x++ * 2, x++ * 2, x++ * 2) // x = 6
 
 :::
 
-JS 中存储的所有数字，都按照双精度浮点数存放(_IEEE 754 标准_)：
+JS 中存储的所有数字，都按照双精度浮点数存放(IEEE 754 标准)：
 
 - 每个数字开辟一个内存空间，尺寸固定为64位
   - 第 `1` 位：表示符号位，`0` 表示正数，`1` 表示负数
@@ -1024,7 +1043,7 @@ if (条件表达式) {
 }
 ```
 
-对条件表达式进行[Boolean判定](#Boolean判定)；若为真，则执行代码块；
+对条件表达式进行[Boolean判定](#与--并且-)；若为真，则执行代码块；
 
 - 如果代码块只有一条语句则可以省略 `{}`
 - **如果某个条件判定为真则忽略后面所有条件**
@@ -1110,13 +1129,13 @@ for (初始化表达式; 条件表达式; 迭代表达式) {
 ```
 
 ```mermaid
-graph LR
-S((开始循环)) --> A[初始化表达式]
-A --> B{条件表达式}
-B --true--> C[代码块]
-C --> D[迭代表达式]
-D --> B
-B --false--> E((退出循环))
+flowchart LR
+  S((开始循环)) --> A[初始化表达式]
+  A --> B{条件表达式}
+  B -- true --> C[代码块]
+  C --> D[迭代表达式]
+  D --> B
+  B -- false --> E((退出循环))
 ```
 
 #### `while` 循环
@@ -1128,11 +1147,11 @@ while (条件表达式) {
 ```
 
 ```mermaid
-graph LR
-S((开始循环)) --> A{条件表达式}
-A --true--> B[代码块]
-B --> A
-A --false--> E((退出循环))
+flowchart LR
+  S((开始循环)) --> A{条件表达式}
+  A -- true --> B[代码块]
+  B --> A
+  A -- false --> E((退出循环))
 ```
 
 #### `do-while` 循环
@@ -1146,11 +1165,11 @@ do {
 先运行一次循环体再进行条件判断
 
 ```mermaid
-graph LR
-S((开始)) --> B[代码块]
-B --> A{条件表达式}
-A --true--> B
-A --false--> E((退出))
+flowchart LR
+  S((开始)) --> B[代码块]
+  B --> A{条件表达式}
+  A -- true --> B
+  A -- false --> E((退出))
 ```
 
 #### `for in` 循环
@@ -1254,7 +1273,7 @@ arr.pop() // 返回被删除的元素
 arr.shift() // 返回被删除的元素
 ```
 
-#### splice
+#### splice 操作
 
 ```js
 arr.splice(起始下标, 删除个数, 插入元素1, 插入元素2, ...)
@@ -1272,7 +1291,7 @@ arr.splice(起始下标, 删除个数, 插入元素1, 插入元素2, ...)
 arr.slice(起始下标, 结束下标)
 ```
 
-取出起始下标到结束下标（_不包含_）的元素，并**返回一个新数组**；不会改变原数组
+取出起始下标到结束下标（不包含）的元素，并**返回一个新数组**；不会改变原数组
 
 - 下标为负数，则从末尾开始计算
 - 不指定结束下标，则默认取到数组末尾
@@ -1283,13 +1302,15 @@ arr.slice(起始下标, 结束下标)
 arr.indexOf(元素)
 ```
 
-返回数组中指定元素的第一个下标（_严格相等_）；如果不存在，则返回 `-1`
+返回数组中指定元素的第一个下标（严格相等）；如果不存在，则返回 `-1`
 
 ```js
 arr.lastIndexOf(元素)
 ```
 
-返回数组中指定元素的最后一个下标（_严格相等_）；如果不存在，则返回 `-1`
+返回数组中指定元素的最后一个下标（严格相等）；如果不存在，则返回 `-1`
+
+> 无法使用 `indexOf` / `lastIndexOf` 查找对象，因为是严格相等
 
 #### fill 数组填充
 
@@ -1310,7 +1331,7 @@ arr.fill(元素, 起始下标, 结束下标)
 
 #### 字符串拼接
 
-将数字每一项转换为字符串，然后用指定字符拼接
+将数字每一项转换为字符串，然后用指定字符拼接：
 
 ```js
 var str = arr.join('分隔符')
@@ -1378,3 +1399,1243 @@ arr2[0] = 10
 console.log(arr1) // [10, 2, 3]
 console.log(arr2) // [10, 2, 3]
 ```
+
+<!-- @include: @demo/JS-7-FibonacciArray.md#demo -->
+<!-- @include: @demo/JS-8-TwoDimensionalArray.md#demo -->
+<!-- @include: @demo/JS-9-SortArray.md#demo -->
+<!-- @include: @demo/JS-10-ArrayCount.md#demo -->
+
+## 函数
+
+重复代码会导致程序难以维护（_修改_）；函数主要用于减少重复代码
+
+定义 / 声明 / 创建函数：
+
+```js
+function 函数名(参数1, 参数2, ...) {
+  // 函数体
+  return 返回值
+}
+```
+
+函数体的代码不会直接运行，必须手动调用函数才能执行其中代码；调用函数：
+
+```js
+函数名(参数1, 参数2, ...)
+```
+
+### 函数的声明提升
+
+- 通过函数字面量声明的函数（如上）会自动提升到脚本块的顶部
+- 函数字面量会成为全局对象的属性
+
+#### 函数内部的变量声明
+
+- 不使用 `var`: 给全局对象添加属性
+- 使用 `var` 声明：变量声明提升到函数体顶部
+
+```js
+function test() {
+  var a = 3
+  a--
+}
+var a = 5
+test()
+console.log(a) // 5
+```
+
+### 函数的参数
+
+参数：函数运行的未知条件，由调用者告知
+
+> 函数声明时定义的参数是形参，调用时传入的参数是实参
+
+- 参数只在函数体内有效
+- 如果调用时未传递某个实参，则对应的形参为 `undefined`
+- 传入引用类型的参数时，传入的是地址
+
+### 函数的返回值
+
+函数运行后得到的结果
+
+调用函数时，调用表达式的值就是函数的返回值
+
+#### `return` 关键字
+
+- `return` 会直接结束函数的执行；下方代码不会执行
+- `return` 后不写表达式，则返回 `undefined`
+- 如果函数没有 `return`, 则默认在函数体末尾自动返回 `undefined`
+
+<!-- @include: @demo/JS-11-Is-Prime.md#demo -->
+
+#### 文档注释
+
+```js
+/**
+ * 函数说明
+ * @param {参数类型} 参数名：参数说明
+ * @returns {返回值类型} 返回值说明
+ */
+```
+
+<!-- @include: @demo/JS-12-FunctionExample.md#demo -->
+
+### 作用域
+
+作用域：一块代码区域，一个运行环境
+全局作用域：直接在脚本中书写的代码；函数作用域：函数内部的代码
+
+- 在全局作用域中声明的变量会被提升到脚本块顶部，并成为全局对象的属性
+- 在函数作用域中声明的变量，会被提升到函数顶部；不会成为全局对象的属性（_不会污染全局变量_）
+
+> 尽量把功能封装在函数中
+
+#### 作用域中的变量使用
+
+- 全局作用域只能使用全局作用域中声明的变量 / 函数
+- 函数作用域可以使用作用域内部的变量，也可以使用 _外部环境_ 中声明的变量 / 函数
+  - 函数内部声明的变量和外部环境冲突时，使用作用域内部的变量
+  - 使用一个内部作用域没有的变量 / 函数时会逐级向上层作用域寻找
+- 函数调用完成后内部环境中的变量会被销毁
+
+```js
+var a = 'a'
+
+function test() {
+  var b = 'b'
+  console.log(a) // a
+  console.log(b) // b
+  console.log(c) // Error: c is not defined
+
+  function inner() {
+    var c = 'c'
+    console.log(a) // a
+    console.log(b) // b
+    console.log(c) // c
+  }
+
+  inner()
+}
+test()
+```
+
+::: tip
+
+当某个函数功能比较复杂，在编写该函数时，可能需要另一些函数辅助完成其功能，而这些辅助函数仅会被该函数使用，则可以将这些辅助函数定义在函数内部
+
+:::
+
+#### 闭包 _closure_
+
+闭包：一种现象，内部函数可以使用外部函数环境中的变量 / 函数
+
+### 函数表达式
+
+JS 中，函数也是一个数据；函数可以用于任何需要数据的地方；
+
+- `(function example() {})` 返回函数本身
+- 当函数作为一个表达式时，既不会声明提升也不会成为全局对象的属性
+- 函数表达式无法通过函数名调用
+
+由于大部分情况下，函数表达式的函数名无意义，一般可以省略；没有函数名的函数称为**匿名函数**
+
+```js
+// 函数表达式
+// 创建一个函数，将其赋值给变量
+// 变量声明提升
+var a = function () {}
+// 调用该函数
+a()
+
+// 函数字面量
+// 函数声明提升
+function b() {}
+```
+
+- ==函数是一个引用类型==，赋值时保存的是地址
+- `typeof 函数名` 返回值为 `"function"`
+
+#### 立即执行函数 _IIFE_
+
+> IIFE: Immediately Invoked Function Expression
+
+书写一个函数表达式，然后将其立即调用
+
+1. `(function example() {})()`
+2. `(function example() {}())`
+
+#### 回调函数
+
+将函数作为参数传入，并在合适的时机调用
+
+```js
+function test(callback) {
+  callback()
+}
+
+function call() {
+  console.log('call')
+}
+
+test(call)
+```
+
+<!-- @include: @demo/JS-13-CallbackFunction.md#demo -->
+
+### `this` 关键字
+
+> `this` 无法被赋值
+
+1. 全局作用域中：`this` 固定指向全局对象（_`window`_）
+2. 在函数作用域中：`this` 指向取决于调用方式
+   - 直接调用函数：`this` 指向全局对象
+   - 作为对象的属性并调用（_`对象.属性()` / `对象[属性]()`_）：`this` 指向该对象
+
+==`this` 的指向在函数执行时才能确定==
+
+```js
+var obj = {
+  a: function () {
+    console.log(this)
+  },
+  b: {
+    c: function () {
+      console.log(this)
+    }
+  }
+}
+
+obj.a() // obj
+obj.b.c() // obj.b
+
+var x = obj.b.c
+x() // window
+```
+
+```js
+var someone = {
+  firstName: 'John',
+  lastName: 'Doe',
+  sayName: function () {
+    console.log(this.firstName + ' ' + this.lastName)
+  }
+  // 不能直接使用 someone.firstName 和 someone.lastName：防止该对象被重置
+}
+
+someone.sayName() // John Doe
+```
+
+> 对象中的属性如果是一个函数，也称其为对象的方法
+
+::: details 📍 使用单对象模式 / 命名空间模式减少全局变量污染
+
+```js
+var myFunctions = {
+  a: function () {
+    console.log('a')
+  },
+  b: function () {
+    console.log('b')
+  }
+}
+```
+
+:::
+
+### 构造函数
+
+> 也称构造器
+
+用函数创建对象可以减少繁琐的流程
+
+1. 函数返回一个对象（_工厂函数_）：
+
+   ```js
+   function createPerson(name, age) {
+     return {
+       name,
+       age,
+       sayName() {
+         console.log(this.name)
+       }
+     }
+   }
+
+   var person = createPerson('John', 25)
+   ```
+
+2. 构造函数：
+
+   ```js
+   new 函数(参数1, 参数2, ...)
+   ```
+
+使用 `new` 关键字调用函数创建对象，则该函数为构造函数
+
+- 构造函数专用于创建对象
+- 构造函数通常使用大驼峰命名
+
+==构造函数内部会自动创建一个新对象，`this` 自动指向新建对象，并自动返回该对象==
+
+```js
+function Person(name, age) {}
+
+var p1 = Person('John', 25) // undefined
+var p2 = new Person('John', 25) // {}
+
+function User(name, age) {
+  this.name = name
+  this.age = age
+}
+
+var u1 = User('John', 25) // { name: 'John', age: 25}
+```
+
+构造函数中如果出现返回值：
+
+- 如果返回原始类型，则直接忽略
+- 如果返回引用类型，则使用该返回值
+
+所有的对象本质都是通过构造函数创建的：
+
+```js
+var arr = [1, 2, 3] // 语法糖 new Array(1, 2, 3)
+var obj = { a: 1, b: 2 } // 语法糖 new Object({ a: 1, b: 2 })
+function createPerson(name, age) {
+  return {
+    name,
+    age,
+    sayName() {
+      console.log(this.name)
+    }
+  } // 语法糖，返回构造函数
+}
+```
+
+#### `new.target`
+
+`new.target`: 该表达式在函数中使用，返回当前构造函数
+
+通常用于判断该函数是否使用 `new` 调用；如果该函数不是通过 `new` 调用，则返回 `undefined`
+
+```js
+function User(name, age) {
+  if (new.target === undefined) {
+    return new User(name, age)
+  }
+  this.name = name
+  this.age = age
+}
+```
+
+<!-- TODO: 英雄打怪游戏(构造函数) -->
+
+### 函数的本质
+
+函数的本质就是对象
+
+```js
+var sum = new Function('a', 'b', 'return a + b')
+console.log(sum(1, 2)) // 3
+console.log(typeof sum) // 'function'
+```
+
+所有的函数都是通过 `new Function()` 创建的
+
+- `Function` 构造函数由浏览器提供
+- `Function` --> 产生函数对象 --> 产生普通对象
+
+由于函数本身是一个对象，所以函数可以拥有属性
+
+```js
+console.log(typeof Number) // 'function'
+console.log(typeof Number.isNaN) // 'function'
+console.log(Number.MAX_SAFE_INTEGER) // 2^53 - 1
+```
+
+#### 包装类
+
+JS 为了增强原始类型的功能，为 `boolean`、`string`、`number` 专门创建了构造函数
+
+如果语法上将原始类型当作对象使用时（_一般在使用属性时_），JS 会自动在该位置利用对应的构造函数，创建一个对象来访问该原始类型的该属性。
+
+```js
+var a = 3.1415
+a.toFixed(2)(
+  // '3.14'
+  new Number(3.1415)
+).toFixed(2) // '3.14'
+```
+
+```js
+var x = 123
+var y = new Number(123)
+console.log(x == y) // true
+console.log(x === y) // false // 类型不同
+```
+
+::: important
+
+- 在 JS 中，可以认为构造函数就是类，创建的对象就是实例
+- 成员方法（属性） / 实例方法（属性）：通过构造函数创建的对象上的方法（属性）
+- 类方法（属性） / 静态方法（属性）：通过构造函数本身调用的方法（属性）
+
+:::
+
+### 递归
+
+函数内部直接或间接调用自身
+
+```js
+// 求斐波那契数列第 n 项
+function f(n) {
+  if (n === 1 || n === 2) {
+    return 1
+  }
+  return f(n - 1) + f(n - 2)
+}
+```
+
+#### 执行栈 _call stack_
+
+无论任何代码的执行，都必须有一个执行环境，执行环境为代码执行提供支持；执行环境全部放在执行栈中。
+
+每个函数的调用都需要创建一个函数执行环境，函数调用结束，该执行环境就会被销毁
+
+<!-- @include: @demo/JS-14-CallStack.md#demo -->
+
+```js
+// n 的阶乘
+
+function f(n) {
+  if (n === 1) {
+    return 1
+  }
+  return n * f(n - 1)
+}
+```
+
+**递归使用时要避免无限递归（_没有终止条件_）**
+
+执行栈有相对固定的大小，如果执行环境太多，执行栈无法容纳，会报错：`Maximum call stack size exceeded`（_栈溢出_）
+
+::: tip 对比无限循环
+
+死循环不会报错，也不会导致栈溢出（_只有一个执行环境_）
+
+:::
+
+::: details 📚 尾调用
+
+如果一个函数最后一条语句是调用函数，且最后一条语句表达式仅由调用函数组成，则称该语句为**尾调用**；如果尾调用是调用函数自身，则称为**尾递归**
+
+某些语言或执行环境会对尾调用进行优化：会立即销毁当前函数的执行环境，避免执行栈空间被占用。
+
+在浏览器环境中均未实现尾调用优化（_由于调试、性能分析、栈追踪等开发体验问题，暂无计划_）；但 node 环境中可以使用
+
+:::
+
+### `arguments` 关键字
+
+`arguments` 关键字：表示函数调用时传入的所有参数（_实参_）组成的**类数组**（_伪数组_）
+
+- 可以取到未定义但传入的多余参数
+- `arguments` 的值会与对应的形参绑定，但未传的参数不会映射
+
+> 伪数组：没有通过 `Array` 构造器创建的类似数组的结构，缺少很多数组的实例方法
+
+## 标准库
+
+标准库也称标准 API
+标准：ECMA 标准
+
+库：_library_，一组预先编写好的代码，可以直接使用，无需自己编写
+API：_Application Programming Interface_，应用程序编程接口
+
+### `Object` 构造函数
+
+```js
+new Object(value)
+Object(value)
+```
+
+`Object()` 构造函数将输入转换为一个对象
+
+- 如果该值是 `null` 或者 `undefined`，它会生成并返回一个空对象
+- 如果该值已经是一个对象，则返回该值
+- 否则，返回与给定值对应的类型的对象
+
+  ```js
+  var x = new Object(123) // new Number(123)
+  ```
+
+#### `Object` 的静态成员
+
+属性：
+
+- `Object.length` 固定为 `1`，表示参数个数
+
+方法：
+
+1. `Object.keys(obj)`
+   - 参数 `obj` 是一个对象
+   - 返回给定对象自身可枚举的属性名（_键_）组成的字符串数组
+
+2. `Object.values(obj)`
+   - 参数 `obj` 是一个对象
+   - 返回给定对象自有可枚举键的值组成的数组
+
+3. `Object.entries(obj)`
+   - 参数 `obj` 是一个对象
+   - 返回一个数组，数组的每一项是一个 `[key, value]` 数组，表示对象自身可枚举的键值对
+
+```js
+var obj = { a: 1, b: 2, c: 3 }
+console.log(Object.keys(obj)) // ['a', 'b', 'c']
+console.log(Object.values(obj)) // [1, 2, 3]
+```
+
+#### `Object` 的实例成员
+
+只要是对象，都有 `Object` 的实例成员
+
+1. `Object.prototype.toString()` 返回该对象的字符串
+
+   ```js
+   var obj = { a: 1, b: 2, c: 3 }
+   console.log(obj.toString()) // [object Object]
+   ```
+
+   默认情况下，对象的 `toString()` 方法返回 `[object Object]`；**但实例成员可以被重写**，如数组的 `toString()` 方法
+
+2. `Object.prototype.valueOf()` 返回对象的值；默认情况下，返回对象本身
+
+   ```js
+   var obj = { a: 1, b: 2, c: 3 }
+   console.log(obj.valueOf()) // { a: 1, b: 2, c: 3 }
+   console.log(obj.valueOf() === obj) // true
+   ```
+
+::: important
+
+在 JS 中，当自动进行类型转换时，如果转换的是一个对象，实际上会先调用对象的 `valueOf()` 方法，然后调用返回结果的 `toString()` 方法，然后将得到的结果进行进一步转换。
+
+```js
+var obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  toString() {
+    return 'hello'
+  }
+}
+console.log(obj + 1) // 'hello1'
+```
+
+```js
+var obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  valueOf() {
+    return 123
+  }
+}
+console.log(obj + 1) // 124
+```
+
+==如果调用 `valueOf()` 已经得到原始类型的值，则不会再调用 `toString()` 方法==
+
+:::
+
+### `Function` 构造函数
+
+#### `Function` 的实例成员
+
+所有函数都具有 `Function` 的实例成员
+
+属性：
+
+- `Function.length` 函数形参的个数
+- `Function.name` 函数名
+
+方法：
+
+- `Function.prototype.apply(thisArg, argsArray)` 调用函数同时指定该函数的 `this` 指向
+  - `thisArg` 参数：需要绑定的 `this` 指向
+  - `argsArray` 调用函数的参数数组
+
+- `Function.prototype.call(thisArg, ...args)` 调用函数同时指定该函数的 `this` 指向
+  - `thisArg` 参数：需要绑定的 `this` 指向
+  - `...args` 参数：调用函数的参数列表
+
+- `Function.prototype.bind(thisArg, ...args)` 返回一个同样的新函数，绑定该函数的 `this` 指向，适用于多次调用
+
+```js
+function sayHello(a) {
+  console.log(this.name, 'hello')
+  console.log(a)
+}
+var usr = { name: 'John' }
+sayHello.apply(usr, [1]) // John hello
+sayHello.call(usr, 1)
+```
+
+通常可以利用 `apply()` 或 `call()` 方法，将某个伪数组转为真数组
+
+```js
+function toArr() {
+  console.log(arguments)
+  // 伪数组转真数组
+  var arr = [].slice.call(arguments)
+  console.log(arr)
+}
+toArr(1, 2, 3)
+```
+
+- `Function.prototype.toString()` 获取函数实现源码的字符串（_覆盖了 `Object.prototype.toString()`_）
+
+### `Array` 构造函数
+
+所有通过 `Array` 构造器创建的对象都是数组
+
+#### `Array` 的静态成员
+
+属性：
+
+- `Array.from()` 将一个伪数组转换为真数组
+
+  ```js
+  function toArr() {
+    return Array.from(arguments)
+  }
+  toArr(1, 2, 3) // [1, 2, 3]
+  ```
+
+- `Array.isArray()` 判断一个值是否为数组
+
+  ```js
+  function toArr() {
+    return Array.isArray(arguments)
+  }
+  toArr() // false
+  ```
+
+- `Array.of()` 根据参数创建一个数组
+
+  ```js
+  Array.of(1, 2, 3) // [1, 2, 3]
+  Array.of(3) // [3]
+  ```
+
+#### `Array` 的实例成员
+
+方法：[见](#数组的常用操作)
+
+- `Array.prototype.fill()`
+- `Array.prototype.pop()`
+- `Array.prototype.push()`
+- `Array.prototype.reverse()` 对数组进行反序并返回
+- `Array.prototype.shift()`
+- `Array.prototype.unshift()`
+- `Array.prototype.splice()`
+- `Array.prototype.sort()` 对数组进行排序并返回
+
+  ```js
+  var arr1 = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+  arr1.sort() // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+  var arr2 = [11, 211, 22, 12, 111]
+  arr2.sort() // [11, 111, 12, 211, 22]
+  ```
+
+  **默认按照字符串的 Unicode 编码进行排序**
+
+  `Array.prototype.sort(compareFunction)` 可以传入比较函数
+
+  ```js
+  var arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+  arr.sort(function (a, b) {
+    return a - b
+  }) // [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+  ```
+
+  ```js
+  // 随机排序 / 乱序
+  arr.sort(function (a, b) {
+    return Math.random() - 0.5
+  })
+  ```
+
+> 纯函数 / 无副作用函数不会导致当前对象发生改变
+
+- `Array.prototype.concat()`
+- `Array.prototype.includes()` 判断数组是否包含满足条件的值（_严格相等_）
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  console.log(arr.includes(3)) // true
+  // 从下标 3 开始查找
+  console.log(arr.includes(3, 3)) // false
+  ```
+
+- `Array.prototype.join()`
+- `Array.prototype.slice()`
+- `Array.prototype.toString()`
+- `Array.prototype.indexOf()`
+- `Array.prototype.lastIndexOf()`
+- `Array.prototype.forEach()` 遍历数组
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.forEach(function (item, index, arr) {
+    console.log(item, index, arr)
+  })
+  ```
+
+- `Array.prototype.every()` 判断是否所有元素都满足条件
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.every(function (item, index, arr) {
+    return item > 0 && item < 6
+  }) // true
+  ```
+
+- `Array.prototype.some()` 判断数组中至少有一个元素满足条件
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.some(function (item, index, arr) {
+    return item > 4
+  }) // true
+  ```
+
+- `Array.prototype.filter()` 返回一个新数组，包含所有满足条件的元素
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.filter(function (item, index, arr) {
+    return item > 4
+  }) // [5]
+  ```
+
+- `Array.prototype.find()` 返回第一个满足条件的元素，如果没有返回 `undefined`
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.find(function (item, index, arr) {
+    return item > 4
+  }) // 5
+  ```
+
+- `Array.prototype.findIndex()` 返回第一个满足条件的元素的下标，如果没有返回 `-1`
+- `Array.prototype.map()` 将数组的每一项映射为一个新值，返回一个新数组
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.map(function (item, index, arr) {
+    return item * 2
+  }) // [2, 4, 6, 8, 10]
+  ```
+
+- `Array.prototype.reduce()` 对数组中的每个元素按序执行一个提供的函数，每一次运行会将先前元素的计算结果作为参数传入，返回最后的结果
+
+  ```js
+  var arr = [1, 2, 3, 4, 5]
+  arr.reduce(function (a, b, index, arr) {
+    return a + b
+  }) // 15
+  // 指定初始值
+  arr.reduce(function (a, b, index, arr) {
+    return a + b
+  }, 10) // 25
+
+  arr = [1]
+  arr.reduce(function (a, b, index, arr) {
+    return a + b
+  }) // 不会运行回调函数，直接返回数组的第一个元素
+  ```
+
+::: details 📍 链式编程
+
+链式编程：每一个函数调用返回的类型一致
+
+```js
+var arr = [1, 2, 3, 4, 5]
+arr
+  .map(function (item) {
+    return item * 2
+  })
+  .filter(function (item) {
+    return item > 4
+  })
+```
+
+:::
+
+### 原始类型包装器
+
+- `new 包装器(value)` 返回一个包装器对象，包装了原始类型的值
+- `包装器(value)` 返回一个原始类型
+
+#### `Number` 构造函数
+
+> [`number` 强制转换](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number#number_%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2)
+
+静态成员：
+
+- `Number.isNaN()` 全局 `isNaN()` 的更健壮版本：不会尝试将参数转换为数字，因此非数字总是返回 `false`
+- `Number.isInteger(value)` 判断传入的值是否为整数（_只要值是整数，无论是整数型还是浮点数型_）
+- `Number.parseInt(string)` 将数据进行强制字符串转换再转换为整数，直接舍去小数（_与全局 `parseInt()` 完全相同_）
+  - `radix` 参数（_可选_）：指定进制，默认 `10`
+- `Number.parseFloat(string)` 数据数据进行强制字符串转换再转换为浮点数（_与全局 `parseFloat()` 完全相同_）
+
+::: details 📍 Number 静态成员示例
+
+```js
+Number.parseInt(3.6) // 3
+Number.parseInt('333', 2) // NaN
+Number.parseInt('103', 2) // 2
+Number.parseInt(1.111, 2) // 1
+
+Number.parseFloat(3) // 3.000
+Number.parseFloat('   3.14') // 3.14
+Number.parseFloat('3.14abc') // 3.14
+Number.parseFloat('abc3.14') // NaN
+Number.parseFloat('3.14.56') // 3.14
+```
+
+:::
+
+> 从字符串开始位置进行查找，找到第一个**有效数字**进行转换，如果没有找到，返回 `NaN`
+
+<!-- TODO: 得到最小值和最大值之间的随机整数 -->
+
+实例成员：
+
+- `Number.prototype.toFixed(num)` 返回数字指定小数位数的字符串，会有四舍五入
+- `Number.prototype.toPrecision(num)` 返回数字的指定精度（_有效数字_）的字符串，会有四舍五入
+
+```js
+var num = 123.456
+console.log(num.toFixed(2)) // "123.46"
+console.log(num.toPrecision(3)) // 123
+console.log(num.toPrecision(2)) // "1.2e+2" // 科学计数法 e 表示 10 的幂
+```
+
+#### `Boolean` 构造函数
+
+实例成员：
+
+- `Boolean.prototype.toString()` 返回布尔值的字符串表示
+
+#### `String` 构造函数
+
+静态成员：
+
+- `String.fromCharCode()` 通过 Unicode 编码创建字符串（_超出编码范围会截断但不会报错_）
+
+  ```js
+  String.fromCharCode(65, 66) // "AB"
+  ```
+
+- `String.fromCodePoint()` 通过 Unicode 码点（_有效编码_）创建字符串
+
+实例成员：
+
+- `String.prototype.length` 返回字符串的长度
+- `String.prototype.charAt(index)` 返回指定索引处的字符，超出索引返回空字符串
+- `String.prototype.charCodeAt(index)` 返回指定索引处的 Unicode 码点，超出索引返回 `NaN`
+- `String.prototype.concat()` 连接多个字符串，返回一个连接后的新字符串
+- `String.prototype.includes()` 判断字符串是否包含指定字符串
+- `String.prototype.endsWith()` 判断字符串是否以指定字符串结尾
+- `String.prototype.startsWith()` 判断字符串是否以指定字符串开头
+- `String.prototype.indexOf()` 返回指定字符串第一次出现的索引，不存在返回 `-1`
+- `String.prototype.lastIndexOf()` 返回指定字符串最后一次出现的索引，不存在返回 `-1`
+- `String.prototype.padEnd(length, str)` 以指定字符填充字符串的末尾以达到指定长度，返回填充后的新字符串
+- `String.prototype.padStart(length, str)` 以指定字符填充字符串的开头以达到指定长度，返回填充后的新字符串
+- `String.prototype.repeat(num)` 返回字符串重复指定次数的新字符串
+- `String.prototype.slice()` 返回指定**指定索引开始到指定索引结束**的子字符串，与数组的 `slice()` 方法类似；**索引可以为负数**
+- `String.prototype.substr(start, length)` 返回从指定索引开始的**指定长度**的子字符串；**索引可以为负数**
+- `String.prototype.substring(index1, index2)` 返回从**指定索引开始到指定索引结束**的子字符串；
+  - **索引不能为负数**，负数索引会被自动转换为 `0`
+  - **参数顺序可以调换**
+- `String.prototype.toLowerCase()` 返回字符串的小写版本
+- `String.prototype.toUpperCase()` 返回字符串的大写版本
+- `String.prototype.trim()` 返回字符串去除首尾空白字符的新字符串
+- `String.prototype.split(separator)` 返回一个由指定分隔符分割的字符串数组
+
+::: tip
+
+字符串是一个伪数组：有 `length` 属性，且可以通过索引访问字符串中的字符
+
+```js
+var str = 'hello'
+Array.from(str) // ["h", "e", "l", "l", "o"]
+```
+
+:::
+
+::: details 📍 String 实例成员示例
+
+```js
+var str = 'hello'
+console.log(str.length) // 5
+console.log(str.charAt(2)) // "l"
+console.log(str.charCodeAt(2)) // 108
+console.log(str.concat(' ', 'world')) // "hello world"
+console.log(str.includes('l')) // true
+console.log(str.endsWith('o')) // true
+console.log(str.indexOf('l')) // 2
+console.log(str.lastIndexOf('l')) // 3
+console.log(str.padEnd(10, '-')) // "hello-----"
+console.log(str.padStart(10, 'abcd')) // "abcdahello"
+console.log(str.repeat(3)) // "hellohellohello"
+```
+
+:::
+
+> 字符串字面量可以直接使用实例方法
+
+### `Math` 对象
+
+> `Math` 是一个对象，不是构造函数
+
+- `Math.random()` 得到一个大于等于 `0` 且小于 `1` 的随机数
+- `Math.PI` 返回圆周率
+- `Math.abs(x)` 返回 `x` 的绝对值
+- `Math.floor(x)` 将 `x` 向下取整
+- `Math.ceil(x)` 将 `x` 向上取整
+- `Math.max(x, y, ...)` 得到一组数据的最大值，如果没有参数，返回 `-Infinity`
+- `Math.min(x, y, ...)` 得到一组数据的最小值，如果没有参数，返回 `Infinity`
+- `Math.pow(x, y)` 返回 `x` 的 `y` 次方
+- `Math.round(x)` 将 `x` 四舍五入为整数，负数向数轴的正方向五入
+
+### `Date` 构造函数
+
+> GMT（_Greenwich Mean Time_）格林威治世界时，太阳时，精确到毫秒
+> UTC（_Universal Time Coordinated_）世界协调时，原子时，精确到纳秒
+> UTC 时间与 GMT 时间误差不超过 0.9 秒
+
+时间戳：`1970-01-01 00:00:00 UTC` 到某个时间的毫秒数
+
+#### 创建事件对象
+
+> 不使用构造函数，直接调用 `Date()`， 会忽略所有参数，直接返回当前时间的字符串
+
+`new Date()` 创建日期兑现
+
+- 无参数：返回当前时间的对象
+- 单个参数，为数字：传入时间戳，返回对应的日期对象
+- 多个参数，分别为年、月、日、时、分、秒、毫秒：返回对应的日期对象
+  - 月份从 `0` 开始
+  - 日、时、分、秒、毫秒可以省略，默认 `0`
+  - 可以传负数，会根据指定日期进行计算
+
+#### 日期对象实例成员
+
+- `Date.prototype.getDate()` 返回日期对象对应的日期，`1` ~ `31`
+- `Date.prototype.getUTCDate()` 返回日期对象对应的日期（_UTC 时间_）
+- `Date.prototype.getDay()` 返回日期对象对应的星期几，`0` ~ `6`，`0` 为星期日
+- `Date.prototype.getFullYear()` 返回日期对象对应的(完整)年份
+- `Date.prototype.getMonth()` 返回日期对象对应的月份，`0` ~ `11`
+- `Date.prototype.getHour()` 返回日期对象对应的小时，`0` ~ `23`
+- `Date.prototype.Minute()` 返回日期对象对应的分钟，`0` ~ `59`
+- `Date.prototype.getSeconds()` 返回日期对象对应的秒，`0` ~ `59`
+- `Date.prototype.getMilliseconds()` 返回日期对象对应的毫秒，`0` ~ `999`
+- `Date.prototype.getTime()` 返回日期对象对应的时间戳
+- `Date.prototype.setDate(date)` 设置日期对象对应的日期
+- `Date.prototype.setDay(day)` 设置日期对象对应的星期几
+- `Date.prototype.setMonth(month)` 设置日期对象对应的月份
+- `Date.prototype.setFullYear(year)` 设置日期对象对应的年份
+- `Date.prototype.setHours(hour)` 设置日期对象对应的小时
+- `Date.prototype.setMinutes(minute)` 设置日期对象对应的分钟
+- `Date.prototype.setSeconds(second)` 设置日期对象对应的秒
+- `Date.prototype.setMilliseconds(millisecond)` 设置日期对象对应的毫秒
+- `Date.prototype.setTime(timestamp)` 设置日期对象对应的时间戳
+- `Date.prototype.toDateString()` 返回日期对象对应的日期字符串，`Tue Jun 18 2019`
+- `Date.prototype.toISOString()` 返回日期对象对应的 ISO 标准格式字符串，`yyyy-mm-ddTHH:MM:SS.sssZ`
+- `Date.prototype.toLocaleDateString()` 根据系统时区，返回日期对象对应的本地日期字符串，`yyyy/mm/dd`
+- `Date.prototype.toLocaleString()` 根据系统时区，返回日期对象对应的本地日期时间字符串，`yyyy/mm/dd 上午HH:MM:SS`
+- `Date.prototype.toLocaleTimeString()` 根据系统时区，返回日期对象对应的本地时间字符串，`下午HH:MM:SS`
+- `Date.prototype.toUTCString()` 返回日期对象对应的 UTC 标准格式字符串，`Tue, 18 Jun 2019 08:00:00 GMT`
+- `Date.prototype.toString()` 返回日期对象对应的字符串，根据系统时区，`Tue Jun 18 2019 08:00:00 GMT+0800 (中国标准时间)`
+
+#### 日期运算
+
+日期对象重写了 `Object` 对象的 `valueOf()` 方法，返回日期对象对应的时间戳数字；
+因此日期对象可以进行运算
+
+<!-- TODO: 根据当天月份输出本月每天的星期 -->
+
+## 正则表达式
+
+一个规则，用于验证字符串
+
+### 基础规则
+
+1. 字面量匹配：规则中直接书写字面量
+
+   ```js
+   var reg = /abc/ // 匹配 "abc"
+   ```
+
+2. 特殊字符：
+   - `.` 匹配除了换行符外任意字符
+   - `^` 匹配字符串的开始
+   - `$` 匹配字符串的结束
+
+3. 转义符：
+   - `\` 将特殊字符转义，匹配该字符本身
+   - `\n` 匹配换行符
+   - `\t` 匹配制表符
+   - `\s` 匹配空白字符（_包括空格、制表符、换行符等_）；`\S` 匹配非空白字符
+   - `\b` 匹配单词边界；`\B` 匹配非单词边界
+   - `\d` 匹配一个数字；`\D` 匹配一个非数字
+   - `\w` 匹配一个字母、数字或下划线；`\W` 匹配一个非字母、数字或下划线
+   - `\u` 匹配 Unicode 字符
+
+4. 字符集： `[]` 匹配指定范围内的字符
+   - `[a-z]` 匹配小写字母
+   - `[A-Z]` 匹配大写字母
+   - `[0-9]` 匹配数字，相当于 `\d`
+   - `[\u4e00-\u9fa5]` 匹配中文字符
+   - `[^]` 对字符集取反，匹配不在字符集内的字符
+
+5. 量词：前面的规则出现的次数
+   - `*` 匹配前面的规则零次或多次
+   - `+` 匹配前面的规则一次或多次
+   - `?` 匹配前面的规则零次或一次
+   - `{n}` 匹配前面的规则 `n` 次
+   - `{n,}` 匹配前面的规则 `n` 次或更多次
+   - `{n,m}` 匹配前面的规则 `n` 次到 `m` 次
+
+6. 或者：`|` 多个匹配规则中的任意一个
+7. 括号：`()` 用于分组
+
+### JS 中的正则表达式
+
+JS 中正则表达式表现为一个对象；该对象由构造函数 `RegExp` 创建
+
+1. `/pattern/flags`
+2. `new RegExp('pattern', 'flags')`
+
+标志位 _flags_：
+
+- `g` 全局匹配模式（_默认模式只匹配第一个匹配项_）
+- `i` 忽略大小写
+- `m` 多行模式（_默认模式只匹配一行_）
+
+#### 正则表达式实例成员
+
+- `RegExp.prototype.global` _布尔值_，是否开启全局匹配模式，只读属性
+- `RegExp.prototype.ignoreCase` _布尔值_，是否忽略大小写，只读属性
+- `RegExp.prototype.multiline` _布尔值_，是否开启多行模式，只读属性
+- `RegExp.prototype.source` 规则字符串
+- `RegExp.prototype.test(str)` 验证某个字符串是否满足规则，返回一个布尔值
+  - 开启全局匹配模式时，会从 `RegExp.lastIndex` 继续匹配，直到没有匹配项为止
+- `RegExp.prototype.exec(str)` 执行匹配，返回一个数组，包含匹配结果；如果没有匹配项，返回 `null`
+  - 属性 `0` 匹配项
+  - 属性 `index` 匹配项在字符串中的索引
+  - 属性 `input` 被匹配的字符串
+
+```js
+// 判断匹配多少处
+var str = 'hello world, hello world, hello world'
+var reg = /hello/g
+var count = 0
+while (reg.exec(str)) {
+  count++
+}
+console.log(count) // 3
+```
+
+::: info 贪婪模式
+
+默认情况下，正则表达式匹配使用贪婪模式，即尽可能多的匹配字符
+
+在量词后面加上 `?` 使其变为非贪婪模式，即尽可能少的匹配字符
+
+:::
+
+#### 字符串中的正则表达式
+
+- `String.prototype.match(reg)` 返回一个数组，包含所有匹配项；如果没有匹配项，返回 `null`
+- `String.prototype.search(reg)` 返回第一个匹配项的下标；如果没有匹配项，返回 `-1`
+- `String.prototype.split(reg)` 按匹配项分割字符串
+- `String.prototype.replace(reg, newStr/func)` 替换所有匹配项，返回替换后的字符串
+
+```js
+var str = 'hello world'
+var reg = /\b[a-z]/g
+str = str.replace(reg, function (match) {
+  return match.toUpperCase()
+}) // "Hello World"
+```
+
+<!-- TODO: 得到一个字符串中中文字符的数量 -->
+
+<!-- TODO: 将敏感词库的词语替换成 \* -->
+
+<!-- TODO: 得到一个html字符串中出现的章节数量 -->
+
+### 进阶规则
+
+#### 捕获组
+
+用 `()` 包裹的部分称为捕获组，捕获组会出现在匹配结果中
+
+```js
+var reg = /(\d[a-z])[a-z]+/g
+var str = '123abc456def'
+console.log(reg.exec(str)) // ["3abc", "3a"] // "3a" 是捕获组
+```
+
+```js
+// 得到所有日期，并得到具体年月日
+var s = '2025-05-01, 2025-05-02, 2025-05-03'
+var reg = /(\d{4})-(\d{2})-(\d{2})/g
+while ((result = reg.exec(s))) {
+  console.log(result) // ["2015-05-01", "2015", "05", "01"]
+}
+```
+
+> 捕获组按括号从左到右顺序排列
+
+- 捕获组命名：
+
+  ```js
+  var reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/g
+  var str = '2025-05-01, 2025-05-02, 2025-05-03'
+  while ((result = reg.exec(str))) {
+    console.log(result.groups.year, result.groups.month, result.groups.day)
+  }
+  ```
+
+  - 命名后的捕获组称为具名捕获组，可以通过 `result.groups` 访问
+
+- 非捕获组：使用 `?:` 包裹的部分称为非捕获组，不会出现在匹配结果中
+
+  ```js
+  var reg = /(?:\d{4})/g
+  ```
+
+`String.prototype.replace()` 可以使用捕获组：
+
+```js
+var str = '2025-05-01, 2025-05-02, 2025-05-03'
+var reg = /(\d{4})-(\d{2})-(\d{2})/g
+var str2 = str.replace(reg, function (match, p1, p2, p3) {
+  return `${p1}/${p2}/${p3}`
+}) // "2025/05/01, 2025/05/02, 2025/05/03"
+var str3 = str.replace(reg, '$1/$2/$3') // "2025/05/01, 2025/05/02, 2025/05/03"
+```
+
+#### 反向引用
+
+在正则表达式中使用 `\n` 引用前面捕获组的第 `n` 个匹配项；或者使用 `\k<name>` 引用具名捕获组的匹配项
+
+```js
+// 匹配连续相同数字
+var reg = /(\d{2}\1)/g
+var str = '1212'
+reg.test(str) // true
+```
+
+#### 正向断言 / 正向预查
+
+检查某个字符后面的字符是否满足规则，满足该规则的字符不成为匹配结果
+
+使用 `(?=)` 避免匹配后面的字符
+
+```js
+var reg = /[a-z](?=\d)/g
+var str = 'a1b2c3'
+while ((result = reg.exec(str))) {
+  console.log(result[0])
+} // "a" // "b" // "c"
+```
+
+```js
+// 一个数字每隔三位加一个逗号
+var reg = /\B(?=(\d{3})+$)/g
+var str = '123456789'
+str = str.replace(reg, ',') // "123,456,789"
+```
+
+#### 负向断言 / 负向预查
+
+检查某个字符后面的字符是否不满足规则，满足该规则的字符不成为匹配结果和捕获组
+
+```js
+var reg = /[a-z](?!\d)/g
+var str = '1a2b3c'
+while ((result = reg.exec(str))) {
+  console.log(result[0])
+} // 'c'
+```
+
+```js
+// 判断密码：大小写字母、数字、特殊字符（!@#,.）、长度 8-16 位
+var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#,.]).{8,16}$/
+```
+
+先预查某个字符后有必须的字符，再检查长度
+
+<!-- TODO: 判断密码强度，有特殊字符为强 -->
+
+## 错误处理
+
+1. 语法错误：`Uncaught SyntaxError: Unexpected token ...` 导致整个脚本块无法执行
+2. 运行错误
+   1. 运行报错：导致当前脚本块后续无法运行
+   2. 运行结果不符合预期：无报错
+
+### 如何调试错误
+
+1. 控制台打印
+2. 断点调试
+   - step over：执行一行
+   - step into：进入当前函数
+
+### 抛出错误
+
+错误的本质在 js 中是一个对象
+
+抛出错误：`throw 错误对象`
+
+错误对象构造函数：`new Error('错误信息')`
+
+错误堆栈：抛出行 --> 执行的函数（_函数调用链_） --> 全局环境
+
+#### 错误对象
+
+静态成员：
+
+- `message` 错误信息
+- `stack` 错误堆栈
+
+#### 不同类型的错误
+
+- `new ReferenceError('引用错误')`
+- `new SyntaxError('语法错误')`
+- `new TypeError('类型错误')`
+- `new RangeError('范围错误')`
+
+### 捕获错误
+
+处理可能发生的问题
+
+```js
+try {
+  // 代码块 1
+} catch (错误对象) {
+  // 代码块 2
+} finally {
+  // 代码块 3
+}
+```
+
+当运行代码块 1 发生错误时，立即执行代码块 2，错误对象为抛出的错误对象；无论是否发生错误，都会执行代码块 3；处理完的错误会继续执行后续代码
+
+> 即使在 `catch` 中 `return` 也不会退出，而是继续执行 `finally` 中的代码块
