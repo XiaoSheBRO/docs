@@ -1,6 +1,6 @@
 # Coding
 
-## (element/element-plus) `el-button` 的 `.focus` 颜色问题
+## (element/element-plus) `el-button` 的 `.focus` 颜色混淆
 
 ::: tabs
 @tab solution
@@ -18,9 +18,68 @@
 element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效果易混淆
 :::
 
-## (element-plus) `el-table` 中使用 `el-image` 预览图片样式失效解决
+## (Vant4) 函数式组件样式丢失
+
+```js
+// 在组件或 main.js 中引入相关样式
+import 'vant/es/toast/style/index'
+```
+
+## (element-plus) 表格分页新写法
+
+```html
+<el-pagination
+  v-model:page-size="meta.perPage"
+  v-model:current-page="meta.currentPage"
+  :total="meta.totalCount"
+  :page-sizes="[meta.perPage, 20, 50, 100, 200]"
+  background
+  layout="->, total, sizes, prev, pager, next, jumper"
+  @update:current-page="fetchTable"
+  @update:page-size="fetchTable"
+/>
+```
+
+```js
+const searchForm = ref({})
+const searchFormDefault = JSON.stringify(searchForm.value)
+const meta = ref({
+  currentPage: 1,
+  perPage: 10,
+  totalCount: 0,
+  pageCount: 0
+})
+const metaDefault = JSON.stringify(meta.value)
+// list
+const tableData = ref([])
+const fetchTable = () => {
+  const params = {
+    ...searchForm.value,
+    currentPage: meta.value.currentPage,
+    perPage: meta.value.perPage
+  }
+  getTableList(params).then((res) => {
+    tableData.value = res.data.list
+    meta.value.totalCount = res.data.totalCount
+    meta.value.pageCount = res.data.pageCount
+  })
+}
+// search
+const handleSearch = () => {
+  meta.value.currentPage = 1
+  fetchTable()
+}
+const handleReset = () => {
+  searchForm.value = JSON.parse(searchFormDefault)
+  meta.value = JSON.parse(metaDefault)
+  fetchTable()
+}
+```
+
+## (element-plus) `el-table` 中 `el-image` 预览样式错乱
 
 ```css
+/* 添加以下样式 */
 :deep(.el-table__cell) {
   position: static !important;
 }
@@ -29,13 +88,14 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
 ## (CSS) `flex-warp: warp;` 下元素间距优雅方案
 
 ```css
+/* 注意兼容性 */
 .flex-box {
   gap: 20px;
   gap: 20px 10px; /* row column */
 }
 ```
 
-## (CSS) ios 版本过低(小于 14.5)不支持 `flex` 下的 `gap` 属性时，`flex-warp` 动态布局方案
+## (CSS) ios 版本过低(_小于 14.5_)不支持 `flex` 下的 `gap` 属性时，`flex-warp` 替代方案
 
 ```css
 .container {
@@ -47,7 +107,7 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
 }
 ```
 
-## (CSS) `flex-box` 宽度自适应下 `text-overflow: ellipsis` 失效解决方法(单行)
+## (CSS) `flex-box` 宽度自适应下单行文本 `text-overflow: ellipsis` 失效解决方法
 
 ::: tabs
 @tab solution
@@ -73,7 +133,7 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
 ```
 
 @tab cause
-待补充
+// TODO
 :::
 
 ## (CSS) `flex-warp: warp;` 下 `warp` 行间距会自适应，定宽方案
@@ -84,10 +144,6 @@ element 无障碍样式 使点击按钮 focus 无法自动失焦，与禁用效�
   align-content: flex-start;
 }
 ```
-
-## (CSS) ios下 Safari/webview 页面上下左右边缘 `margin` 会失效
-
-> 改用 `padding`
 
 ## (CSS) 移动端单行文字，多行文字超出显示省略号
 
