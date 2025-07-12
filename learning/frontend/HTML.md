@@ -115,7 +115,7 @@ HTML: `HyperText Markup Language` 超文本标记语言，用于定义网页内�
 
 > HTML5 以前：块级元素独占一行，行级元素不换行；块级元素可以包含行级元素，行级元素不能包含块级元素，`<a>` 元素除外。
 
-HTML5 中：为了语义化，元素的包含关系由元素的 _`内容类别`_ 决定。
+HTML5 中：为了语义化，元素的包含关系由元素的**内容类别**决定。
 
 ### 常见包含关系
 
@@ -173,7 +173,7 @@ VSCode EMMET: 输入 `LOREM` 快速生成文本内容
 
 表示跳转窗口位置
 
-- `target="_self"` 默认值，在当前页面窗口打开
+- `target="_self"` _默认值_，在当前页面窗口打开
 - `target="_blank"` 在新窗口打开
 
 :::tip
@@ -338,7 +338,7 @@ _可替换元素_，通常用于在一个页面中嵌入另一个页面，CSS �
 
 #### `<iframe>` 应用场景
 
-1. 嵌入无法使用链接播放的视频（如bilibili）
+1. 嵌入无法使用链接播放的视频（如 bilibili）
 2. 与 `<a>` 元素配合
 
 ```html
@@ -570,7 +570,7 @@ Each embedded browsing context has its own document and allows URL navigations. 
 
 > _url地址_: 绝对路径的一种书写方式
 
-- 协议名（_当目标和当前页的协议相同时可以省略_）
+- 协议名（当目标和当前页的协议相同时可以省略）
   - `http`
   - `https`
   - `ftp`
@@ -578,11 +578,11 @@ Each embedded browsing context has its own document and allows URL navigations. 
 - 主机名
   - 域名
   - IP地址
-- 端口号（_可省略_）
+- 端口号（可省略）
   - `http` 默认端口号：80
   - `https` 默认端口号：443
 
-**相对路径**：以 `./` 或 `../` 开头的路径（_`./` 可以省略_）。
+**相对路径**：以 `./` 或 `../` 开头的路径（`./` 可以省略）。
 `.` 表示当前目录，`..` 表示上级目录。
 
 ## 数据链接 _data url_
