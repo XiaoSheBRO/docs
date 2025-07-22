@@ -263,3 +263,11 @@ document.querySelector('ul').appendChild(fragment)
 ![事件流](../../assets/images/JS-1-DomEvent.jpg)
 
 事件源 / 事件目标：事件目标阶段的元素。
+
+### 事件注册
+
+也称事件绑定
+
+注册方式：
+
+- 将事件名称前加 `on` 的单词作为属性名，然后直接给 DOM 对象的该属性赋值为函数，即为注册事件
