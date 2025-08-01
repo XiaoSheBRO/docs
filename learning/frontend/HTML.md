@@ -13,10 +13,15 @@ HTML: `HyperText Markup Language` 超文本标记语言，用于定义网页内�
 - 元素不能相互嵌套
 - 元素关系：父元素、子元素、兄弟元素、祖先元素、后代元素
 
-> `<br>` & `<br />`：
-> `<br>` 是 HTML4 写法，`<br />` 是 XHTML 为兼容 HTML 的写法,也是 XML 写法。（_XHTML：HTML 严格遵守 XML 语法规范的一个版本_）
-> HTML5 因为兼容 XHTML，所以两种写法都可以使用。
-> 早期发布的 HTML 规范当中，`<br>` 与 `<img>` 等元素是不用封闭自身的，但是这种元素造成了 HTML 规范的不严谨，于是在之后发布的 XHTML 语言中，参考了更为严谨的 XML 规范，在这些不用自身封闭的元素后加 `/` 来表示自行封闭。
+::: details 📚 `<br>` & `<br />`
+
+`<br>` 是 HTML4 写法；`<br />` 是 XHTML 为兼容 HTML 的写法，也是 XML 写法。
+
+> XHTML：HTML 严格遵守 XML 语法规范的一个版本
+
+HTML5 因为兼容 XHTML，所以两种写法都可以使用。早期发布的 HTML 规范当中，`<br>` 与 `<img>` 等元素是不用封闭自身的，但是这种元素造成了 HTML 规范的不严谨，于是在之后发布的 XHTML 语言中，参考了更为严谨的 XML 规范，在这些不用自身封闭的元素后加 `/` 来表示自行封闭。
+
+:::
 
 ### 属性的分类
 
@@ -117,12 +122,14 @@ HTML: `HyperText Markup Language` 超文本标记语言，用于定义网页内�
 
 HTML5 中：为了语义化，元素的包含关系由元素的**内容类别**决定。
 
-### 常见包含关系
+::: tip 常见包含关系
 
 - 容器元素可以包含任何元素
 - `<a>` 元素几乎可以包含任何元素
 - 某些元素有固定的子元素
 - **标题元素和段落元素不能相互包含**
+
+:::
 
 ## 常用元素
 
@@ -348,7 +355,7 @@ _可替换元素_，通常用于在一个页面中嵌入另一个页面，CSS �
 ```
 
 ::: info
-Each embedded browsing context has its own document and allows URL navigations. The navigations of each embedded browsing context are linearized into the session history of the topmost browsing context.
+_Each embedded browsing context has its own document and allows URL navigations. The navigations of each embedded browsing context are linearized into the session history of the topmost browsing context._
 每个嵌入式浏览上下文的导航都会被线性嵌入到顶级浏览上下文的会话历史记录中。
 :::
 
@@ -533,6 +540,14 @@ Each embedded browsing context has its own document and allows URL navigations. 
 - `<blockquote>` 大段引用文本
   - `cite` 属性：引用的来源
 
+::: info `contenteditable` 属性
+
+_全局属性，布尔属性_，表示元素是否可编辑
+
+常用于制作富文本编辑器
+
+:::
+
 ## HTML实体 `HTML Entity`
 
 又叫实体字符，用于在页面中显示一些特殊符号。
@@ -606,9 +621,3 @@ Each embedded browsing context has its own document and allows URL navigations. 
 - 图片由其他代码动态生成，且图片较小
 
 > `base64`: 一种编码方式，通常用于将一些二进制数据转变为用字符串可书写的形式。
-
-## 补充内容
-
-### `contenteditable` 属性
-
-_全局属性，布尔属性_，表示元素是否可编辑；常用于制作富文本编辑器
