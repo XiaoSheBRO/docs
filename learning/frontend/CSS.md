@@ -96,7 +96,13 @@ _声明冲突_：同一个样式多次应用到同一个元素
 1. 重置样式表：书写一个（_通用_）作者样式表，覆盖浏览器默认样式
 2. _爱恨法则_：特殊性相同，按照交互逻辑的效果，利用源次序来达到想要的效果
 
-> 常用的CSS重置样式表： [normalize.css](https://github.com/necolas/normalize.css/) [reset.css](https://www.joshwcomeau.com/css/custom-css-reset/) [meyer.css](https://meyerweb.com/eric/tools/css/reset/)
+::: info 常用的CSS重置样式表
+
+[normalize.css](https://github.com/necolas/normalize.css/)
+[reset.css](https://www.joshwcomeau.com/css/custom-css-reset/)
+[meyer.css](https://meyerweb.com/eric/tools/css/reset/)
+
+:::
 
 ## 继承
 
